@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Builder;
+use App\Garage;
 use Validator;
-use App\Http\Resources\BuildersResource;
+use App\Http\Resources\GaragesResource;
 
-class BuilderController extends Controller
+class GarageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="List Builders",
+     *     path="/api/Garages",
+     *     tags={"Garages"},
+     *     summary="List Garages",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Builders",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: List all Garages",
+     *          @SWG\Schema(ref="#/definitions/Garage")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -32,8 +32,8 @@ class BuilderController extends Controller
      */
     public function index()
     {
-        $listBuilder = Builder::all();
-        return $listBuilder;
+        $listGarage = Garage::all();
+        return $listGarage;
     }
 
     /**
@@ -43,20 +43,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="Create Builder",
+     *     path="/api/Garages",
+     *     tags={"Garages"},
+     *     summary="Create Garage",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/Garage"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: A Newly Created Garage",
+     *          @SWG\Schema(ref="#/definitions/Garage")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -84,8 +84,8 @@ class BuilderController extends Controller
             return response()->json($validator->errors(), 422);    
         }
 
-        $createBuilder = Builder::create($request->all());
-        return  $createBuilder;
+        $createGarage = Garage::create($request->all());
+        return  $createGarage;
     }
 
     /**
@@ -95,20 +95,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Get Builder by Id",
+     *     path="/api/Garages/{id}",
+     *     tags={"Garages"},
+     *     summary="Get Garage by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Builder by id.",
+     *          description="Display the specified Garage by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the Garage",
+     *          @SWG\Schema(ref="#/definitions/Garage")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -120,12 +120,12 @@ class BuilderController extends Controller
 	 *      )
      * ),
      */
-    public function show(Builder $builder)
+    public function show(Garage $Garage)
     {
-        // $showBuilderById = Builder::with('Bike')->findOrFail($id);
-        // return $showBuilderById;
+        // $showGarageById = Garage::with('Bike')->findOrFail($id);
+        // return $showGarageById;
 
-        return new BuildersResource($builder);
+        return new GaragesResource($Garage);
     }
 
     /**
@@ -136,27 +136,27 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Update Builder",
+     *     path="/api/Garages/{id}",
+     *     tags={"Garages"},
+     *     summary="Update Garage",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Builder by id.",
+     *          description="Update the specified Garage by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/Garage"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder updated",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the Garage updated",
+     *          @SWG\Schema(ref="#/definitions/Garage")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -184,10 +184,10 @@ class BuilderController extends Controller
             return response()->json($validator->errors(), 422);    
         }
         
-        $updateBuilderById = Builder::findOrFail($id);
-        $updateBuilderById->update($request->all());
+        $updateGarageById = Garage::findOrFail($id);
+        $updateGarageById->update($request->all());
 
-        return $updateBuilderById;
+        return $updateGarageById;
     }
 
     /**
@@ -197,12 +197,12 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Delete Builder",
-     *     description="Delete the specified Builder by id",
+     *     path="/api/Garages/{id}",
+     *     tags={"Garages"},
+     *     summary="Delete Garage",
+     *     description="Delete the specified Garage by id",
      *     @SWG\Parameter(
-     *         description="Builder id to delete",
+     *         description="Garage id to delete",
      *         in="path",
      *         name="id",
      *         required=true,

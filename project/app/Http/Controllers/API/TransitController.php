@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Item;
+use App\Transit;
+use Validator;
+use App\Http\Resources\TransitsResource;
 
-class ItemController extends Controller
+class TransitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +16,14 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="List Items",
+     *     path="/api/Transits",
+     *     tags={"Transits"},
+     *     summary="List Transits",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Items",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: List all Transits",
+     *          @SWG\Schema(ref="#/definitions/Transit")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
@@ -34,8 +32,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $listItems = Item::all();
-        return $listItems;
+        $listTransit = Transit::all();
+        return $listTransit;
     }
 
     /**
@@ -45,39 +43,51 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="Create Item",
+     *     path="/api/Transits",
+     *     tags={"Transits"},
+     *     summary="Create Transit",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/Transit"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: A Newly Created Transit",
+     *          @SWG\Schema(ref="#/definitions/Transit")
      *      ),
      *     @SWG\Response(
      *          response="422",
      *          description="Missing mandatory field"
      *     ),
      *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
-     *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
     public function store(Request $request)
     {
-        $createItem = Item::create($request->all());
-        return  $createItem;
+        $validator = Validator::make($request->all(), [
+            "navire"=> 'required',
+            "fournisseur"=> 'required',
+            "marchandise"=> 'required',
+            "dateArrivee"=> 'required'
+            ,"franchise"=> 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+
+        $createTransit = Transit::create($request->all());
+        return  $createTransit;
     }
 
     /**
@@ -87,35 +97,37 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Get Item by Id",
+     *     path="/api/Transits/{id}",
+     *     tags={"Transits"},
+     *     summary="Get Transit by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Item by id.",
+     *          description="Display the specified Transit by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the Transit",
+     *          @SWG\Schema(ref="#/definitions/Transit")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
-    public function show($id)
+    public function show(Transit $Transit)
     {
-        $showItemById = Item::findOrFail($id);
-        return $showItemById;
+        // $showTransitById = Transit::with('Transit')->findOrFail($id);
+        // return $showTransitById;
+
+        return new TransitsResource($Transit);
     }
 
     /**
@@ -126,27 +138,27 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Update Item",
+     *     path="/api/Transits/{id}",
+     *     tags={"Transits"},
+     *     summary="Update Transit",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Item by id.",
+     *          description="Update the specified Transit by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/Transit"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item updated",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the Transit updated",
+     *          @SWG\Schema(ref="#/definitions/Transit")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -164,10 +176,22 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateItemById = Item::findOrFail($id);
-        $updateItemById->update($request->all());
+        $validator = Validator::make($request->all(), [
+            "navire"=> 'required',
+            "fournisseur"=> 'required',
+            "marchandise"=> 'required',
+            "dateArrivee"=> 'required'
+            ,"franchise"=> 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+        
+        $updateTransitById = Transit::findOrFail($id);
+        $updateTransitById->update($request->all());
 
-        return $updateItemById;
+        return $updateTransitById;
     }
 
     /**
@@ -177,12 +201,12 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Delete Item",
-     *     description="Delete the specified Item by id",
+     *     path="/api/Transits/{id}",
+     *     tags={"Transits"},
+     *     summary="Delete Transit",
+     *     description="Delete the specified Transit by id",
      *     @SWG\Parameter(
-     *         description="Item id to delete",
+     *         description="Transit id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -205,7 +229,7 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $deleteItemById = Item::find($id)->delete();
+        $deleteTransitById = Transit::find($id)->delete();
         return response()->json([], 204);
     }
 }

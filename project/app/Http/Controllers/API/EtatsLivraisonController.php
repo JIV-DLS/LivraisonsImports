@@ -4,36 +4,109 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Bike;
+use App\EtatsLivraison;
 use Validator;
-use App\Http\Resources\BikesResource;
+use App\Http\Resources\EtatsLivraisonsResource;
 
-class BikeController extends Controller
+class EtatsLivraisonController extends Controller
 {
-    
-    /**
-     * Protect update and delete methods, only for authenticated users.
-     *
-     * @return Unauthorized
-     */
-    public function __construct()
-    {
-      $this->middleware('auth:api')->except(['index']);
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/bikes",
-     *     tags={"Bikes"},
-     *     summary="List Bikes",
+     *     path="/api/EtatsLivraisons",
+     *     tags={"EtatsLivraisons"},
+     *     summary="List EtatsLivraisons",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Bikes",
-     *          @SWG\Schema(ref="#/definitions/Bike")
+     *          description="Success: List all EtatsLivraisons",
+     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *      ),
+     *     @SWG\Response(
+     *          response="404",
+     *          description="Not Found"
+     *   )
+     * ),
+     */
+    public function index()
+    {
+        $listEtatsLivraison = EtatsLivraison::all();
+        return $listEtatsLivraison;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Post(
+     *     path="/api/EtatsLivraisons",
+     *     tags={"EtatsLivraisons"},
+     *     summary="Create EtatsLivraison",
+     *     @SWG\Parameter(
+     * 			name="body",
+     * 			in="body",
+     * 			required=true,
+     * 			@SWG\Schema(ref="#/definitions/EtatsLivraison"),
+     * 			description="Json format",
+     * 		),
+     *     @SWG\Response(
+     *          response=201,
+     *          description="Success: A Newly Created EtatsLivraison",
+     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *      ),
+     *     @SWG\Response(
+     *          response="422",
+     *          description="Missing mandatory field"
+     *     ),
+     *     @SWG\Response(
+     *          response="404",
+     *          description="Not Found"
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
+     * ),
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+
+        $createEtatsLivraison = EtatsLivraison::create($request->all());
+        return  $createEtatsLivraison;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/api/EtatsLivraisons/{id}",
+     *     tags={"EtatsLivraisons"},
+     *     summary="Get EtatsLivraison by Id",
+     *     @SWG\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer",
+     *          description="Display the specified EtatsLivraison by id.",
+     * 		),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Success: Return the EtatsLivraison",
+     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -45,121 +118,12 @@ class BikeController extends Controller
 	 *      )
      * ),
      */
-    public function index()
+    public function show(EtatsLivraison $EtatsLivraison)
     {
-        $listBikes = Bike::all();
-        return $listBikes;
-        // Using Paginate method We explain this later in the book
-        // return BikesResource::collection(Bike::with('ratings')->paginate(10));
-    }
+        // $showEtatsLivraisonById = EtatsLivraison::with('EtatsLivraison')->findOrFail($id);
+        // return $showEtatsLivraisonById;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     *
-     * @SWG\Post(
-     *     path="/api/bikes",
-     *     tags={"Bikes"},
-     *     summary="Create Bike",
-     *     @SWG\Parameter(
-     * 			name="body",
-     * 			in="body",
-     * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Bike"),
-     * 			description="Json format",
-     * 		),
-     *     @SWG\Response(
-     *          response=201,
-     *          description="Success: A Newly Created Bike",
-     *          @SWG\Schema(ref="#/definitions/Bike")
-     *      ),
-     *     @SWG\Response(
-     *          response=401,
-     *          description="Refused: Unauthenticated"
-     *     ),
-     *     @SWG\Response(
-     *          response="422",
-     *          description="Missing mandatory field"
-     *     ),
-     *     @SWG\Response(
-     *          response="404",
-     *          description="Not Found"
-     *     ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *      ),
-	 *      security={
-	 * 		   { "api_key":{} }
-	 * 		}
-     * ),
-     */
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'make' => 'required',
-            'model' => 'required',
-            'year'=> 'required',
-            'mods'=> 'required',
-            'builder_id' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        // Creating a record in a different way
-        $createBike = Bike::create([
-            'user_id' => $request->user()->id,
-            'make' => $request->make,
-            'model' => $request->model,
-            'year' => $request->year,
-            'mods' => $request->mods,
-            'picture' => $request->picture,
-        ]);
-
-        return new BikesResource($createBike);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     *
-     * @SWG\Get(
-     *     path="/api/bikes/{id}",
-     *     tags={"Bikes"},
-     *     summary="Get Bike by Id",
-     *     @SWG\Parameter(
-     *          name="id",
-     *          in="path",
-     *          required=true,
-     *          type="integer",
-     *          description="Display the specified bike by id.",
-     * 		),
-     *     @SWG\Response(
-     *          response=200,
-     *          description="Success: Return the Bike",
-     *          @SWG\Schema(ref="#/definitions/Bike")
-     *      ),
-     *     @SWG\Response(
-     *          response="404",
-     *          description="Not Found"
-     *     ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
-     *     security={
-     * 		  { "api_key":{} }
-     * 	   }
-     * ),
-     */
-    public function show(Bike $bike)
-    {
-        return new BikesResource($bike);
+        return new EtatsLivraisonsResource($EtatsLivraison);
     }
 
     /**
@@ -170,27 +134,27 @@ class BikeController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/bikes/{id}",
-     *     tags={"Bikes"},
-     *     summary="Update Bike",
+     *     path="/api/EtatsLivraisons/{id}",
+     *     tags={"EtatsLivraisons"},
+     *     summary="Update EtatsLivraison",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified bike by id.",
+     *          description="Update the specified EtatsLivraison by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Bike"),
+     * 			@SWG\Schema(ref="#/definitions/EtatsLivraison"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Bike updated",
-     *          @SWG\Schema(ref="#/definitions/Bike")
+     *          description="Success: Return the EtatsLivraison updated",
+     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -201,28 +165,25 @@ class BikeController extends Controller
      *          description="Not Found"
      *     ),
      *     @SWG\Response(
-	 * 			response="403",
-	 * 			description="Forbidden"
-	 *     ),
-     *     @SWG\Response(
 	 * 			response="405",
 	 * 			description="Invalid HTTP Method"
-	 *      ),
-	 *      security={
-	 * 		   { "api_key":{} }
-	 * 		}
+	 *     )
      * ),
      */
-    public function update(Request $request, Bike $bike)
+    public function update(Request $request, $id)
     {
-        // check if currently authenticated user is the bike owner
-        if ($request->user()->id !== $bike->user_id) {
-            return response()->json(['error' => 'You can only edit your own bike.'], 403);
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
         }
+        
+        $updateEtatsLivraisonById = EtatsLivraison::findOrFail($id);
+        $updateEtatsLivraisonById->update($request->all());
 
-        $bike->update($request->only(['make', 'model', 'year', 'mods', 'picture']));
-
-        return new BikesResource($bike);
+        return $updateEtatsLivraisonById;
     }
 
     /**
@@ -232,12 +193,12 @@ class BikeController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/bikes/{id}",
-     *     tags={"Bikes"},
-     *     summary="Delete bike",
-     *     description="Delete the specified bike by id",
+     *     path="/api/EtatsLivraisons/{id}",
+     *     tags={"EtatsLivraisons"},
+     *     summary="Delete EtatsLivraison",
+     *     description="Delete the specified EtatsLivraison by id",
      *     @SWG\Parameter(
-     *         description="Bike id to delete",
+     *         description="EtatsLivraison id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -249,21 +210,18 @@ class BikeController extends Controller
      *         description="Not found"
      *     ),
      *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *     ),
+     *     @SWG\Response(
      *         response=204,
      *         description="Success: successful deleted"
      *     ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *      ),
-	 *      security={
-	 * 		   { "api_key":{} }
-	 * 		}
      * )
      */
     public function destroy($id)
     {
-        $deleteBikeById = Bike::findOrFail($id)->delete();
+        $deleteEtatsLivraisonById = EtatsLivraison::find($id)->delete();
         return response()->json([], 204);
     }
 }

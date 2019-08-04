@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Builder;
+use App\LieuxLivraison;
 use Validator;
-use App\Http\Resources\BuildersResource;
+use App\Http\Resources\LieuxLivraisonsResource;
 
-class BuilderController extends Controller
+class LieuxLivraisonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="List Builders",
+     *     path="/api/LieuxLivraisons",
+     *     tags={"LieuxLivraisons"},
+     *     summary="List LieuxLivraisons",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Builders",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: List all LieuxLivraisons",
+     *          @SWG\Schema(ref="#/definitions/LieuxLivraison")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -32,8 +32,8 @@ class BuilderController extends Controller
      */
     public function index()
     {
-        $listBuilder = Builder::all();
-        return $listBuilder;
+        $listLieuxLivraison = LieuxLivraison::all();
+        return $listLieuxLivraison;
     }
 
     /**
@@ -43,20 +43,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="Create Builder",
+     *     path="/api/LieuxLivraisons",
+     *     tags={"LieuxLivraisons"},
+     *     summary="Create LieuxLivraison",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/LieuxLivraison"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: A Newly Created LieuxLivraison",
+     *          @SWG\Schema(ref="#/definitions/LieuxLivraison")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -75,17 +75,15 @@ class BuilderController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',            
-            'location'=> 'required'
+            'libelle' => 'required'
             ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
 
-        $createBuilder = Builder::create($request->all());
-        return  $createBuilder;
+        $createLieuxLivraison = LieuxLivraison::create($request->all());
+        return  $createLieuxLivraison;
     }
 
     /**
@@ -95,20 +93,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Get Builder by Id",
+     *     path="/api/LieuxLivraisons/{id}",
+     *     tags={"LieuxLivraisons"},
+     *     summary="Get LieuxLivraison by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Builder by id.",
+     *          description="Display the specified LieuxLivraison by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the LieuxLivraison",
+     *          @SWG\Schema(ref="#/definitions/LieuxLivraison")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -120,12 +118,12 @@ class BuilderController extends Controller
 	 *      )
      * ),
      */
-    public function show(Builder $builder)
+    public function show(LieuxLivraison $LieuxLivraison)
     {
-        // $showBuilderById = Builder::with('Bike')->findOrFail($id);
-        // return $showBuilderById;
+        // $showLieuxLivraisonById = LieuxLivraison::with('LieuxLivraison')->findOrFail($id);
+        // return $showLieuxLivraisonById;
 
-        return new BuildersResource($builder);
+        return new LieuxLivraisonsResource($LieuxLivraison);
     }
 
     /**
@@ -136,27 +134,27 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Update Builder",
+     *     path="/api/LieuxLivraisons/{id}",
+     *     tags={"LieuxLivraisons"},
+     *     summary="Update LieuxLivraison",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Builder by id.",
+     *          description="Update the specified LieuxLivraison by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/LieuxLivraison"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder updated",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the LieuxLivraison updated",
+     *          @SWG\Schema(ref="#/definitions/LieuxLivraison")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -175,19 +173,17 @@ class BuilderController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',            
-            'location'=> 'required'
+            'libelle' => 'required'
             ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
         
-        $updateBuilderById = Builder::findOrFail($id);
-        $updateBuilderById->update($request->all());
+        $updateLieuxLivraisonById = LieuxLivraison::findOrFail($id);
+        $updateLieuxLivraisonById->update($request->all());
 
-        return $updateBuilderById;
+        return $updateLieuxLivraisonById;
     }
 
     /**
@@ -197,12 +193,12 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Delete Builder",
-     *     description="Delete the specified Builder by id",
+     *     path="/api/LieuxLivraisons/{id}",
+     *     tags={"LieuxLivraisons"},
+     *     summary="Delete LieuxLivraison",
+     *     description="Delete the specified LieuxLivraison by id",
      *     @SWG\Parameter(
-     *         description="Builder id to delete",
+     *         description="LieuxLivraison id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -225,7 +221,7 @@ class BuilderController extends Controller
      */
     public function destroy($id)
     {
-        $deleteBikeById = Bike::find($id)->delete();
+        $deleteLieuxLivraisonById = LieuxLivraison::find($id)->delete();
         return response()->json([], 204);
     }
 }

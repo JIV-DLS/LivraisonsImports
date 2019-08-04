@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Navire",
- *     required={"libelle"},
+ *     required={"libelle","contenanceTotale"},
  *     @SWG\Property(
  *          property="libelle",
+ *          type="string",
+ *          description="libelle décrivant le Navire",
+ *          example="Malt"
+ *    ),
+ *     @SWG\Property(
+ *          property="contenaceTotale",
  *          type="string",
  *          description="libelle décrivant le Navire",
  *          example="Malt"

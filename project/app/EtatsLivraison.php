@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="EtatsLivraison",
- *     required={"nom", "prenom", "dateNaiss", "adresse"},
+ *     required={"libelle"},
  *     @SWG\Property(
  *          property="libelle",
  *          type="string",

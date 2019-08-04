@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Builder;
+use App\Societe;
 use Validator;
-use App\Http\Resources\BuildersResource;
+use App\Http\Resources\SocietesResource;
 
-class BuilderController extends Controller
+class SocieteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="List Builders",
+     *     path="/api/Societes",
+     *     tags={"Societes"},
+     *     summary="List Societes",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Builders",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: List all Societes",
+     *          @SWG\Schema(ref="#/definitions/Societe")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -32,8 +32,8 @@ class BuilderController extends Controller
      */
     public function index()
     {
-        $listBuilder = Builder::all();
-        return $listBuilder;
+        $listSociete = Societe::all();
+        return $listSociete;
     }
 
     /**
@@ -43,20 +43,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/builders",
-     *     tags={"Builders"},
-     *     summary="Create Builder",
+     *     path="/api/Societes",
+     *     tags={"Societes"},
+     *     summary="Create Societe",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/Societe"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: A Newly Created Societe",
+     *          @SWG\Schema(ref="#/definitions/Societe")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -75,17 +75,16 @@ class BuilderController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',            
-            'location'=> 'required'
+            'libelle' => 'required',
+            'adresse' => 'required'
             ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
 
-        $createBuilder = Builder::create($request->all());
-        return  $createBuilder;
+        $createSociete = Societe::create($request->all());
+        return  $createSociete;
     }
 
     /**
@@ -95,20 +94,20 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Get Builder by Id",
+     *     path="/api/Societes/{id}",
+     *     tags={"Societes"},
+     *     summary="Get Societe by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Builder by id.",
+     *          description="Display the specified Societe by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the Societe",
+     *          @SWG\Schema(ref="#/definitions/Societe")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -120,12 +119,12 @@ class BuilderController extends Controller
 	 *      )
      * ),
      */
-    public function show(Builder $builder)
+    public function show(Societe $Societe)
     {
-        // $showBuilderById = Builder::with('Bike')->findOrFail($id);
-        // return $showBuilderById;
+        // $showSocieteById = Societe::with('Societe')->findOrFail($id);
+        // return $showSocieteById;
 
-        return new BuildersResource($builder);
+        return new SocietesResource($Societe);
     }
 
     /**
@@ -136,27 +135,27 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Update Builder",
+     *     path="/api/Societes/{id}",
+     *     tags={"Societes"},
+     *     summary="Update Societe",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Builder by id.",
+     *          description="Update the specified Societe by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Builder"),
+     * 			@SWG\Schema(ref="#/definitions/Societe"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Builder updated",
-     *          @SWG\Schema(ref="#/definitions/Builder")
+     *          description="Success: Return the Societe updated",
+     *          @SWG\Schema(ref="#/definitions/Societe")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -175,19 +174,18 @@ class BuilderController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',            
-            'location'=> 'required'
+            'libelle' => 'required',
+            'adresse' => 'required'
             ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
         
-        $updateBuilderById = Builder::findOrFail($id);
-        $updateBuilderById->update($request->all());
+        $updateSocieteById = Societe::findOrFail($id);
+        $updateSocieteById->update($request->all());
 
-        return $updateBuilderById;
+        return $updateSocieteById;
     }
 
     /**
@@ -197,12 +195,12 @@ class BuilderController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/builders/{id}",
-     *     tags={"Builders"},
-     *     summary="Delete Builder",
-     *     description="Delete the specified Builder by id",
+     *     path="/api/Societes/{id}",
+     *     tags={"Societes"},
+     *     summary="Delete Societe",
+     *     description="Delete the specified Societe by id",
      *     @SWG\Parameter(
-     *         description="Builder id to delete",
+     *         description="Societe id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -225,7 +223,7 @@ class BuilderController extends Controller
      */
     public function destroy($id)
     {
-        $deleteBikeById = Bike::find($id)->delete();
+        $deleteSocieteById = Societe::find($id)->delete();
         return response()->json([], 204);
     }
 }

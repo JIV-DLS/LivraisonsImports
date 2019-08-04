@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Item;
+use App\Navire;
+use Validator;
+use App\Http\Resources\NaviresResource;
 
-class ItemController extends Controller
+class NavireController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +16,14 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="List Items",
+     *     path="/api/Navires",
+     *     tags={"Navires"},
+     *     summary="List Navires",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Items",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: List all Navires",
+     *          @SWG\Schema(ref="#/definitions/Navire")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
@@ -34,8 +32,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $listItems = Item::all();
-        return $listItems;
+        $listNavire = Navire::all();
+        return $listNavire;
     }
 
     /**
@@ -45,39 +43,48 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="Create Item",
+     *     path="/api/Navires",
+     *     tags={"Navires"},
+     *     summary="Create Navire",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/Navire"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: A Newly Created Navire",
+     *          @SWG\Schema(ref="#/definitions/Navire")
      *      ),
      *     @SWG\Response(
      *          response="422",
      *          description="Missing mandatory field"
      *     ),
      *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
-     *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
     public function store(Request $request)
     {
-        $createItem = Item::create($request->all());
-        return  $createItem;
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required',
+            'contenanceT' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+
+        $createNavire = Navire::create($request->all());
+        return  $createNavire;
     }
 
     /**
@@ -87,35 +94,37 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Get Item by Id",
+     *     path="/api/Navires/{id}",
+     *     tags={"Navires"},
+     *     summary="Get Navire by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Item by id.",
+     *          description="Display the specified Navire by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the Navire",
+     *          @SWG\Schema(ref="#/definitions/Navire")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
-    public function show($id)
+    public function show(Navire $Navire)
     {
-        $showItemById = Item::findOrFail($id);
-        return $showItemById;
+        // $showNavireById = Navire::with('Navire')->findOrFail($id);
+        // return $showNavireById;
+
+        return new NaviresResource($Navire);
     }
 
     /**
@@ -126,27 +135,27 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Update Item",
+     *     path="/api/Navires/{id}",
+     *     tags={"Navires"},
+     *     summary="Update Navire",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Item by id.",
+     *          description="Update the specified Navire by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/Navire"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item updated",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the Navire updated",
+     *          @SWG\Schema(ref="#/definitions/Navire")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -164,10 +173,19 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateItemById = Item::findOrFail($id);
-        $updateItemById->update($request->all());
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required',
+            'contenanceT' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+        
+        $updateNavireById = Navire::findOrFail($id);
+        $updateNavireById->update($request->all());
 
-        return $updateItemById;
+        return $updateNavireById;
     }
 
     /**
@@ -177,12 +195,12 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Delete Item",
-     *     description="Delete the specified Item by id",
+     *     path="/api/Navires/{id}",
+     *     tags={"Navires"},
+     *     summary="Delete Navire",
+     *     description="Delete the specified Navire by id",
      *     @SWG\Parameter(
-     *         description="Item id to delete",
+     *         description="Navire id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -205,7 +223,7 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $deleteItemById = Item::find($id)->delete();
+        $deleteNavireById = Navire::find($id)->delete();
         return response()->json([], 204);
     }
 }

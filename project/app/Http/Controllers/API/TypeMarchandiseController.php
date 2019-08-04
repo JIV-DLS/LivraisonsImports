@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Item;
+use App\TypeMarchandise;
+use Validator;
+use App\Http\Resources\TypeMarchandisesResource;
 
-class ItemController extends Controller
+class TypeMarchandiseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +16,14 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="List Items",
+     *     path="/api/TypeMarchandises",
+     *     tags={"TypeMarchandises"},
+     *     summary="List TypeMarchandises",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Items",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: List all TypeMarchandises",
+     *          @SWG\Schema(ref="#/definitions/TypeMarchandise")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
@@ -34,8 +32,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $listItems = Item::all();
-        return $listItems;
+        $listTypeMarchandise = TypeMarchandise::all();
+        return $listTypeMarchandise;
     }
 
     /**
@@ -45,39 +43,47 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/items",
-     *     tags={"Items"},
-     *     summary="Create Item",
+     *     path="/api/TypeMarchandises",
+     *     tags={"TypeMarchandises"},
+     *     summary="Create TypeMarchandise",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/TypeMarchandise"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: A Newly Created TypeMarchandise",
+     *          @SWG\Schema(ref="#/definitions/TypeMarchandise")
      *      ),
      *     @SWG\Response(
      *          response="422",
      *          description="Missing mandatory field"
      *     ),
      *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
-     *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
     public function store(Request $request)
     {
-        $createItem = Item::create($request->all());
-        return  $createItem;
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+
+        $createTypeMarchandise = TypeMarchandise::create($request->all());
+        return  $createTypeMarchandise;
     }
 
     /**
@@ -87,35 +93,37 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Get Item by Id",
+     *     path="/api/TypeMarchandises/{id}",
+     *     tags={"TypeMarchandises"},
+     *     summary="Get TypeMarchandise by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Item by id.",
+     *          description="Display the specified TypeMarchandise by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the TypeMarchandise",
+     *          @SWG\Schema(ref="#/definitions/TypeMarchandise")
      *      ),
-     *     @SWG\Response(
-	 * 			response="405",
-	 * 			description="Invalid HTTP Method"
-	 *     ),
      *     @SWG\Response(
      *          response="404",
      *          description="Not Found"
-     *   )
+     *     ),
+     *     @SWG\Response(
+	 * 			response="405",
+	 * 			description="Invalid HTTP Method"
+	 *      )
      * ),
      */
-    public function show($id)
+    public function show(TypeMarchandise $TypeMarchandise)
     {
-        $showItemById = Item::findOrFail($id);
-        return $showItemById;
+        // $showTypeMarchandiseById = TypeMarchandise::with('TypeMarchandise')->findOrFail($id);
+        // return $showTypeMarchandiseById;
+
+        return new TypeMarchandisesResource($TypeMarchandise);
     }
 
     /**
@@ -126,27 +134,27 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Update Item",
+     *     path="/api/TypeMarchandises/{id}",
+     *     tags={"TypeMarchandises"},
+     *     summary="Update TypeMarchandise",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Item by id.",
+     *          description="Update the specified TypeMarchandise by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Item"),
+     * 			@SWG\Schema(ref="#/definitions/TypeMarchandise"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Item updated",
-     *          @SWG\Schema(ref="#/definitions/Item")
+     *          description="Success: Return the TypeMarchandise updated",
+     *          @SWG\Schema(ref="#/definitions/TypeMarchandise")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -164,10 +172,18 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateItemById = Item::findOrFail($id);
-        $updateItemById->update($request->all());
+        $validator = Validator::make($request->all(), [
+            'libelle' => 'required'
+            ]);
+            
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);    
+        }
+        
+        $updateTypeMarchandiseById = TypeMarchandise::findOrFail($id);
+        $updateTypeMarchandiseById->update($request->all());
 
-        return $updateItemById;
+        return $updateTypeMarchandiseById;
     }
 
     /**
@@ -177,12 +193,12 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/items/{id}",
-     *     tags={"Items"},
-     *     summary="Delete Item",
-     *     description="Delete the specified Item by id",
+     *     path="/api/TypeMarchandises/{id}",
+     *     tags={"TypeMarchandises"},
+     *     summary="Delete TypeMarchandise",
+     *     description="Delete the specified TypeMarchandise by id",
      *     @SWG\Parameter(
-     *         description="Item id to delete",
+     *         description="TypeMarchandise id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -205,7 +221,7 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        $deleteItemById = Item::find($id)->delete();
+        $deleteTypeMarchandiseById = TypeMarchandise::find($id)->delete();
         return response()->json([], 204);
     }
 }

@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Profil;
+use App\Livraison;
 use Validator;
-use App\Http\Resources\ProfilsResource;
+use App\Http\Resources\LivraisonsResource;
 
-class ProfilController extends Controller
+class LivraisonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Profils",
-     *     tags={"Profils"},
-     *     summary="List Profils",
+     *     path="/api/Livraisons",
+     *     tags={"Livraisons"},
+     *     summary="List Livraisons",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all Profils",
-     *          @SWG\Schema(ref="#/definitions/Profil")
+     *          description="Success: List all Livraisons",
+     *          @SWG\Schema(ref="#/definitions/Livraison")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -32,8 +32,8 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        $listProfil = Profil::all();
-        return $listProfil;
+        $listLivraison = Livraison::all();
+        return $listLivraison;
     }
 
     /**
@@ -43,20 +43,20 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Profils",
-     *     tags={"Profils"},
-     *     summary="Create Profil",
+     *     path="/api/Livraisons",
+     *     tags={"Livraisons"},
+     *     summary="Create Livraison",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Profil"),
+     * 			@SWG\Schema(ref="#/definitions/Livraison"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created Profil",
-     *          @SWG\Schema(ref="#/definitions/Profil")
+     *          description="Success: A Newly Created Livraison",
+     *          @SWG\Schema(ref="#/definitions/Livraison")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -75,6 +75,14 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            "transit"=> 'required',
+            "dateLivrDemBB"=> 'required',
+            "dateLivrEffectiveBB"=>'required',
+            "dateConfirmFourn"=>'required',
+            "dateDebStationnement"=>'required',
+            "dateDebSures"=>'required',
+            "délaiDateArrDateLivr"=>'required',
+            "etatLivr"=>'required',
             'libelle' => 'required'
             ]);
             
@@ -82,8 +90,8 @@ class ProfilController extends Controller
             return response()->json($validator->errors(), 422);    
         }
 
-        $createProfil = Profil::create($request->all());
-        return  $createProfil;
+        $createLivraison = Livraison::create($request->all());
+        return  $createLivraison;
     }
 
     /**
@@ -93,20 +101,20 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Profils/{id}",
-     *     tags={"Profils"},
-     *     summary="Get Profil by Id",
+     *     path="/api/Livraisons/{id}",
+     *     tags={"Livraisons"},
+     *     summary="Get Livraison by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified Profil by id.",
+     *          description="Display the specified Livraison by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Profil",
-     *          @SWG\Schema(ref="#/definitions/Profil")
+     *          description="Success: Return the Livraison",
+     *          @SWG\Schema(ref="#/definitions/Livraison")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -118,12 +126,12 @@ class ProfilController extends Controller
 	 *      )
      * ),
      */
-    public function show(Profil $Profil)
+    public function show(Livraison $Livraison)
     {
-        // $showProfilById = Profil::with('Profil')->findOrFail($id);
-        // return $showProfilById;
+        // $showLivraisonById = Livraison::with('Livraison')->findOrFail($id);
+        // return $showLivraisonById;
 
-        return new ProfilsResource($Profil);
+        return new LivraisonsResource($Livraison);
     }
 
     /**
@@ -134,27 +142,27 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Profils/{id}",
-     *     tags={"Profils"},
-     *     summary="Update Profil",
+     *     path="/api/Livraisons/{id}",
+     *     tags={"Livraisons"},
+     *     summary="Update Livraison",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified Profil by id.",
+     *          description="Update the specified Livraison by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/Profil"),
+     * 			@SWG\Schema(ref="#/definitions/Livraison"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the Profil updated",
-     *          @SWG\Schema(ref="#/definitions/Profil")
+     *          description="Success: Return the Livraison updated",
+     *          @SWG\Schema(ref="#/definitions/Livraison")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -173,17 +181,24 @@ class ProfilController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'libelle' => 'required'
-            ]);
+            "transit"=> 'required',
+            "dateLivrDemBB"=> 'required',
+            "dateLivrEffectiveBB"=>'required',
+            "dateConfirmFourn"=>'required',
+            "dateDebStationnement"=>'required',
+            "dateDebSures"=>'required',
+            "délaiDateArrDateLivr"=>'required',
+            "etatLivr"=>'required',
+            'libelle' => 'required'            ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
         
-        $updateProfilById = Profil::findOrFail($id);
-        $updateProfilById->update($request->all());
+        $updateLivraisonById = Livraison::findOrFail($id);
+        $updateLivraisonById->update($request->all());
 
-        return $updateProfilById;
+        return $updateLivraisonById;
     }
 
     /**
@@ -193,12 +208,12 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Profils/{id}",
-     *     tags={"Profils"},
-     *     summary="Delete Profil",
-     *     description="Delete the specified Profil by id",
+     *     path="/api/Livraisons/{id}",
+     *     tags={"Livraisons"},
+     *     summary="Delete Livraison",
+     *     description="Delete the specified Livraison by id",
      *     @SWG\Parameter(
-     *         description="Profil id to delete",
+     *         description="Livraison id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
@@ -221,7 +236,7 @@ class ProfilController extends Controller
      */
     public function destroy($id)
     {
-        $deleteProfilById = Profil::find($id)->delete();
+        $deleteLivraisonById = Livraison::find($id)->delete();
         return response()->json([], 204);
     }
 }

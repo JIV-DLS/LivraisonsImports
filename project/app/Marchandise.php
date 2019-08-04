@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  *     @SWG\Property(
  *          property="typeMarchandise",
  *          type="string",
- *          description="designation décrivant la marchandise",
+ *          description="type décrivant la marchandise",
  *          example="1"
  *    )
  * )
