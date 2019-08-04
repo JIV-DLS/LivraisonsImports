@@ -15,6 +15,10 @@ class CreateEmployesTable extends Migration
     {
         Schema::create('employes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->dateTime('dateNaiss');
+            $table->unsignedInteger('adresse');
             $table->timestamps();
         });
     }

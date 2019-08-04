@@ -15,6 +15,8 @@ class CreateReinitialiserMotDePassesTable extends Migration
     {
         Schema::create('reinitialiser_mot_de_passes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email');
+            $table->string('token');
             $table->timestamps();
         });
     }

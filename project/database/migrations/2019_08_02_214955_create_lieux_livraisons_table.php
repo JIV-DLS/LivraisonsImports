@@ -15,6 +15,7 @@ class CreateLieuxLivraisonsTable extends Migration
     {
         Schema::create('lieux_livraisons', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

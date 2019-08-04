@@ -15,6 +15,7 @@ class CreateEtatsLivraisonsTable extends Migration
     {
         Schema::create('etats_livraisons', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

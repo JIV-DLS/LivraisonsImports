@@ -15,6 +15,7 @@ class CreateTypeMarchandisesTable extends Migration
     {
         Schema::create('type_marchandises', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateNaviresTable extends Migration
     {
         Schema::create('navires', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('libelle');
+            $table->integer('contenanceTotale');
             $table->timestamps();
         });
     }

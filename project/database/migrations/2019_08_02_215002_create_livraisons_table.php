@@ -15,6 +15,19 @@ class CreateLivraisonsTable extends Migration
     {
         Schema::create('livraisons', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('transit');
+            $table->unsignedInteger('lieuLivr');
+            $table->unsignedInteger('etatLivr');
+            $table->integer('nombreJourDeStationnementSubi');
+            $table->integer('nombreJourDeSuresSubi');
+            $table->string('commentaires');
+            $table->dateTime('dateLivrDemandeeParBB');
+            $table->dateTime('dateReportApresEchecDeLivr');
+            $table->dateTime('dateComfirmationFournisseur');
+            $table->dateTime('dateLivrEffectiveBB');
+            $table->dateTime('dateDebStationnement');
+            $table->dateTime('dateDebSures');
+            $table->dateTime('delaiDateArrDateLivr');
             $table->timestamps();
         });
     }
