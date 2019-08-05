@@ -23,7 +23,19 @@ Route::post('logout', 'API\AuthController@logout');
 Route::apiResources([
     'bikes' => 'API\BikeController',
     'builders' => 'API\BuilderController',
-    'items' => 'API\ItemController',
+    'Actions' => 'API\ActionController',
+    'Adresses' => 'API\AdresseController',
+    'Employes' => 'API\EmployeController',
+    'EtatsLivraisons' => 'API\EtatsLivraisonController',
+    'LieuxLivraisons' => 'API\LieuxLivraisonController',
+    'Livraisons' => 'API\LivraisonController',
+    'Marchandises' => 'API\MarchandiseController',
+    'Navires' => 'API\NavireController',
+    'Profils' => 'API\ProfilController',
+    'ReinitialiserMotDePasses' => 'API\ReinitialiserMotDePasseController',
+    'Societes' => 'API\SocieteController',
+    'Transits' => 'API\TransitController',
+    'TypeMarchandises' => 'API\TypeMarchandiseController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
 
