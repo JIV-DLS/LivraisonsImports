@@ -16,7 +16,7 @@ class EmployeController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Employes",
+     *     path="/api/employes",
      *     tags={"Employes"},
      *     summary="List Employes",
      *     @SWG\Response(

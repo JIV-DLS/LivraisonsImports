@@ -16,7 +16,7 @@ class ReinitialiserMotDePasseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/ReinitialiserMotDePasses",
+     *     path="/api/reinitialiserMotDePasses",
      *     tags={"ReinitialiserMotDePasses"},
      *     summary="List ReinitialiserMotDePasses",
      *     @SWG\Response(

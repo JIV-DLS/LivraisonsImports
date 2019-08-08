@@ -16,7 +16,7 @@ class GarageController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Garages",
+     *     path="/api/garages",
      *     tags={"Garages"},
      *     summary="List Garages",
      *     @SWG\Response(

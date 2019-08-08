@@ -16,7 +16,7 @@ class AdresseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Adresses",
+     *     path="/api/adresses",
      *     tags={"Adresses"},
      *     summary="List Adresses",
      *     @SWG\Response(

@@ -16,7 +16,7 @@ class NavireController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Navires",
+     *     path="/api/navires",
      *     tags={"Navires"},
      *     summary="List Navires",
      *     @SWG\Response(

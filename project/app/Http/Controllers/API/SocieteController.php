@@ -16,7 +16,7 @@ class SocieteController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Societes",
+     *     path="/api/societes",
      *     tags={"Societes"},
      *     summary="List Societes",
      *     @SWG\Response(

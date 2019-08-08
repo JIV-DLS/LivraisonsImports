@@ -16,7 +16,7 @@ class LieuxLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/LieuxLivraisons",
+     *     path="/api/lieuxLivraisons",
      *     tags={"LieuxLivraisons"},
      *     summary="List LieuxLivraisons",
      *     @SWG\Response(

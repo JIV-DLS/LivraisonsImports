@@ -16,7 +16,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Actions",
+     *     path="/api/actions",
      *     tags={"Actions"},
      *     summary="List Actions",
      *     @SWG\Response(

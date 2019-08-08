@@ -16,7 +16,7 @@ class TypeMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/TypeMarchandises",
+     *     path="/api/typeMarchandises",
      *     tags={"TypeMarchandises"},
      *     summary="List TypeMarchandises",
      *     @SWG\Response(

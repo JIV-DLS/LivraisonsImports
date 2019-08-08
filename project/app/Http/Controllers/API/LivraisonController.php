@@ -16,7 +16,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Livraisons",
+     *     path="/api/livraisons",
      *     tags={"Livraisons"},
      *     summary="List Livraisons",
      *     @SWG\Response(

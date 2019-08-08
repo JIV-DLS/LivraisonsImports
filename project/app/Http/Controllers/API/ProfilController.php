@@ -16,7 +16,7 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Profils",
+     *     path="/api/profils",
      *     tags={"Profils"},
      *     summary="List Profils",
      *     @SWG\Response(

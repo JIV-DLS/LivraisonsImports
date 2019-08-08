@@ -16,7 +16,7 @@ class TransitController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Transits",
+     *     path="/api/transits",
      *     tags={"Transits"},
      *     summary="List Transits",
      *     @SWG\Response(

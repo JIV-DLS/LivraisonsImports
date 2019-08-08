@@ -16,7 +16,7 @@ class EtatsLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/EtatsLivraisons",
+     *     path="/api/etatsLivraisons",
      *     tags={"EtatsLivraisons"},
      *     summary="List EtatsLivraisons",
      *     @SWG\Response(
