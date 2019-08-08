@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-// App imports
 import { BikesComponent } from './bikes.component';
 
 describe('BikesComponent', () => {
@@ -10,12 +8,7 @@ describe('BikesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        BikesComponent
-      ]
+      declarations: [ BikesComponent ]
     })
     .compileComponents();
   }));
@@ -29,5 +22,4 @@ describe('BikesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

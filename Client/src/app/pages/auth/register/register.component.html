@@ -29,7 +29,7 @@
         <div class="form-feedback"
           *ngIf="registerForm.get('password').errors && (registerForm.get('password').dirty || registerForm.get('password').touched)">
           <p *ngIf="registerForm.get('password').hasError('required')">Password is required</p>
-          <p *ngIf="registerForm.get('password').hasError('minlength')">Password must be 6 characters long, we need another {{ registerForm.get('password').errors['minlength'].requiredLength - registerForm.get('password').errors['minlength'].actualLength }} characters </p>
+          <p *ngIf="registerForm.get('password').hasError('minlength')">Password must be 6 characters long, we need another {{registerForm.get('password').errors['minlength'].requiredLength - registerForm.get('password').errors['minlength'].actualLength}} characters </p>
         </div>
       </div>
       <div  *ngIf="error" class="alert alert-danger" role="alert">

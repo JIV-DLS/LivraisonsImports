@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
 
 // App imports
 import { Bike } from '../bike';

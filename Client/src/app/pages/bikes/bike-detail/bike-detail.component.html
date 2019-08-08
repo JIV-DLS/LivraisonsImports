@@ -82,7 +82,7 @@
                 <div class="form-group">
                   <label for="inputState">Builder</label>
                   <select [(ngModel)]="bike.builder.id" name="builder_id" class="form-control">
-                    <option *ngFor="let builder of builders" [(ngValue)]="builder['id']">{{ builder['name'] }}</option>
+                    <option *ngFor="let builder of builders" [(ngValue)]="builder['id']">{{builder['name']}}</option>
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Bike } from '../bike';
 import { BikesService } from '../_services/bikes.service';
 import { AuthService } from '../../auth/_services/auth.service';
-
+import { User } from './../../auth/user';
 @Component({
   selector: 'app-bike-detail',
   templateUrl: './bike-detail.component.html',

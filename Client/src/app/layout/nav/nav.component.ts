@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 // App imports
@@ -13,7 +14,8 @@ export class NavComponent implements OnInit {
 
   public constructor(
     private titleTagService: Title,
-    public auth: AuthService) {}
+    public auth: AuthService,
+    private router: Router ) {}
 
   public setTitle( pageTitle: string) {
     this.titleTagService.setTitle( pageTitle );
