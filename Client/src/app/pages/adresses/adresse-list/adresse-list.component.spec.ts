@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuilderListComponent } from './builder-list.component';
+import { BuilderListComponent } from './adresse-list.component';
 
 describe('BuilderListComponent', () => {
   let component: BuilderListComponent;

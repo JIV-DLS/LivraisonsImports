@@ -6,60 +6,60 @@ import { catchError } from 'rxjs/operators';
 
 // App import
 import { environment } from '../../../../environments/environment';
-import { Builder } from '../builder';
+import { LieuxLivraison } from '../lieuxLivraison';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BuildersService {
+export class LieuxLivraisonsService {
   private readonly apiUrl = environment.apiUrl;
-  private buildersUrl = this.apiUrl + '/builders';
+  private lieuxLivraisonsUrl = this.apiUrl + '/lieuxLivraisons';
   private handleError: HandleError;
 
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler ) {
-      this.handleError = httpErrorHandler.createHandleError('BuildersService');
+      this.handleError = httpErrorHandler.createHandleError('LieuxLivraisonsService');
      }
 
-  /** GET builders from builders endpoint */
-  getBuilders (): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl)
+  /** GET lieuxLivraisons from lieuxLivraisons endpoint */
+  getLieuxLivraisons (): Observable<LieuxLivraison[]> {
+    return this.http.get<LieuxLivraison[]>(this.lieuxLivraisonsUrl)
       .pipe(
-        catchError(this.handleError('getBuilders', []))
+        catchError(this.handleError('getLieuxLivraisons', []))
       );
   }
 
-  /** GET builder detail from builder-detail endpoint */
-  getBuilderDetail (id: number): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl + `/${id}`)
+  /** GET lieuxLivraison detail from lieuxLivraison-detail endpoint */
+  getLieuxLivraisonDetail (id: number): Observable<LieuxLivraison[]> {
+    return this.http.get<LieuxLivraison[]>(this.lieuxLivraisonsUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('getBuilderDetail', []))
+        catchError(this.handleError('getLieuxLivraisonDetail', []))
       );
   }
 
-  /** POST builder to builders endpoint */
-  addBuilder (builder: Builder): Observable<Builder> {
-    return this.http.post<Builder>(this.buildersUrl, builder)
+  /** POST lieuxLivraison to lieuxLivraisons endpoint */
+  addLieuxLivraison (lieuxLivraison: LieuxLivraison): Observable<LieuxLivraison> {
+    return this.http.post<LieuxLivraison>(this.lieuxLivraisonsUrl, lieuxLivraison)
       .pipe(
-        catchError(this.handleError('addBuilder', builder))
+        catchError(this.handleError('addLieuxLivraison', lieuxLivraison))
       );
   }
 
-  /** PUT builder to builders endpoint */
-  updateBuilder (builder: Builder, id: number): Observable<Builder> {
-    return this.http.put<Builder>(this.buildersUrl + `/${id}`, builder)
+  /** PUT lieuxLivraison to lieuxLivraisons endpoint */
+  updateLieuxLivraison (lieuxLivraison: LieuxLivraison, id: number): Observable<LieuxLivraison> {
+    return this.http.put<LieuxLivraison>(this.lieuxLivraisonsUrl + `/${id}`, lieuxLivraison)
       .pipe(
-        catchError(this.handleError('updateBuilder', builder))
+        catchError(this.handleError('updateLieuxLivraison', lieuxLivraison))
       );
   }
 
-  /** DELETE builder builder endpoint */
-  deleteBuilder (id: number): Observable<any> {
-    return this.http.delete<Builder[]>(this.buildersUrl + `/${id}`)
+  /** DELETE lieuxLivraison lieuxLivraison endpoint */
+  deleteLieuxLivraison (id: number): Observable<any> {
+    return this.http.delete<LieuxLivraison[]>(this.lieuxLivraisonsUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('deleteBuilder'))
+        catchError(this.handleError('deleteLieuxLivraison'))
       );
   }
 }

@@ -1,6 +1,6 @@
 import { Bike } from '../bikes/bike';
 
-export class Builder {
+export class Livraison {
   id: number;
   name: string;
   description: string;

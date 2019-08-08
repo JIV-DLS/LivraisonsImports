@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Marchandise } from './../marchandise';
+import { MarchandisesService } from '../_services/marchandises.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-marchandise-detail',
+  templateUrl: './marchandise-detail.component.html',
+  styleUrls: ['./marchandise-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class MarchandiseDetailComponent implements OnInit {
 
-  builder: Builder;
+  marchandise: Marchandise;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private marchandisesService: MarchandisesService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get marchandise detail
+    this.getMarchandiseDetail();
   }
 
-  getBuilderDetail(): void {
+  getMarchandiseDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.marchandisesService.getMarchandiseDetail(id)
+      .subscribe(marchandise => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.marchandise = marchandise['data'];
       });
   }
 

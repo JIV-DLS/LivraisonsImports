@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Societe } from './../societe';
+import { SocietesService } from '../_services/societes.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-societe-list',
+  templateUrl: './societe-list.component.html',
+  styleUrls: ['./societe-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class SocieteListComponent implements OnInit {
+    // Using Societe Model class
+    societes: Societe[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private societeService: SocietesService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get societe detail
+    this.getSocietes();
   }
 
-  getBuilders(): void {
+  getSocietes(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.societeService.getSocietes()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: Societe[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.societes = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

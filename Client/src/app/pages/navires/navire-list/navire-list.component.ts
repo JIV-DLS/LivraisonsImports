@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Navire } from './../navire';
+import { NaviresService } from '../_services/navires.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-navire-list',
+  templateUrl: './navire-list.component.html',
+  styleUrls: ['./navire-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class NavireListComponent implements OnInit {
+    // Using Navire Model class
+    navires: Navire[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private navireService: NaviresService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get navire detail
+    this.getNavires();
   }
 
-  getBuilders(): void {
+  getNavires(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.navireService.getNavires()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: Navire[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.navires = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Marchandise } from './../marchandise';
+import { MarchandisesService } from '../_services/marchandises.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-marchandise-list',
+  templateUrl: './marchandise-list.component.html',
+  styleUrls: ['./marchandise-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class MarchandiseListComponent implements OnInit {
+    // Using Marchandise Model class
+    marchandises: Marchandise[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private marchandiseService: MarchandisesService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get marchandise detail
+    this.getMarchandises();
   }
 
-  getBuilders(): void {
+  getMarchandises(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.marchandiseService.getMarchandises()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: Marchandise[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.marchandises = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

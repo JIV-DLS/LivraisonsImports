@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Builder Routes Imports
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+import { BuilderDetailComponent } from './adresse-detail/adresse-detail.component';
+import { BuilderListComponent } from './adresse-list/adresse-list.component';
 
 const routes: Routes = [
   {
-    path: 'builders',
+    path: 'adresses',
     children: [
       {
         path: '',

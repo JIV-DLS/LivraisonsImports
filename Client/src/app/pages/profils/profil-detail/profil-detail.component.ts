@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Profil } from './../profil';
+import { ProfilsService } from '../_services/profils.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-profil-detail',
+  templateUrl: './profil-detail.component.html',
+  styleUrls: ['./profil-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class ProfilDetailComponent implements OnInit {
 
-  builder: Builder;
+  profil: Profil;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private profilsService: ProfilsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get profil detail
+    this.getProfilDetail();
   }
 
-  getBuilderDetail(): void {
+  getProfilDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.profilsService.getProfilDetail(id)
+      .subscribe(profil => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.profil = profil['data'];
       });
   }
 

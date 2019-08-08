@@ -2,32 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Transit } from '../transit';
+import { TransitsService } from '../_services/transits.service';
 
 @Component({
   selector: 'app-builder-detail',
   templateUrl: './builder-detail.component.html',
   styleUrls: ['./builder-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class TransitDetailComponent implements OnInit {
 
-  builder: Builder;
+  builder: Transit;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private buildersService: TransitsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     // Get builder detail
-    this.getBuilderDetail();
+    this.getTransitDetail();
   }
 
-  getBuilderDetail(): void {
+  getTransitDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
+    this.buildersService.getTransitDetail(id)
       .subscribe(builder => {
         this.isLoading = false;
         this.builder = builder['data'];

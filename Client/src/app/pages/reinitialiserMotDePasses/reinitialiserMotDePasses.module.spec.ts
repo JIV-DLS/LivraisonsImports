@@ -1,13 +1,13 @@
-import { BuildersModule } from './builders.module';
+import { ReinitialiserMotDePassessModule } from './reinitialiserMotDePassess.module';
 
-describe('BuildersModule', () => {
-  let buildersModule: BuildersModule;
+describe('ReinitialiserMotDePassessModule', () => {
+  let reinitialiserMotDePassessModule: ReinitialiserMotDePassessModule;
 
   beforeEach(() => {
-    buildersModule = new BuildersModule();
+    reinitialiserMotDePassessModule = new ReinitialiserMotDePassessModule();
   });
 
   it('should create an instance', () => {
-    expect(buildersModule).toBeTruthy();
+    expect(reinitialiserMotDePassessModule).toBeTruthy();
   });
 });

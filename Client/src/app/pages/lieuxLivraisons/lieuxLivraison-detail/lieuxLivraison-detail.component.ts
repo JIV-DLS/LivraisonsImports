@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { LieuxLivraison } from './../lieuxLivraison';
+import { LieuxLivraisonsService } from '../_services/lieuxLivraisons.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-lieuxLivraison-detail',
+  templateUrl: './lieuxLivraison-detail.component.html',
+  styleUrls: ['./lieuxLivraison-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class LieuxLivraisonDetailComponent implements OnInit {
 
-  builder: Builder;
+  lieuxLivraison: LieuxLivraison;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private lieuxLivraisonsService: LieuxLivraisonsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get lieuxLivraison detail
+    this.getLieuxLivraisonDetail();
   }
 
-  getBuilderDetail(): void {
+  getLieuxLivraisonDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.lieuxLivraisonsService.getLieuxLivraisonDetail(id)
+      .subscribe(lieuxLivraison => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.lieuxLivraison = lieuxLivraison['data'];
       });
   }
 

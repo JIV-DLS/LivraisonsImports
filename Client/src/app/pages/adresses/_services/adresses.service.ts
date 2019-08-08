@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 
 // App import
 import { environment } from '../../../../environments/environment';
-import { Builder } from '../builder';
+import { Builder } from '../adresse';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 
 @Injectable({
@@ -14,7 +14,7 @@ import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-ha
 })
 export class BuildersService {
   private readonly apiUrl = environment.apiUrl;
-  private buildersUrl = this.apiUrl + '/builders';
+  private adressesUrl = this.apiUrl + '/adresses';
   private handleError: HandleError;
 
   constructor(
@@ -23,41 +23,41 @@ export class BuildersService {
       this.handleError = httpErrorHandler.createHandleError('BuildersService');
      }
 
-  /** GET builders from builders endpoint */
+  /** GET adresses from adresses endpoint */
   getBuilders (): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl)
+    return this.http.get<Builder[]>(this.adressesUrl)
       .pipe(
         catchError(this.handleError('getBuilders', []))
       );
   }
 
-  /** GET builder detail from builder-detail endpoint */
+  /** GET adresse detail from adresse-detail endpoint */
   getBuilderDetail (id: number): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl + `/${id}`)
+    return this.http.get<Builder[]>(this.adressesUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('getBuilderDetail', []))
       );
   }
 
-  /** POST builder to builders endpoint */
-  addBuilder (builder: Builder): Observable<Builder> {
-    return this.http.post<Builder>(this.buildersUrl, builder)
+  /** POST adresse to adresses endpoint */
+  addBuilder (adresse: Builder): Observable<Builder> {
+    return this.http.post<Builder>(this.adressesUrl, adresse)
       .pipe(
-        catchError(this.handleError('addBuilder', builder))
+        catchError(this.handleError('addBuilder', adresse))
       );
   }
 
-  /** PUT builder to builders endpoint */
-  updateBuilder (builder: Builder, id: number): Observable<Builder> {
-    return this.http.put<Builder>(this.buildersUrl + `/${id}`, builder)
+  /** PUT adresse to adresses endpoint */
+  updateBuilder (adresse: Builder, id: number): Observable<Builder> {
+    return this.http.put<Builder>(this.adressesUrl + `/${id}`, adresse)
       .pipe(
-        catchError(this.handleError('updateBuilder', builder))
+        catchError(this.handleError('updateBuilder', adresse))
       );
   }
 
-  /** DELETE builder builder endpoint */
+  /** DELETE adresse adresse endpoint */
   deleteBuilder (id: number): Observable<any> {
-    return this.http.delete<Builder[]>(this.buildersUrl + `/${id}`)
+    return this.http.delete<Builder[]>(this.adressesUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('deleteBuilder'))
       );

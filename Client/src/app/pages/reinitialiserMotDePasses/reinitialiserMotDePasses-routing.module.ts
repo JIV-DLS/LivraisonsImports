@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Builder Routes Imports
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+// ReinitialiserMotDePasses Routes Imports
+import { ReinitialiserMotDePassesDetailComponent } from './reinitialiserMotDePasses-detail/reinitialiserMotDePasses-detail.component';
+import { ReinitialiserMotDePassesListComponent } from './reinitialiserMotDePasses-list/reinitialiserMotDePasses-list.component';
 
 const routes: Routes = [
   {
-    path: 'builders',
+    path: 'reinitialiserMotDePassess',
     children: [
       {
         path: '',
-        component: BuilderListComponent
+        component: ReinitialiserMotDePassesListComponent
       },
       {
         path: ':id',
-        component: BuilderDetailComponent
+        component: ReinitialiserMotDePassesDetailComponent
       }
     ]
   }
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BuildersRoutingModule { }
+export class ReinitialiserMotDePassessRoutingModule { }

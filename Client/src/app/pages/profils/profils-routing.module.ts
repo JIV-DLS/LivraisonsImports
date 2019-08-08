@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Builder Routes Imports
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+// Profil Routes Imports
+import { ProfilDetailComponent } from './profil-detail/profil-detail.component';
+import { ProfilListComponent } from './profil-list/profil-list.component';
 
 const routes: Routes = [
   {
-    path: 'builders',
+    path: 'profils',
     children: [
       {
         path: '',
-        component: BuilderListComponent
+        component: ProfilListComponent
       },
       {
         path: ':id',
-        component: BuilderDetailComponent
+        component: ProfilDetailComponent
       }
     ]
   }
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BuildersRoutingModule { }
+export class ProfilsRoutingModule { }

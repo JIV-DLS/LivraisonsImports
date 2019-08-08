@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Builder Routes Imports
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+// EtatsLivraisons Routes Imports
+import { EtatsLivraisonsDetailComponent } from './etatsLivraisons-detail/etatsLivraisons-detail.component';
+import { EtatsLivraisonsListComponent } from './etatsLivraisons-list/etatsLivraisons-list.component';
 
 const routes: Routes = [
   {
-    path: 'builders',
+    path: 'etatsLivraisonss',
     children: [
       {
         path: '',
-        component: BuilderListComponent
+        component: EtatsLivraisonsListComponent
       },
       {
         path: ':id',
-        component: BuilderDetailComponent
+        component: EtatsLivraisonsDetailComponent
       }
     ]
   }
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BuildersRoutingModule { }
+export class EtatsLivraisonssRoutingModule { }

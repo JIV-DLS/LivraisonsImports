@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuildersComponent } from './builders.component';
+import { ReinitialiserMotDePassessComponent } from './reinitialiserMotDePassess.component';
 
-describe('BuildersComponent', () => {
-  let component: BuildersComponent;
-  let fixture: ComponentFixture<BuildersComponent>;
+describe('ReinitialiserMotDePassessComponent', () => {
+  let component: ReinitialiserMotDePassessComponent;
+  let fixture: ComponentFixture<ReinitialiserMotDePassessComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BuildersComponent ]
+      declarations: [ ReinitialiserMotDePassessComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuildersComponent);
+    fixture = TestBed.createComponent(ReinitialiserMotDePassessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

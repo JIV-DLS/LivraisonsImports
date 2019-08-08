@@ -1,6 +1,6 @@
 import { Bike } from '../bikes/bike';
 
-export class Builder {
+export class Navire {
   id: number;
   name: string;
   description: string;

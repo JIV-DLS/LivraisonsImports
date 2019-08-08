@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { EtatsLivraisons } from './../etatsLivraisons';
+import { EtatsLivraisonssService } from '../_services/etatsLivraisonss.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-etatsLivraisons-detail',
+  templateUrl: './etatsLivraisons-detail.component.html',
+  styleUrls: ['./etatsLivraisons-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class EtatsLivraisonsDetailComponent implements OnInit {
 
-  builder: Builder;
+  etatsLivraisons: EtatsLivraisons;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private etatsLivraisonssService: EtatsLivraisonssService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get etatsLivraisons detail
+    this.getEtatsLivraisonsDetail();
   }
 
-  getBuilderDetail(): void {
+  getEtatsLivraisonsDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.etatsLivraisonssService.getEtatsLivraisonsDetail(id)
+      .subscribe(etatsLivraisons => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.etatsLivraisons = etatsLivraisons['data'];
       });
   }
 

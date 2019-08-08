@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Societe } from './../societe';
+import { SocietesService } from '../_services/societes.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-societe-detail',
+  templateUrl: './societe-detail.component.html',
+  styleUrls: ['./societe-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class SocieteDetailComponent implements OnInit {
 
-  builder: Builder;
+  societe: Societe;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private societesService: SocietesService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get societe detail
+    this.getSocieteDetail();
   }
 
-  getBuilderDetail(): void {
+  getSocieteDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.societesService.getSocieteDetail(id)
+      .subscribe(societe => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.societe = societe['data'];
       });
   }
 

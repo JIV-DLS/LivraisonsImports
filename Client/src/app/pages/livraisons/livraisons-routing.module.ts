@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Builder Routes Imports
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+// Livraison Routes Imports
+import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.component';
+import { LivraisonListComponent } from './livraison-list/livraison-list.component';
 
 const routes: Routes = [
   {
-    path: 'builders',
+    path: 'livraisons',
     children: [
       {
         path: '',
-        component: BuilderListComponent
+        component: LivraisonListComponent
       },
       {
         path: ':id',
-        component: BuilderDetailComponent
+        component: LivraisonDetailComponent
       }
     ]
   }
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BuildersRoutingModule { }
+export class LivraisonsRoutingModule { }

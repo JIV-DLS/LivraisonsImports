@@ -1,13 +1,13 @@
-import { BuildersModule } from './builders.module';
+import { EmployesModule } from './employes.module';
 
-describe('BuildersModule', () => {
-  let buildersModule: BuildersModule;
+describe('EmployesModule', () => {
+  let employesModule: EmployesModule;
 
   beforeEach(() => {
-    buildersModule = new BuildersModule();
+    employesModule = new EmployesModule();
   });
 
   it('should create an instance', () => {
-    expect(buildersModule).toBeTruthy();
+    expect(employesModule).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuildersComponent } from './builders.component';
+import { BuildersComponent } from './adresses.component';
 
 describe('BuildersComponent', () => {
   let component: BuildersComponent;

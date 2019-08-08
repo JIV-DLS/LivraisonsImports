@@ -1,13 +1,13 @@
-import { BuildersModule } from './builders.module';
+import { EtatsLivraisonssModule } from './etatsLivraisonss.module';
 
-describe('BuildersModule', () => {
-  let buildersModule: BuildersModule;
+describe('EtatsLivraisonssModule', () => {
+  let etatsLivraisonssModule: EtatsLivraisonssModule;
 
   beforeEach(() => {
-    buildersModule = new BuildersModule();
+    etatsLivraisonssModule = new EtatsLivraisonssModule();
   });
 
   it('should create an instance', () => {
-    expect(buildersModule).toBeTruthy();
+    expect(etatsLivraisonssModule).toBeTruthy();
   });
 });

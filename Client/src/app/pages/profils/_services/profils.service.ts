@@ -6,60 +6,60 @@ import { catchError } from 'rxjs/operators';
 
 // App import
 import { environment } from '../../../../environments/environment';
-import { Builder } from '../builder';
+import { Profil } from '../profil';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BuildersService {
+export class ProfilsService {
   private readonly apiUrl = environment.apiUrl;
-  private buildersUrl = this.apiUrl + '/builders';
+  private profilsUrl = this.apiUrl + '/profils';
   private handleError: HandleError;
 
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler ) {
-      this.handleError = httpErrorHandler.createHandleError('BuildersService');
+      this.handleError = httpErrorHandler.createHandleError('ProfilsService');
      }
 
-  /** GET builders from builders endpoint */
-  getBuilders (): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl)
+  /** GET profils from profils endpoint */
+  getProfils (): Observable<Profil[]> {
+    return this.http.get<Profil[]>(this.profilsUrl)
       .pipe(
-        catchError(this.handleError('getBuilders', []))
+        catchError(this.handleError('getProfils', []))
       );
   }
 
-  /** GET builder detail from builder-detail endpoint */
-  getBuilderDetail (id: number): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl + `/${id}`)
+  /** GET profil detail from profil-detail endpoint */
+  getProfilDetail (id: number): Observable<Profil[]> {
+    return this.http.get<Profil[]>(this.profilsUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('getBuilderDetail', []))
+        catchError(this.handleError('getProfilDetail', []))
       );
   }
 
-  /** POST builder to builders endpoint */
-  addBuilder (builder: Builder): Observable<Builder> {
-    return this.http.post<Builder>(this.buildersUrl, builder)
+  /** POST profil to profils endpoint */
+  addProfil (profil: Profil): Observable<Profil> {
+    return this.http.post<Profil>(this.profilsUrl, profil)
       .pipe(
-        catchError(this.handleError('addBuilder', builder))
+        catchError(this.handleError('addProfil', profil))
       );
   }
 
-  /** PUT builder to builders endpoint */
-  updateBuilder (builder: Builder, id: number): Observable<Builder> {
-    return this.http.put<Builder>(this.buildersUrl + `/${id}`, builder)
+  /** PUT profil to profils endpoint */
+  updateProfil (profil: Profil, id: number): Observable<Profil> {
+    return this.http.put<Profil>(this.profilsUrl + `/${id}`, profil)
       .pipe(
-        catchError(this.handleError('updateBuilder', builder))
+        catchError(this.handleError('updateProfil', profil))
       );
   }
 
-  /** DELETE builder builder endpoint */
-  deleteBuilder (id: number): Observable<any> {
-    return this.http.delete<Builder[]>(this.buildersUrl + `/${id}`)
+  /** DELETE profil profil endpoint */
+  deleteProfil (id: number): Observable<any> {
+    return this.http.delete<Profil[]>(this.profilsUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('deleteBuilder'))
+        catchError(this.handleError('deleteProfil'))
       );
   }
 }

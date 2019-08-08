@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Employe } from './../employe';
+import { EmployesService } from '../_services/employes.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-employe-detail',
+  templateUrl: './employe-detail.component.html',
+  styleUrls: ['./employe-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class EmployeDetailComponent implements OnInit {
 
-  builder: Builder;
+  employe: Employe;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private employesService: EmployesService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get employe detail
+    this.getEmployeDetail();
   }
 
-  getBuilderDetail(): void {
+  getEmployeDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.employesService.getEmployeDetail(id)
+      .subscribe(employe => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.employe = employe['data'];
       });
   }
 

@@ -6,60 +6,60 @@ import { catchError } from 'rxjs/operators';
 
 // App import
 import { environment } from '../../../../environments/environment';
-import { Builder } from '../builder';
+import { Societe } from '../societe';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BuildersService {
+export class SocietesService {
   private readonly apiUrl = environment.apiUrl;
-  private buildersUrl = this.apiUrl + '/builders';
+  private societesUrl = this.apiUrl + '/societes';
   private handleError: HandleError;
 
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler ) {
-      this.handleError = httpErrorHandler.createHandleError('BuildersService');
+      this.handleError = httpErrorHandler.createHandleError('SocietesService');
      }
 
-  /** GET builders from builders endpoint */
-  getBuilders (): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl)
+  /** GET societes from societes endpoint */
+  getSocietes (): Observable<Societe[]> {
+    return this.http.get<Societe[]>(this.societesUrl)
       .pipe(
-        catchError(this.handleError('getBuilders', []))
+        catchError(this.handleError('getSocietes', []))
       );
   }
 
-  /** GET builder detail from builder-detail endpoint */
-  getBuilderDetail (id: number): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl + `/${id}`)
+  /** GET societe detail from societe-detail endpoint */
+  getSocieteDetail (id: number): Observable<Societe[]> {
+    return this.http.get<Societe[]>(this.societesUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('getBuilderDetail', []))
+        catchError(this.handleError('getSocieteDetail', []))
       );
   }
 
-  /** POST builder to builders endpoint */
-  addBuilder (builder: Builder): Observable<Builder> {
-    return this.http.post<Builder>(this.buildersUrl, builder)
+  /** POST societe to societes endpoint */
+  addSociete (societe: Societe): Observable<Societe> {
+    return this.http.post<Societe>(this.societesUrl, societe)
       .pipe(
-        catchError(this.handleError('addBuilder', builder))
+        catchError(this.handleError('addSociete', societe))
       );
   }
 
-  /** PUT builder to builders endpoint */
-  updateBuilder (builder: Builder, id: number): Observable<Builder> {
-    return this.http.put<Builder>(this.buildersUrl + `/${id}`, builder)
+  /** PUT societe to societes endpoint */
+  updateSociete (societe: Societe, id: number): Observable<Societe> {
+    return this.http.put<Societe>(this.societesUrl + `/${id}`, societe)
       .pipe(
-        catchError(this.handleError('updateBuilder', builder))
+        catchError(this.handleError('updateSociete', societe))
       );
   }
 
-  /** DELETE builder builder endpoint */
-  deleteBuilder (id: number): Observable<any> {
-    return this.http.delete<Builder[]>(this.buildersUrl + `/${id}`)
+  /** DELETE societe societe endpoint */
+  deleteSociete (id: number): Observable<any> {
+    return this.http.delete<Societe[]>(this.societesUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('deleteBuilder'))
+        catchError(this.handleError('deleteSociete'))
       );
   }
 }

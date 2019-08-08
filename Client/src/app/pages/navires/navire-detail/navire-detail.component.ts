@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Navire } from './../navire';
+import { NaviresService } from '../_services/navires.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-navire-detail',
+  templateUrl: './navire-detail.component.html',
+  styleUrls: ['./navire-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class NavireDetailComponent implements OnInit {
 
-  builder: Builder;
+  navire: Navire;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private naviresService: NaviresService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get navire detail
+    this.getNavireDetail();
   }
 
-  getBuilderDetail(): void {
+  getNavireDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.naviresService.getNavireDetail(id)
+      .subscribe(navire => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.navire = navire['data'];
       });
   }
 

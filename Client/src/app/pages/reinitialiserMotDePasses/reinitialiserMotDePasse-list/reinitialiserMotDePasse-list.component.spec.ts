@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuilderListComponent } from './builder-list.component';
+import { ReinitialiserMotDePassesListComponent } from './reinitialiserMotDePasses-list.component';
 
-describe('BuilderListComponent', () => {
-  let component: BuilderListComponent;
-  let fixture: ComponentFixture<BuilderListComponent>;
+describe('ReinitialiserMotDePassesListComponent', () => {
+  let component: ReinitialiserMotDePassesListComponent;
+  let fixture: ComponentFixture<ReinitialiserMotDePassesListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BuilderListComponent ]
+      declarations: [ ReinitialiserMotDePassesListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuilderListComponent);
+    fixture = TestBed.createComponent(ReinitialiserMotDePassesListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

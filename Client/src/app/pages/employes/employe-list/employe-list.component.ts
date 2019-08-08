@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { Employe } from './../employe';
+import { EmployesService } from '../_services/employes.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-employe-list',
+  templateUrl: './employe-list.component.html',
+  styleUrls: ['./employe-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class EmployeListComponent implements OnInit {
+    // Using Employe Model class
+    employes: Employe[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private employeService: EmployesService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get employe detail
+    this.getEmployes();
   }
 
-  getBuilders(): void {
+  getEmployes(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.employeService.getEmployes()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: Employe[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.employes = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

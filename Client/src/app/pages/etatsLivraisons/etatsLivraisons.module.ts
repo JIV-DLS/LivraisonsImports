@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BuildersRoutingModule } from './builders-routing.module';
-import { BuildersComponent } from './builders.component';
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+import { EtatsLivraisonssRoutingModule } from './etatsLivraisonss-routing.module';
+import { EtatsLivraisonssComponent } from './etatsLivraisonss.component';
+import { EtatsLivraisonsDetailComponent } from './etatsLivraisons-detail/etatsLivraisons-detail.component';
+import { EtatsLivraisonsListComponent } from './etatsLivraisons-list/etatsLivraisons-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BuildersRoutingModule
+    EtatsLivraisonssRoutingModule
   ],
-  declarations: [BuildersComponent, BuilderDetailComponent, BuilderListComponent]
+  declarations: [EtatsLivraisonssComponent, EtatsLivraisonsDetailComponent, EtatsLivraisonsListComponent]
 })
-export class BuildersModule { }
+export class EtatsLivraisonssModule { }

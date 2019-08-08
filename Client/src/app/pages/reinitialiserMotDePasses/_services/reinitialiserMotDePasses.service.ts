@@ -6,60 +6,60 @@ import { catchError } from 'rxjs/operators';
 
 // App import
 import { environment } from '../../../../environments/environment';
-import { Builder } from '../builder';
+import { ReinitialiserMotDePasses } from '../reinitialiserMotDePasses';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BuildersService {
+export class ReinitialiserMotDePassessService {
   private readonly apiUrl = environment.apiUrl;
-  private buildersUrl = this.apiUrl + '/builders';
+  private reinitialiserMotDePassessUrl = this.apiUrl + '/reinitialiserMotDePassess';
   private handleError: HandleError;
 
   constructor(
     private http: HttpClient,
     httpErrorHandler: HttpErrorHandler ) {
-      this.handleError = httpErrorHandler.createHandleError('BuildersService');
+      this.handleError = httpErrorHandler.createHandleError('ReinitialiserMotDePassessService');
      }
 
-  /** GET builders from builders endpoint */
-  getBuilders (): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl)
+  /** GET reinitialiserMotDePassess from reinitialiserMotDePassess endpoint */
+  getReinitialiserMotDePassess (): Observable<ReinitialiserMotDePasses[]> {
+    return this.http.get<ReinitialiserMotDePasses[]>(this.reinitialiserMotDePassessUrl)
       .pipe(
-        catchError(this.handleError('getBuilders', []))
+        catchError(this.handleError('getReinitialiserMotDePassess', []))
       );
   }
 
-  /** GET builder detail from builder-detail endpoint */
-  getBuilderDetail (id: number): Observable<Builder[]> {
-    return this.http.get<Builder[]>(this.buildersUrl + `/${id}`)
+  /** GET reinitialiserMotDePasses detail from reinitialiserMotDePasses-detail endpoint */
+  getReinitialiserMotDePassesDetail (id: number): Observable<ReinitialiserMotDePasses[]> {
+    return this.http.get<ReinitialiserMotDePasses[]>(this.reinitialiserMotDePassessUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('getBuilderDetail', []))
+        catchError(this.handleError('getReinitialiserMotDePassesDetail', []))
       );
   }
 
-  /** POST builder to builders endpoint */
-  addBuilder (builder: Builder): Observable<Builder> {
-    return this.http.post<Builder>(this.buildersUrl, builder)
+  /** POST reinitialiserMotDePasses to reinitialiserMotDePassess endpoint */
+  addReinitialiserMotDePasses (reinitialiserMotDePasses: ReinitialiserMotDePasses): Observable<ReinitialiserMotDePasses> {
+    return this.http.post<ReinitialiserMotDePasses>(this.reinitialiserMotDePassessUrl, reinitialiserMotDePasses)
       .pipe(
-        catchError(this.handleError('addBuilder', builder))
+        catchError(this.handleError('addReinitialiserMotDePasses', reinitialiserMotDePasses))
       );
   }
 
-  /** PUT builder to builders endpoint */
-  updateBuilder (builder: Builder, id: number): Observable<Builder> {
-    return this.http.put<Builder>(this.buildersUrl + `/${id}`, builder)
+  /** PUT reinitialiserMotDePasses to reinitialiserMotDePassess endpoint */
+  updateReinitialiserMotDePasses (reinitialiserMotDePasses: ReinitialiserMotDePasses, id: number): Observable<ReinitialiserMotDePasses> {
+    return this.http.put<ReinitialiserMotDePasses>(this.reinitialiserMotDePassessUrl + `/${id}`, reinitialiserMotDePasses)
       .pipe(
-        catchError(this.handleError('updateBuilder', builder))
+        catchError(this.handleError('updateReinitialiserMotDePasses', reinitialiserMotDePasses))
       );
   }
 
-  /** DELETE builder builder endpoint */
-  deleteBuilder (id: number): Observable<any> {
-    return this.http.delete<Builder[]>(this.buildersUrl + `/${id}`)
+  /** DELETE reinitialiserMotDePasses reinitialiserMotDePasses endpoint */
+  deleteReinitialiserMotDePasses (id: number): Observable<any> {
+    return this.http.delete<ReinitialiserMotDePasses[]>(this.reinitialiserMotDePassessUrl + `/${id}`)
       .pipe(
-        catchError(this.handleError('deleteBuilder'))
+        catchError(this.handleError('deleteReinitialiserMotDePasses'))
       );
   }
 }

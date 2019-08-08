@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BuildersRoutingModule } from './builders-routing.module';
-import { BuildersComponent } from './builders.component';
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+import { ReinitialiserMotDePassessRoutingModule } from './reinitialiserMotDePassess-routing.module';
+import { ReinitialiserMotDePassessComponent } from './reinitialiserMotDePassess.component';
+import { ReinitialiserMotDePassesDetailComponent } from './reinitialiserMotDePasses-detail/reinitialiserMotDePasses-detail.component';
+import { ReinitialiserMotDePassesListComponent } from './reinitialiserMotDePasses-list/reinitialiserMotDePasses-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BuildersRoutingModule
+    ReinitialiserMotDePassessRoutingModule
   ],
-  declarations: [BuildersComponent, BuilderDetailComponent, BuilderListComponent]
+  declarations: [ReinitialiserMotDePassessComponent, ReinitialiserMotDePassesDetailComponent, ReinitialiserMotDePassesListComponent]
 })
-export class BuildersModule { }
+export class ReinitialiserMotDePassessModule { }

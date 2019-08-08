@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { BuildersService } from './builders.service';
+import { ReinitialiserMotDePassessService } from './reinitialiserMotDePassess.service';
 
-describe('BuildersService', () => {
+describe('ReinitialiserMotDePassessService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BuildersService]
+      providers: [ReinitialiserMotDePassessService]
     });
   });
 
-  it('should be created', inject([BuildersService], (service: BuildersService) => {
+  it('should be created', inject([ReinitialiserMotDePassessService], (service: ReinitialiserMotDePassessService) => {
     expect(service).toBeTruthy();
   }));
 });

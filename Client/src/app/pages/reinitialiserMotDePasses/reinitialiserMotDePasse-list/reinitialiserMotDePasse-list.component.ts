@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { ReinitialiserMotDePasses } from './../reinitialiserMotDePasses';
+import { ReinitialiserMotDePassessService } from '../_services/reinitialiserMotDePassess.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-reinitialiserMotDePasses-list',
+  templateUrl: './reinitialiserMotDePasses-list.component.html',
+  styleUrls: ['./reinitialiserMotDePasses-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class ReinitialiserMotDePassesListComponent implements OnInit {
+    // Using ReinitialiserMotDePasses Model class
+    reinitialiserMotDePassess: ReinitialiserMotDePasses[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private reinitialiserMotDePassesService: ReinitialiserMotDePassessService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get reinitialiserMotDePasses detail
+    this.getReinitialiserMotDePassess();
   }
 
-  getBuilders(): void {
+  getReinitialiserMotDePassess(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.reinitialiserMotDePassesService.getReinitialiserMotDePassess()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: ReinitialiserMotDePasses[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.reinitialiserMotDePassess = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

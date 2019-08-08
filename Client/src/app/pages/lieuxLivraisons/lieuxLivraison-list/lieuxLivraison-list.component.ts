@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { LieuxLivraison } from './../lieuxLivraison';
+import { LieuxLivraisonsService } from '../_services/lieuxLivraisons.service';
 
 @Component({
-  selector: 'app-builder-list',
-  templateUrl: './builder-list.component.html',
-  styleUrls: ['./builder-list.component.scss']
+  selector: 'app-lieuxLivraison-list',
+  templateUrl: './lieuxLivraison-list.component.html',
+  styleUrls: ['./lieuxLivraison-list.component.scss']
 })
-export class BuilderListComponent implements OnInit {
-    // Using Builder Model class
-    builders: Builder[];
+export class LieuxLivraisonListComponent implements OnInit {
+    // Using LieuxLivraison Model class
+    lieuxLivraisons: LieuxLivraison[];
     isLoading: Boolean = false;
 
-  constructor(private builderService: BuildersService) { }
+  constructor(private lieuxLivraisonService: LieuxLivraisonsService) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilders();
+    // Get lieuxLivraison detail
+    this.getLieuxLivraisons();
   }
 
-  getBuilders(): void {
+  getLieuxLivraisons(): void {
     this.isLoading = true;
-    this.builderService.getBuilders()
+    this.lieuxLivraisonService.getLieuxLivraisons()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
 
-  protected handleResponse(response: Builder[]) {
+  protected handleResponse(response: LieuxLivraison[]) {
     this.isLoading = false,
-    this.builders = response;
+    this.lieuxLivraisons = response;
   }
   protected handleError(error: any) {
     this.isLoading = false,

@@ -2,35 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // App imports
-import { Builder } from './../builder';
-import { BuildersService } from '../_services/builders.service';
+import { ReinitialiserMotDePasses } from './../reinitialiserMotDePasses';
+import { ReinitialiserMotDePassessService } from '../_services/reinitialiserMotDePassess.service';
 
 @Component({
-  selector: 'app-builder-detail',
-  templateUrl: './builder-detail.component.html',
-  styleUrls: ['./builder-detail.component.scss']
+  selector: 'app-reinitialiserMotDePasses-detail',
+  templateUrl: './reinitialiserMotDePasses-detail.component.html',
+  styleUrls: ['./reinitialiserMotDePasses-detail.component.scss']
 })
-export class BuilderDetailComponent implements OnInit {
+export class ReinitialiserMotDePassesDetailComponent implements OnInit {
 
-  builder: Builder;
+  reinitialiserMotDePasses: ReinitialiserMotDePasses;
   isLoading: Boolean = false;
 
   constructor(
-    private buildersService: BuildersService,
+    private reinitialiserMotDePassessService: ReinitialiserMotDePassessService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // Get builder detail
-    this.getBuilderDetail();
+    // Get reinitialiserMotDePasses detail
+    this.getReinitialiserMotDePassesDetail();
   }
 
-  getBuilderDetail(): void {
+  getReinitialiserMotDePassesDetail(): void {
     this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
-    this.buildersService.getBuilderDetail(id)
-      .subscribe(builder => {
+    this.reinitialiserMotDePassessService.getReinitialiserMotDePassesDetail(id)
+      .subscribe(reinitialiserMotDePasses => {
         this.isLoading = false;
-        this.builder = builder['data'];
+        this.reinitialiserMotDePasses = reinitialiserMotDePasses['data'];
       });
   }
 

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BuildersRoutingModule } from './builders-routing.module';
-import { BuildersComponent } from './builders.component';
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+import { MarchandisesRoutingModule } from './marchandises-routing.module';
+import { MarchandisesComponent } from './marchandises.component';
+import { MarchandiseDetailComponent } from './marchandise-detail/marchandise-detail.component';
+import { MarchandiseListComponent } from './marchandise-list/marchandise-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BuildersRoutingModule
+    MarchandisesRoutingModule
   ],
-  declarations: [BuildersComponent, BuilderDetailComponent, BuilderListComponent]
+  declarations: [MarchandisesComponent, MarchandiseDetailComponent, MarchandiseListComponent]
 })
-export class BuildersModule { }
+export class MarchandisesModule { }

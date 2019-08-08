@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BuildersRoutingModule } from './builders-routing.module';
-import { BuildersComponent } from './builders.component';
-import { BuilderDetailComponent } from './builder-detail/builder-detail.component';
-import { BuilderListComponent } from './builder-list/builder-list.component';
+import { LieuxLivraisonsRoutingModule } from './lieuxLivraisons-routing.module';
+import { LieuxLivraisonsComponent } from './lieuxLivraisons.component';
+import { LieuxLivraisonDetailComponent } from './lieuxLivraison-detail/lieuxLivraison-detail.component';
+import { LieuxLivraisonListComponent } from './lieuxLivraison-list/lieuxLivraison-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BuildersRoutingModule
+    LieuxLivraisonsRoutingModule
   ],
-  declarations: [BuildersComponent, BuilderDetailComponent, BuilderListComponent]
+  declarations: [LieuxLivraisonsComponent, LieuxLivraisonDetailComponent, LieuxLivraisonListComponent]
 })
-export class BuildersModule { }
+export class LieuxLivraisonsModule { }
