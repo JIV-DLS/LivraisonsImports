@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Marchandise",
- *     required={"designation"},
+ *     required={"libelle"},
  *     @SWG\Property(
- *          property="designation",
+ *          property="libelle",
  *          type="string",
- *          description="designation décrivant la marchandise",
+ *          description="libelle décrivant la marchandise",
  *          example="Malta"
  *    ),
  *     @SWG\Property(
@@ -31,7 +31,7 @@ class Marchandise extends Model
      * @var array
      */
     protected $fillable = [
-        'designation',
+        'libelle',
         'typeMarchandise'
     ];
 

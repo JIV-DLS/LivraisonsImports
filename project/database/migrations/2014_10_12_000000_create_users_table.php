@@ -18,10 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->unsignedInteger('employe');
-            $table->unsignedInteger('profil');
-            $table->boolean('etat');
-            $table->timestamp('emailVeirifiedAt');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ class RatingsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('ratings')->delete();
         DB::table('ratings')->insert([
             'user_id' => '1',
             'bike_id' => '3',

@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *          type="string",
  *          description="Texas/USA",
  *          example="Austin, Texas"
- *    ),
+ *    )
  * )
  */
 

@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('type');
             $table->string('name');
             $table->text('company');
-            $table->unsignedInteger('bike_id');
+            $table->integer('bike_id');
             $table->timestamps();
         });
     }

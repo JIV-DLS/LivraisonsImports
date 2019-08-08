@@ -17,7 +17,7 @@ class CreateEmployesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->dateTime('dateNaiss');
+            $table->date('dateNaiss');
             $table->unsignedInteger('adresse');
             $table->timestamps();
         });

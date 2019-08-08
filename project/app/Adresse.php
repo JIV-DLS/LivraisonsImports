@@ -40,7 +40,7 @@ use Illuminate\Database\Eloquent\Model;
  *    ),
  *    @SWG\Property(
  *          property="region",
- *          type="integer",
+ *          type="string",
  *          description="région",
  *          example="Maritime"
  *    )

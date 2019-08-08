@@ -8,6 +8,7 @@ use App\Builder;
 use Validator;
 use App\Http\Resources\BuildersResource;
 
+
 class BuilderController extends Controller
 {
     /**
@@ -83,7 +84,7 @@ class BuilderController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
-
+            
         $createBuilder = Builder::create($request->all());
         return  $createBuilder;
     }
@@ -118,7 +119,7 @@ class BuilderController extends Controller
 	 * 			response="405",
 	 * 			description="Invalid HTTP Method"
 	 *      )
-     * ),
+     * )
      */
     public function show(Builder $builder)
     {
@@ -186,7 +187,6 @@ class BuilderController extends Controller
         
         $updateBuilderById = Builder::findOrFail($id);
         $updateBuilderById->update($request->all());
-
         return $updateBuilderById;
     }
 

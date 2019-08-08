@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
- /**
+/**
  * Class ApiController
  *
  * @package App\Http\Controllers
  *
  * @SWG\Swagger(
  *     basePath="",
- *     host="localhost:8000",
+ *     host="localhost:8081",
  *     schemes={"http"},
  *     @SWG\Info(
  *         version="1.0",
@@ -22,14 +22,4 @@ class ApiController extends Controller
  *     )
  * )
  */
-
- /**
- * @SWG\SecurityScheme(
- *   securityDefinition="access_token",
- *   type="apiKey",
- *   in="header",
- *   name="Authorization"
- * )
- */
-
 }

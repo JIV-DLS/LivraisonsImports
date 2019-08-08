@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
- /**
+/**
  * @SWG\Definition(
  *     definition="Bike",
  *     required={"make", "model", "year", "mods"},
@@ -83,10 +83,10 @@ class Bike extends Model
     }
 
     public function user() {
-      return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
-
+  
     public function ratings() {
-      return $this->hasMany('App\Rating');
+        return $this->hasMany(Rating::class);
     }
 }

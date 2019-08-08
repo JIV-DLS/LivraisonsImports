@@ -77,7 +77,8 @@ class EmployeController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'dateNaiss' => 'required',
-            'Adresse' => 'required',
+            'adresse' => 'required',
+            // 'dateNaiss'=>'required',
             'prenom' => 'required'
             ]);
             
@@ -178,7 +179,8 @@ class EmployeController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'dateNaiss' => 'required',
-            'Adresse' => 'required',
+            'adresse' => 'required',
+            // 'dateNaiss'=>'required',
             'prenom' => 'required'
             ]);
             

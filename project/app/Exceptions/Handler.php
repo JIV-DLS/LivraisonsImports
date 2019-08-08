@@ -5,10 +5,12 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException as MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException as UnauthorizedHttpException;
 use Tymon\JWTAuth\Exceptions\JWTException as JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException as TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException as TokenInvalidException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -60,18 +62,25 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Resource not found'], 404);
         }
 
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return response()->json(['error' => 'Method Not Allowed'], 405);
+        }
+
         if ($exception instanceof UnauthorizedHttpException) {
             return response()->json(['error' => 'Token not provided'], 401);
         }
 
+        // JWT Auth related errors
         if ($exception instanceof JWTException) {
-            return response()->json(['error' => $exception], 400);
+            return response()->json(['error' => $exception], $exception->getStatusCode());
         }
 
         if ($exception instanceof TokenExpiredException) {
-            return response()->json(['token_expired'], $exception->getStatusCode());
+            return response()->json(['error' => 'token_expired'], $exception->getStatusCode());
+        
         } else if ($exception instanceof TokenInvalidException) {
-            return response()->json(['token_invalid'], $exception->getStatusCode());
+            return response()->json(['error' => 'token_invalid'], $exception->getStatusCode());
         }
 
         return parent::render($request, $exception);

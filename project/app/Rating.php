@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
- /**
+/**
  * @SWG\Definition(
  *     definition="Rating",
  *     required={"bike_id", "user_id", "rating"},

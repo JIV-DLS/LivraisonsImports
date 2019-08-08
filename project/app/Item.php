@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Item",
- *     required={"type", "name", "company"},
+ *     required={"type", "name", "company", "bike_id"},
  *     @SWG\Property(
  *          property="type",
  *          type="string",
@@ -25,6 +25,12 @@ use Illuminate\Database\Eloquent\Model;
  *          type="string",
  *          description="Produced by: some company",
  *          example="Vance and Hines"
+ *    ),
+ *    @SWG\Property(
+ *          property="bike_id",
+ *          type="string",
+ *          description="Association with: bike_id",
+ *          example="1"
  *    )
  * )
  */

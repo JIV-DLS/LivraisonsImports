@@ -24,11 +24,11 @@ use Illuminate\Database\Eloquent\Model;
  *          property="dateNaiss",
  *          type="Date",
  *          description="date de naissance de l'employé",
- *          example="23/05/2009, 23/11/2008, 09/06/2007"
+ *          example="2009/23/05, 2008/23/11, 2007/09/06"
  *    ),
  *     @SWG\Property(
  *          property="adresse",
- *          type="string",
+ *          type="integer",
  *          description="Association with: builder_id",
  *          example="2"
  *    )
@@ -45,7 +45,7 @@ class Employe extends Model
     protected $fillable = [
         'nom',
         'prenom',
-        'dateaiss',
+        'dateNaiss',
         'adresse'
     ];
 

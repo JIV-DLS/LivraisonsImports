@@ -23,22 +23,11 @@ Route::post('logout', 'API\AuthController@logout');
 Route::apiResources([
     'bikes' => 'API\BikeController',
     'builders' => 'API\BuilderController',
-    'Actions' => 'API\ActionController',
-    'Adresses' => 'API\AdresseController',
-    'Employes' => 'API\EmployeController',
-    'EtatsLivraisons' => 'API\EtatsLivraisonController',
-    'LieuxLivraisons' => 'API\LieuxLivraisonController',
-    'Livraisons' => 'API\LivraisonController',
-    'Marchandises' => 'API\MarchandiseController',
-    'Navires' => 'API\NavireController',
-    'Profils' => 'API\ProfilController',
-    'ReinitialiserMotDePasses' => 'API\ReinitialiserMotDePasseController',
-    'Societes' => 'API\SocieteController',
-    'Transits' => 'API\TransitController',
-    'TypeMarchandises' => 'API\TypeMarchandiseController',
+    'items' => 'API\ItemController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
 
 Route::middleware('jwt.auth')->get('me', function(Request $request) {
     return auth()->user();
 });
+
