@@ -13,7 +13,7 @@ class ApiController extends Controller
  *
  * @SWG\Swagger(
  *     basePath="",
- *     host="localhost:8081",
+ *     host="localhost:8000",
  *     schemes={"http"},
  *     @SWG\Info(
  *         version="1.0",
