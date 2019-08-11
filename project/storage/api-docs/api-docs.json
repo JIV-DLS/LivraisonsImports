@@ -31,9 +31,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Actions": {
+            },
             "post": {
                 "tags": [
                     "Actions"
@@ -69,7 +67,7 @@
                 }
             }
         },
-        "/api/Actions/{id}": {
+        "/api/actions/{id}": {
             "get": {
                 "tags": [
                     "Actions"
@@ -186,9 +184,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Adresses": {
+            },
             "post": {
                 "tags": [
                     "Adresses"
@@ -224,7 +220,7 @@
                 }
             }
         },
-        "/api/Adresses/{id}": {
+        "/api/adresses/{id}": {
             "get": {
                 "tags": [
                     "Adresses"
@@ -748,9 +744,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Employes": {
+            },
             "post": {
                 "tags": [
                     "Employes"
@@ -786,7 +780,7 @@
                 }
             }
         },
-        "/api/Employes/{id}": {
+        "/api/employes/{id}": {
             "get": {
                 "tags": [
                     "Employes"
@@ -903,9 +897,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/EtatsLivraisons": {
+            },
             "post": {
                 "tags": [
                     "EtatsLivraisons"
@@ -941,7 +933,7 @@
                 }
             }
         },
-        "/api/EtatsLivraisons/{id}": {
+        "/api/etatsLivraisons/{id}": {
             "get": {
                 "tags": [
                     "EtatsLivraisons"
@@ -1354,9 +1346,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/LieuxLivraisons": {
+            },
             "post": {
                 "tags": [
                     "LieuxLivraisons"
@@ -1392,7 +1382,7 @@
                 }
             }
         },
-        "/api/LieuxLivraisons/{id}": {
+        "/api/lieuxLivraisons/{id}": {
             "get": {
                 "tags": [
                     "LieuxLivraisons"
@@ -1509,9 +1499,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Livraisons": {
+            },
             "post": {
                 "tags": [
                     "Livraisons"
@@ -1547,7 +1535,7 @@
                 }
             }
         },
-        "/api/Livraisons/{id}": {
+        "/api/livraisons/{id}": {
             "get": {
                 "tags": [
                     "Livraisons"
@@ -1817,9 +1805,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Navires": {
+            },
             "post": {
                 "tags": [
                     "Navires"
@@ -1855,7 +1841,7 @@
                 }
             }
         },
-        "/api/Navires/{id}": {
+        "/api/navires/{id}": {
             "get": {
                 "tags": [
                     "Navires"
@@ -1972,9 +1958,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Profils": {
+            },
             "post": {
                 "tags": [
                     "Profils"
@@ -2010,7 +1994,7 @@
                 }
             }
         },
-        "/api/Profils/{id}": {
+        "/api/profils/{id}": {
             "get": {
                 "tags": [
                     "Profils"
@@ -2179,9 +2163,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/ReinitialiserMotDePasses": {
+            },
             "post": {
                 "tags": [
                     "ReinitialiserMotDePasses"
@@ -2217,7 +2199,7 @@
                 }
             }
         },
-        "/api/ReinitialiserMotDePasses/{id}": {
+        "/api/reinitialiserMotDePasses/{id}": {
             "get": {
                 "tags": [
                     "ReinitialiserMotDePasses"
@@ -2334,9 +2316,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Societes": {
+            },
             "post": {
                 "tags": [
                     "Societes"
@@ -2372,7 +2352,7 @@
                 }
             }
         },
-        "/api/Societes/{id}": {
+        "/api/societes/{id}": {
             "get": {
                 "tags": [
                     "Societes"
@@ -2489,9 +2469,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/Transits": {
+            },
             "post": {
                 "tags": [
                     "Transits"
@@ -2527,7 +2505,7 @@
                 }
             }
         },
-        "/api/Transits/{id}": {
+        "/api/transits/{id}": {
             "get": {
                 "tags": [
                     "Transits"
@@ -2644,9 +2622,7 @@
                         "description": "Not Found"
                     }
                 }
-            }
-        },
-        "/api/TypeMarchandises": {
+            },
             "post": {
                 "tags": [
                     "TypeMarchandises"
@@ -2682,7 +2658,7 @@
                 }
             }
         },
-        "/api/TypeMarchandises/{id}": {
+        "/api/typeMarchandises/{id}": {
             "get": {
                 "tags": [
                     "TypeMarchandises"
