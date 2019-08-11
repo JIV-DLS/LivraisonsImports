@@ -24,7 +24,7 @@ export class BikesService {
     }
 
   /** GET bikes from bikes endpoint */
-  getBikes (): Observable<Bike[]> {
+  getBikes(): Observable<Bike[]> {
     return this.http.get<Bike[]>(this.bikesUrl)
       .pipe(
         catchError(this.handleError('getBikes', []))
@@ -32,7 +32,7 @@ export class BikesService {
   }
 
   /** GET bike detail from bike-detail endpoint */
-  getBikeDetail (id: number): Observable<Bike[]> {
+  getBikeDetail(id: number): Observable<Bike[]> {
     return this.http.get<Bike[]>(this.bikesUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('getBikeDetail', []))

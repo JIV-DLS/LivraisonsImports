@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BuildersRoutingModule } from './adresses-routing.module';
-import { BuildersComponent } from './adresses.component';
-import { BuilderDetailComponent } from './adresse-detail/adresse-detail.component';
-import { BuilderListComponent } from './adresse-list/adresse-list.component';
+import { AdressesRoutingModule } from './adresses-routing.module';
+import { AdressesComponent } from './adresses.component';
+import { AdresseDetailComponent } from './adresse-detail/adresse-detail.component';
+import { AdresseListComponent } from './adresse-list/adresse-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    BuildersRoutingModule
+    AdressesRoutingModule
   ],
-  declarations: [BuildersComponent, BuilderDetailComponent, BuilderListComponent]
+  declarations: [AdressesComponent, AdresseDetailComponent, AdresseListComponent]
 })
-export class BuildersModule { }
+export class AdressesModule { }

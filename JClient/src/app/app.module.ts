@@ -10,6 +10,18 @@ import { environment } from '../environments/environment';
 
 // Application modules
 import { HomeModule } from './pages/home/home.module';
+import { AdressesModule } from './pages/adresses/adresses.module';
+import { EmployesModule } from './pages/employes/employes.module';
+import { EtatsLivraisonssModule } from './pages/etatsLivraisons/etatsLivraisons.module';
+import { LieuxLivraisonsModule } from './pages/lieuxLivraisons/lieuxLivraisons.module';
+import { LivraisonsModule } from './pages/livraisons/livraisons.module';
+import { MarchandisesModule } from './pages/marchandises/marchandises.module';
+import { NaviresModule } from './pages/navires/navires.module';
+import { ProfilsModule } from './pages/profils/profils.module';
+import { ReinitialiserMotDePassessModule } from './pages/reinitialiserMotDePasses/reinitialiserMotDePasses.module';
+import { SocietesModule } from './pages/societes/societes.module';
+import { TransitsModule } from './pages/transits/transits.module';
+import { TypeMarchandisesModule } from './pages/typeMarchandises/typeMarchandises.module';
 import { BikesModule } from './pages/bikes/bikes.module';
 import { BuildersModule } from './pages/builders/builders.module';
 import { AuthModule } from './pages/auth/auth.module';
@@ -18,11 +30,15 @@ import { HttpErrorHandler } from './shared/_services/http-handle-error.service';
 
 import { AppHttpInterceptorService } from './shared/_services/app-http-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './layout/footer/footer.component';
+import { AsideComponent } from './layout/aside/aside.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    FooterComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +47,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeModule,
     BikesModule,
     BuildersModule,
+    AdressesModule,
+    EmployesModule,
+    EtatsLivraisonssModule,
+    LieuxLivraisonsModule,
+    LivraisonsModule,
+    MarchandisesModule,
+    NaviresModule,
+    ProfilsModule,
+    ReinitialiserMotDePassessModule,
+    SocietesModule,
+    TransitsModule,
+    TypeMarchandisesModule,
     AuthModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     NgbModule.forRoot()

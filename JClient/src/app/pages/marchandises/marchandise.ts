@@ -1,11 +1,9 @@
-import { Bike } from '../bikes/bike';
+import { TypeMarchandise } from '../typeMarchandises/typeMarchandise';
 
 export class Marchandise {
   id: number;
-  name: string;
-  description: string;
-  location: string;
-  bike?: Bike;
+  libelle: string;
+  typeMarchandise?: TypeMarchandise;
 
   constructor() {}
 }

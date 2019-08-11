@@ -1,10 +1,10 @@
-import { BuildersModule } from './adresses.module';
+import { AdressesModule } from './adresses.module';
 
-describe('BuildersModule', () => {
-  let adressesModule: BuildersModule;
+describe('AdressesModule', () => {
+  let adressesModule: AdressesModule;
 
   beforeEach(() => {
-    adressesModule = new BuildersModule();
+    adressesModule = new AdressesModule();
   });
 
   it('should create an instance', () => {

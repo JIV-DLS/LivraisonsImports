@@ -7,8 +7,8 @@ import { EtatsLivraisonssService } from '../_services/etatsLivraisons.service';
 
 @Component({
   selector: 'app-etatsLivraisons-detail',
-  templateUrl: './etatsLivraisons-detail.component.html',
-  styleUrls: ['./etatsLivraisons-detail.component.scss']
+  templateUrl: './etatsLivraison-detail.component.html',
+  styleUrls: ['./etatsLivraison-detail.component.scss']
 })
 export class EtatsLivraisonsDetailComponent implements OnInit {
 

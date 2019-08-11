@@ -1,11 +1,8 @@
-import { Bike } from '../bikes/bike';
+import { Adresse } from '../adresses/adresse';
 
 export class Societe {
   id: number;
-  name: string;
-  description: string;
-  location: string;
-  bike?: Bike;
-
+  libelle: string;
+  adresse?: Adresse;
   constructor() {}
 }

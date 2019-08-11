@@ -1,11 +1,11 @@
-import { Bike } from '../bikes/bike';
+import { Adresse } from '../adresses/adresse';
 
 export class Employe {
   id: number;
-  name: string;
-  description: string;
-  location: string;
-  bike?: Bike;
+  nom: string;
+  prenom: string;
+  dateNaiss: string;
+  adresse?: Adresse;
 
   constructor() {}
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Builder Routes Imports
-import { BuilderDetailComponent } from './adresse-detail/adresse-detail.component';
-import { BuilderListComponent } from './adresse-list/adresse-list.component';
+// Adresse Routes Imports
+import { AdresseDetailComponent } from './adresse-detail/adresse-detail.component';
+import { AdresseListComponent } from './adresse-list/adresse-list.component';
 
 const routes: Routes = [
   {
@@ -11,11 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: BuilderListComponent
+        component: AdresseListComponent
       },
       {
         path: ':id',
-        component: BuilderDetailComponent
+        component: AdresseDetailComponent
       }
     ]
   }
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class BuildersRoutingModule { }
+export class AdressesRoutingModule { }

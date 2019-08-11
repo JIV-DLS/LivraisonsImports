@@ -1,11 +1,11 @@
-import { Bike } from '../bikes/bike';
-
-export class Builder {
+export class Adresse {
   id: number;
-  name: string;
-  description: string;
-  location: string;
-  bike?: Bike;
+  rue: string;
+  quartier: string;
+  arrondissement: string;
+  ville: string;
+  region: string;
+  pays: string;
 
   constructor() {}
 }

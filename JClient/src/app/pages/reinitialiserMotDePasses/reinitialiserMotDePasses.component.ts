@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-reinitialiserMotDePassess',
-  templateUrl: './reinitialiserMotDePassess.component.html',
-  styleUrls: ['./reinitialiserMotDePassess.component.scss']
+  templateUrl: './reinitialiserMotDePasses.component.html',
+  styleUrls: ['./reinitialiserMotDePasses.component.scss']
 })
 export class ReinitialiserMotDePassessComponent implements OnInit {
 

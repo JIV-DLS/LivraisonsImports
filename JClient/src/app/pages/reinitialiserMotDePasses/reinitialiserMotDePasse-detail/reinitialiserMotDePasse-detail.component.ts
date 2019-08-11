@@ -7,8 +7,8 @@ import { ReinitialiserMotDePassessService } from '../_services/reinitialiserMotD
 
 @Component({
   selector: 'app-reinitialiserMotDePasses-detail',
-  templateUrl: './reinitialiserMotDePasses-detail.component.html',
-  styleUrls: ['./reinitialiserMotDePasses-detail.component.scss']
+  templateUrl: './reinitialiserMotDePasse-detail.component.html',
+  styleUrls: ['./reinitialiserMotDePasse-detail.component.scss']
 })
 export class ReinitialiserMotDePassesDetailComponent implements OnInit {
 
