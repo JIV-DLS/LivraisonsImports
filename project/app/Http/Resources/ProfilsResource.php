@@ -17,6 +17,7 @@ class ProfilsResource extends JsonResource
         return [
             'id' => $this->id,
             "libelle" => $this->libelle,
+            "user"=>$this->user,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at

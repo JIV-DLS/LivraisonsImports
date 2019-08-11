@@ -118,12 +118,12 @@ class ProfilController extends Controller
 	 *      )
      * ),
      */
-    public function show(Profil $Profil)
+    public function show($id)//Profil $Profil)
     {
         // $showProfilById = Profil::with('Profil')->findOrFail($id);
         // return $showProfilById;
 
-        return new ProfilsResource($Profil);
+        return new ProfilsResource(Profil::with('User')->findOrFail($id));
     }
 
     /**

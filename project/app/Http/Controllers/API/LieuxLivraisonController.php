@@ -118,12 +118,12 @@ class LieuxLivraisonController extends Controller
 	 *      )
      * ),
      */
-    public function show(LieuxLivraison $LieuxLivraison)
+    public function show($id)//LieuxLivraison $LieuxLivraison)
     {
         // $showLieuxLivraisonById = LieuxLivraison::with('LieuxLivraison')->findOrFail($id);
         // return $showLieuxLivraisonById;
 
-        return new LieuxLivraisonsResource($LieuxLivraison);
+        return new LieuxLivraisonsResource(LieuxLivraison::with('Livraison')->findOrFail($id));
     }
 
     /**

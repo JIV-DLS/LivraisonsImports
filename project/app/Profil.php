@@ -20,6 +20,12 @@ use Illuminate\Database\Eloquent\Model;
 class Profil extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'profils';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -35,6 +41,6 @@ class Profil extends Model
      */
     
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\User');
       }
 }

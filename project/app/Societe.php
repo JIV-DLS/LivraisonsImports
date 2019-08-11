@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *          example="GRAAL, HI-TECH"
  *    ),
  *     @SWG\Property(
- *          property="adresse",
+ *          property="adresse_id",
  *          type="string",
  *          description="Association with: builder_id",
  *          example="2"
@@ -25,6 +25,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Societe extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'societes';
     /**
      * The attributes that are mass assignable.
      *
@@ -32,7 +38,7 @@ class Societe extends Model
      */
     protected $fillable = [
         'libelle',
-        'adresse'
+        'adresse_id'
     ];
 
     /**
@@ -42,6 +48,10 @@ class Societe extends Model
      */
 
     public function adresse() {
-      return $this->hasOne('App\Adresse');
+      return $this->belongsTo('App\Adresse');
+    }
+
+    public function transit() {
+      return $this->hasMany('App\Transit');
     }
 }

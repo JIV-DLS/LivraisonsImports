@@ -49,6 +49,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adresse extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'adresses';
     /**
      * The attributes that are mass assignable.
      *
@@ -70,10 +76,11 @@ class Adresse extends Model
      */
 
     public function Employe() {
-      return $this->belongsTo('App\Employe');
+      //dd($this->belongsTo('App\Employe'));
+      return $this->hasOne('App\Employe');
     }
 
     public function Societe() {
-      return $this->belongsTo('App\Societe');
+      return $this->hasOne('App\Societe');
     }
 }

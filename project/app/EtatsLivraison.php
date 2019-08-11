@@ -20,6 +20,12 @@ use Illuminate\Database\Eloquent\Model;
 class EtatsLivraison extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'etats_livraisons';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -35,6 +41,6 @@ class EtatsLivraison extends Model
      */
     
     public function livraison() {
-        return $this->belongsTo('App\Livraison');
+        return $this->hasMany('App\Livraison');
       }
 }

@@ -14,6 +14,7 @@ class AdressesResource extends JsonResource
      */
     public function toArray($request)
     {
+        // dd($request);
         return 
         [
             'id' => $this->id,
@@ -23,6 +24,8 @@ class AdressesResource extends JsonResource
             "ville"=>$this->ville,
             "region"=>$this->region,
             "pays"=>$this->pays,
+            "employe"=>$this->employe,
+            "societe"=>$this->societe,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at

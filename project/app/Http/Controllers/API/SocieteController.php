@@ -76,7 +76,7 @@ class SocieteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'adresse' => 'required'
+            'adresse_id' => 'required'
             ]);
             
         if ($validator->fails()) {
@@ -119,12 +119,12 @@ class SocieteController extends Controller
 	 *      )
      * ),
      */
-    public function show(Societe $Societe)
+    public function show($id)//Societe $Societe)
     {
-        // $showSocieteById = Societe::with('Societe')->findOrFail($id);
+        // $showSocieteById = Societe::with('Adresse')->findOrFail($id);
         // return $showSocieteById;
 
-        return new SocietesResource($Societe);
+        return new SocietesResource(Societe::with('Adresse')->findOrFail($id));
     }
 
     /**

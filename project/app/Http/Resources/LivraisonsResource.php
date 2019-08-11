@@ -21,14 +21,14 @@ class LivraisonsResource extends JsonResource
             "dateReportApresEchecDeLivr"=> (string) $this->dateReportApresEchecDeLivr,
             "dateComfirmationFournisseur"=> (string) $this->dateComfirmationFournisseur,
             "dateLivrEffectiveBB"=> (string) $this->dateLivrEffectiveBB,
-            "lieuLivr"=>$this->lieuLivr,
+            "lieuLivraison"=>$this->lieuxLivraison,
             "dateDebStationnement"=> (string) $this->dateDebStationnement,
             "dateDebSures"=> (string) $this->dateDebSures,
             "nombreJourDeStationnementSubi"=>$this->nombreJourDeStationnementSubi,
             "nombreJourDeSuresSubi"=>$this->nombreJourDeSuresSubi,
             "delaiDateArrDateLivr"=>$this->delaiDateArrDateLivr,
-            "etatLivr"=>$this->etatLivr,
-            "Commentaires"=>$this->Commentaires,
+            "etatLivraison"=>$this->etatsLivraison,
+            "commentaires"=>$this->commentaires,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at

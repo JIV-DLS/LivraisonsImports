@@ -26,6 +26,12 @@ use Illuminate\Database\Eloquent\Model;
 class ReinitialiserMotDePasse extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'reinitialiserMotDePasses';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

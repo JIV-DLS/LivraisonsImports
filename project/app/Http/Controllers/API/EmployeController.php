@@ -77,15 +77,13 @@ class EmployeController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'dateNaiss' => 'required',
-            'adresse' => 'required',
+            'adresse_id' => 'required',
             // 'dateNaiss'=>'required',
             'prenom' => 'required'
             ]);
-            
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    
         }
-
         $createEmploye = Employe::create($request->all());
         return  $createEmploye;
     }
@@ -122,12 +120,11 @@ class EmployeController extends Controller
 	 *      )
      * ),
      */
-    public function show(Employe $Employe)
+    public function show($id)//Employe $Employe)
     {
         // $showEmployeById = Employe::with('Employe')->findOrFail($id);
         // return $showEmployeById;
-
-        return new EmployesResource($Employe);
+        return new EmployesResource(Employe::with('Adresse')->findOrFail($id));
     }
 
     /**
@@ -179,7 +176,7 @@ class EmployeController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'dateNaiss' => 'required',
-            'adresse' => 'required',
+            'adresse_id' => 'required',
             // 'dateNaiss'=>'required',
             'prenom' => 'required'
             ]);

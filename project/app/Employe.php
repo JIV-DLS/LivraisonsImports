@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Employe",
- *     required={"nom", "prenom", "dateNaiss", "adresse"},
+ *     required={"nom", "prenom", "dateNaiss", "adresse_id"},
  *     @SWG\Property(
  *          property="nom",
  *          type="string",
@@ -27,9 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  *          example="2009/23/05, 2008/23/11, 2007/09/06"
  *    ),
  *     @SWG\Property(
- *          property="adresse",
+ *          property="adresse_id",
  *          type="integer",
- *          description="Association with: builder_id",
+ *          description="Association with: adresse",
  *          example="2"
  *    )
  * )
@@ -37,6 +37,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employe extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'employes';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,7 +52,7 @@ class Employe extends Model
         'nom',
         'prenom',
         'dateNaiss',
-        'adresse'
+        'adresse_id'
     ];
 
     /**
@@ -56,9 +62,10 @@ class Employe extends Model
      */
     
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User');
       }
     public function adresse() {
-      return $this->hasOne('App\Adresse');
+      // dd($this->hasOne('App\Adresse'));
+      return $this->belongsTo('App\Adresse');
     }
 }

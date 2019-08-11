@@ -76,7 +76,7 @@ class NavireController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'contenanceT' => 'required'
+            'contenanceTotale' => 'required'
             ]);
             
         if ($validator->fails()) {

@@ -577,14 +577,14 @@
         "/api/builders": {
             "get": {
                 "tags": [
-                    "Builders"
+                    "EtatsLivraisons"
                 ],
-                "summary": "List Builders",
+                "summary": "List EtatsLivraisons",
                 "responses": {
                     "200": {
-                        "description": "Success: List all Builders",
+                        "description": "Success: List all EtatsLivraisons",
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     },
                     "404": {
@@ -594,9 +594,9 @@
             },
             "post": {
                 "tags": [
-                    "Builders"
+                    "EtatsLivraisons"
                 ],
-                "summary": "Create Builder",
+                "summary": "Create EtatsLivraison",
                 "parameters": [
                     {
                         "name": "body",
@@ -604,15 +604,15 @@
                         "description": "Json format",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "Success: A Newly Created Builder",
+                        "description": "Success: A Newly Created EtatsLivraison",
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     },
                     "422": {
@@ -630,23 +630,23 @@
         "/api/builders/{id}": {
             "get": {
                 "tags": [
-                    "Builders"
+                    "EtatsLivraisons"
                 ],
-                "summary": "Get Builder by Id",
+                "summary": "Get EtatsLivraison by Id",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Display the specified Builder by id.",
+                        "description": "Display the specified EtatsLivraison by id.",
                         "required": true,
                         "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success: Return the Builder",
+                        "description": "Success: Return the EtatsLivraison",
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     },
                     "404": {
@@ -659,14 +659,14 @@
             },
             "put": {
                 "tags": [
-                    "Builders"
+                    "EtatsLivraisons"
                 ],
-                "summary": "Update Builder",
+                "summary": "Update EtatsLivraison",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Update the specified Builder by id.",
+                        "description": "Update the specified EtatsLivraison by id.",
                         "required": true,
                         "type": "integer"
                     },
@@ -676,15 +676,15 @@
                         "description": "Json format",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success: Return the Builder updated",
+                        "description": "Success: Return the EtatsLivraison updated",
                         "schema": {
-                            "$ref": "#/definitions/Builder"
+                            "$ref": "#/definitions/EtatsLivraison"
                         }
                     },
                     "422": {
@@ -700,15 +700,15 @@
             },
             "delete": {
                 "tags": [
-                    "Builders"
+                    "EtatsLivraisons"
                 ],
-                "summary": "Delete Builder",
-                "description": "Delete the specified Builder by id",
+                "summary": "Delete EtatsLivraison",
+                "description": "Delete the specified EtatsLivraison by id",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Builder id to delete",
+                        "description": "EtatsLivraison id to delete",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
@@ -1635,7 +1635,7 @@
                 }
             }
         },
-        "/api/marchandise": {
+        "/api/marchandises": {
             "get": {
                 "tags": [
                     "marchandise"
@@ -1688,7 +1688,7 @@
                 }
             }
         },
-        "/api/marchandise/{id}": {
+        "/api/marchandises/{id}": {
             "get": {
                 "tags": [
                     "marchandise"
@@ -2763,7 +2763,7 @@
         "Action": {
             "required": [
                 "libelle",
-                "utilisateur"
+                "user_id"
             ],
             "properties": {
                 "libelle": {
@@ -2771,7 +2771,7 @@
                     "type": "string",
                     "example": "insertion dans la table employe"
                 },
-                "utilisateur": {
+                "user_id": {
                     "description": "utilisateur effectuant l'action d\u00e9crit",
                     "type": "string",
                     "example": "2"
@@ -2885,7 +2885,7 @@
                 "nom",
                 "prenom",
                 "dateNaiss",
-                "adresse"
+                "adresse_id"
             ],
             "properties": {
                 "nom": {
@@ -2903,8 +2903,8 @@
                     "type": "Date",
                     "example": "2009/23/05, 2008/23/11, 2007/09/06"
                 },
-                "adresse": {
-                    "description": "Association with: builder_id",
+                "adresse_id": {
+                    "description": "Association with: adresse",
                     "type": "integer",
                     "example": "2"
                 }
@@ -2984,80 +2984,80 @@
         },
         "Livraison": {
             "required": [
-                "transit",
-                "dateLivrDemBB",
+                "transit_id",
+                "dateLivrDemandeeParBB",
                 "dateLivrEffectiveBB",
-                "dateConfirmFourn",
+                "dateConfirmationFournisseur",
                 "dateDebStationnement",
                 "dateDebSures",
-                "d\u00e9laiDateArrDateLivr",
+                "delaiDateArrDateLivr",
                 "etatLivr"
             ],
             "properties": {
-                "transit": {
+                "transit_id": {
                     "description": "designation d\u00e9crivant le transit de la Livraison",
                     "type": "string",
-                    "example": "3"
+                    "example": "1"
                 },
                 "dateLivrDemandeeParBB": {
                     "description": "designation d\u00e9crivant la date de livraison demand\u00e9e par la BB",
                     "type": "string",
-                    "example": "24/04/2020"
+                    "example": "2020/02/24"
                 },
                 "dateReportApresEchecDeLivr": {
                     "description": "designation d\u00e9crivant la date de report suite \u00e0 un \u00e9chec de livraison",
                     "type": "string",
-                    "example": "16/05/2020"
+                    "example": "2020/6/05"
                 },
-                "dateConfirmFourn": {
+                "dateConfirmationFournisseur": {
                     "description": "designation d\u00e9crivant la date de la comfirmation du fournisseur",
                     "type": "string",
-                    "example": "25/04/2020"
+                    "example": "2020/04/25"
                 },
-                "lieuLivr": {
+                "lieux_livraison_id": {
                     "description": "designation d\u00e9crivant le lieu de la Livraison",
                     "type": "string",
-                    "example": "Lom\u00e9"
+                    "example": "1"
                 },
                 "dateLivrEffectiveBB": {
                     "description": "designation d\u00e9crivant la date de livraison effective \u00e0 la BB",
                     "type": "string",
-                    "example": "16/10/2011"
+                    "example": "2020/10/16"
                 },
                 "dateDebStationnement": {
                     "description": "designation d\u00e9crivant la date de stationnement au port",
                     "type": "string",
-                    "example": "16/10/2011"
+                    "example": "2011/10/16"
                 },
                 "dateDebSures": {
                     "description": "designation d\u00e9crivant le lieu de surestation",
                     "type": "string",
-                    "example": "16/10/2011"
+                    "example": "2011/10/16"
                 },
-                "nombreJourDeStationnementSub": {
+                "nombreJourDeStationnementSubi": {
                     "description": "designation d\u00e9crivant le nombre de jour de stationnement subi par la Livraison",
                     "type": "string",
                     "example": "5"
                 },
-                "nombeJourSuresSubi": {
+                "nombreJourDeSuresSubi": {
                     "description": "designation d\u00e9crivant le nombre de jour de sures subi par la Livraison",
                     "type": "string",
                     "example": "3"
                 },
-                "d\u00e9laiDateArrDateLivr": {
+                "delaiDateArrDateLivr": {
                     "description": "designation d\u00e9crivant le d\u00e9lai entre la date d'arriv\u00e9e et la date de livraison",
                     "type": "string",
-                    "example": "7"
+                    "example": "2020/10/16"
                 },
-                "etatLivr": {
+                "etats_livraison_id": {
                     "description": "designation d\u00e9crivant l'\u00e9tat' de la Livraison",
                     "type": "string",
-                    "example": "Livr\u00e9"
+                    "example": "1"
                 },
-                "Commmentaires": {
+                "commentaires": {
                     "description": "designation d\u00e9crivant les commentaires faits sur la Livraison",
                     "type": "string",
-                    "example": "Liraison ayant eu probl\u00e8me alpha b\u00eata et consort"
+                    "example": "probleme de qualite du livreur(societe)"
                 }
             }
         },
@@ -3071,7 +3071,7 @@
                     "type": "string",
                     "example": "Malta"
                 },
-                "typeMarchandise": {
+                "type_marchandise_id": {
                     "description": "type d\u00e9crivant la marchandise",
                     "type": "string",
                     "example": "1"
@@ -3089,7 +3089,7 @@
                     "type": "string",
                     "example": "Malt"
                 },
-                "contenaceTotale": {
+                "contenanceTotale": {
                     "description": "libelle d\u00e9crivant le Navire",
                     "type": "string",
                     "example": "Malt"
@@ -3163,7 +3163,7 @@
                     "type": "string",
                     "example": "GRAAL, HI-TECH"
                 },
-                "adresse": {
+                "adresse_id": {
                     "description": "Association with: builder_id",
                     "type": "string",
                     "example": "2"
@@ -3179,30 +3179,30 @@
                 "franchise"
             ],
             "properties": {
-                "navire": {
+                "navire_id": {
                     "description": "designation d\u00e9crivant le navire du Transit",
                     "type": "string",
-                    "example": "Malt"
+                    "example": "1"
                 },
                 "contenance": {
                     "description": "designation d\u00e9crivant la contenance du Transit",
                     "type": "string",
                     "example": "24"
                 },
-                "fournisseur": {
+                "societe_id": {
                     "description": "designation d\u00e9crivant le fournisseur du Transit",
                     "type": "string",
-                    "example": "Hi-tech"
+                    "example": "1"
                 },
-                "marchandise": {
+                "marchandise_id": {
                     "description": "designation d\u00e9crivant la marchandise du Transit",
                     "type": "string",
-                    "example": "Malta"
+                    "example": "1"
                 },
                 "dateArrivee": {
                     "description": "designation d\u00e9crivant la date d'arriv\u00e9e du Transit",
                     "type": "string",
-                    "example": "16/10/2011"
+                    "example": "2011/10/21"
                 },
                 "franchise": {
                     "description": "designation d\u00e9crivant la franchise du Transit",
@@ -3247,12 +3247,12 @@
                     "type": "string",
                     "example": "123456"
                 },
-                "profil": {
+                "profil_id": {
                     "description": "profil de l'utilisateur",
                     "type": "string",
                     "example": "1"
                 },
-                "employe": {
+                "employe_id": {
                     "description": "Employe auquel est associ\u00e9 ce profil",
                     "type": "string",
                     "example": "2"

@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *          example="Malta"
  *    ),
  *     @SWG\Property(
- *          property="typeMarchandise",
+ *          property="type_marchandise_id",
  *          type="string",
  *          description="type décrivant la marchandise",
  *          example="1"
@@ -25,6 +25,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Marchandise extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'marchandises';
     /**
      * The attributes that are mass assignable.
      *
@@ -32,7 +38,7 @@ class Marchandise extends Model
      */
     protected $fillable = [
         'libelle',
-        'typeMarchandise'
+        'type_Marchandise_id'
     ];
 
     /**
@@ -46,6 +52,6 @@ class Marchandise extends Model
       }
     
     public function typeMarchandise() {
-        return $this->hasOne('App\TypeMarchandise');
+        return $this->belongsTo('App\TypeMarchandise');
       }
 }

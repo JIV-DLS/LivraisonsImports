@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *          example="Malt"
  *    ),
  *     @SWG\Property(
- *          property="contenaceTotale",
+ *          property="contenanceTotale",
  *          type="string",
  *          description="libelle décrivant le Navire",
  *          example="Malt"
@@ -26,12 +26,19 @@ use Illuminate\Database\Eloquent\Model;
 class Navire extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'navires';
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'libelle'
+        'libelle',
+        'contenanceTotale'
     ];
 
     /**
@@ -41,6 +48,6 @@ class Navire extends Model
      */
     
     public function transit() {
-        return $this->belongsTo('App\Transit');
+        return $this->hasMany('App\Transit');
       }
 }

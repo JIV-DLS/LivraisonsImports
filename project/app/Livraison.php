@@ -7,109 +7,115 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Livraison",
- *     required={"transit","dateLivrDemBB","dateLivrEffectiveBB","dateConfirmFourn","dateDebStationnement","dateDebSures","délaiDateArrDateLivr","etatLivr"},
+ *     required={"transit_id","dateLivrDemandeeParBB","dateLivrEffectiveBB","dateConfirmationFournisseur","dateDebStationnement","dateDebSures","delaiDateArrDateLivr","etatLivr"},
  *     @SWG\Property(
- *          property="transit",
+ *          property="transit_id",
  *          type="string",
  *          description="designation décrivant le transit de la Livraison",
- *          example="3"
+ *          example="1"
  *    ),
  *     @SWG\Property(
  *          property="dateLivrDemandeeParBB",
  *          type="string",
  *          description="designation décrivant la date de livraison demandée par la BB",
- *          example="24/04/2020"
+ *          example="2020/02/24"
  *    ),
  *     @SWG\Property(
  *          property="dateReportApresEchecDeLivr",
  *          type="string",
  *          description="designation décrivant la date de report suite à un échec de livraison",
- *          example="16/05/2020"
+ *          example="2020/6/05"
  *    ),
  *     @SWG\Property(
- *          property="dateConfirmFourn",
+ *          property="dateConfirmationFournisseur",
  *          type="string",
  *          description="designation décrivant la date de la comfirmation du fournisseur",
- *          example="25/04/2020"
+ *          example="2020/04/25"
  *    ),
  *     @SWG\Property(
- *          property="lieuLivr",
+ *          property="lieux_livraison_id",
  *          type="string",
  *          description="designation décrivant le lieu de la Livraison",
- *          example="Lomé"
+ *          example="1"
  *    ),
  *     @SWG\Property(
  *          property="dateLivrEffectiveBB",
  *          type="string",
  *          description="designation décrivant la date de livraison effective à la BB",
- *          example="16/10/2011"
+ *          example="2020/10/16"
  *    ),
  *     @SWG\Property(
  *          property="dateDebStationnement",
  *          type="string",
  *          description="designation décrivant la date de stationnement au port",
- *          example="16/10/2011"
+ *          example="2011/10/16"
  *    ),
  *     @SWG\Property(
  *          property="dateDebSures",
  *          type="string",
  *          description="designation décrivant le lieu de surestation",
- *          example="16/10/2011"
+ *          example="2011/10/16"
  *    ),
  *     @SWG\Property(
- *          property="nombreJourDeStationnementSub",
+ *          property="nombreJourDeStationnementSubi",
  *          type="string",
  *          description="designation décrivant le nombre de jour de stationnement subi par la Livraison",
  *          example="5"
  *    ),
  *     @SWG\Property(
- *          property="nombeJourSuresSubi",
+ *          property="nombreJourDeSuresSubi",
  *          type="string",
  *          description="designation décrivant le nombre de jour de sures subi par la Livraison",
  *          example="3"
  *    ),
  *     @SWG\Property(
- *          property="délaiDateArrDateLivr",
+ *          property="delaiDateArrDateLivr",
  *          type="string",
  *          description="designation décrivant le délai entre la date d'arrivée et la date de livraison",
- *          example="7"
+ *          example="2020/10/16"
  *    ),
  *     @SWG\Property(
- *          property="etatLivr",
+ *          property="etats_livraison_id",
  *          type="string",
  *          description="designation décrivant l'état' de la Livraison",
- *          example="Livré"
+ *          example="1"
  *    ),
  *     @SWG\Property(
- *          property="Commmentaires",
+ *          property="commentaires",
  *          type="string",
  *          description="designation décrivant les commentaires faits sur la Livraison",
- *          example="Liraison ayant eu problème alpha bêta et consort"
+ *          example="probleme de qualite du livreur(societe)"
  *    )
  * )
  */
 
 class Livraison extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'livraisons';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'transit',
+        'transit_id',
         'dateLivrDemandeeParBB',
         'dateReportApresEchecDeLivr',
-        'dateConfirmFourn',
-        'lieuLivr',
+        'dateConfirmationFournisseur',
+        'lieux_livraison_id',
         'dateLivrEffectiveBB',
         'dateDebStationnement',
         'dateDebSures',
-        'nombreJourDeStationnementSub',
-        'délaiDateArrDateLivr',
-        'etatLivr',
-        'Commmentaires',
-        'nombeJourSuresSubi'
+        'nombreJourDeStationnementSubi',
+        'delaiDateArrDateLivr',
+        'etats_livraison_id',
+        'commentaires',
+        'nombreJourDeSuresSubi'
     ];
 
     /**
@@ -119,15 +125,15 @@ class Livraison extends Model
      */
     
     public function lieuxLivraison() {
-        return $this->hasOne('App\LieuxLivraison');
+        return $this->belongsTo('App\LieuxLivraison');
       }
     
     public function etatsLivraison() {
-        return $this->hasOne('App\EtatsLivraison');
+        return $this->belongsTo('App\EtatsLivraison');
       }
     
     public function transit() {
-        return $this->hasOne('App\Transit');
+        return $this->belongsTo('App\Transit');
       }
     
 }

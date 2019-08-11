@@ -18,10 +18,12 @@ class TransitsResource extends JsonResource
             'id' => $this->id,
             "navire" => $this->navire,
             "contenance" => $this->contenance,
-            "fournisseur" => $this->fournisseur,
             "marchandise" => $this->marchandise,
             "dateArrivee" => $this->dateArrivee,
             "franchise" => $this->franchise,
+            "livraison" => $this->livraison,
+            "societe" => $this->societe,
+            "societe" => $this->navire,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at

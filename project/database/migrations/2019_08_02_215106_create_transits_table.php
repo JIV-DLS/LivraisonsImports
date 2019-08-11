@@ -15,9 +15,9 @@ class CreateTransitsTable extends Migration
     {
         Schema::create('transits', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('navire');
-            $table->unsignedInteger('societe');
-            $table->unsignedInteger('marchandise');
+            $table->unsignedInteger('navire_id');
+            $table->unsignedInteger('societe_id');
+            $table->unsignedInteger('marchandise_id');
             $table->integer('contenance');
             $table->integer('franchise');
             $table->dateTime('dateArrivee');

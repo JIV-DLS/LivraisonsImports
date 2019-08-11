@@ -119,12 +119,13 @@ class AdresseController extends Controller
 	 *      )
      * ),
      */
-    public function show(Adresse $Adresse)
+    public function show($id)
     {
+        //dd(Adresse::with('Employe')->findOrFail($id));
         // $showAdresseById = Adresse::with('Adresse')->findOrFail($id);
         // return $showAdresseById;
-
-        return new AdressesResource($Adresse);
+        // dd($Adresse);
+        return new AdressesResource(Adresse::with('Employe')->findOrFail($id));
     }
 
     /**

@@ -76,7 +76,7 @@ class ActionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'utilisateur' => 'required'
+            'user_id' => 'required'
             ]);
             
         if ($validator->fails()) {
@@ -119,12 +119,12 @@ class ActionController extends Controller
 	 *      )
      * ),
      */
-    public function show(Action $Action)
+    public function show($id)//Action $Action)
     {
         // $showActionById = Action::with('Action')->findOrFail($id);
         // return $showActionById;
 
-        return new ActionsResource($Action);
+        return new ActionsResource(Action::with('User')->findOrFail($id));
     }
 
     /**
@@ -175,7 +175,7 @@ class ActionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'utilisateur' => 'required'
+            'user_id' => 'required'
             ]);
             
         if ($validator->fails()) {

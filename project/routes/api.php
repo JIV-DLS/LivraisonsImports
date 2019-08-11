@@ -33,10 +33,10 @@ Route::apiResources([
     'marchandises'=>'API\MarchandiseController',
     'navires'=>'API\NavireController',
     'profils'=>'API\ProfilController',
-    'reinitialiserMotDePasse'=>'API\ReinitialiserMotDePasseController',
-    'societe'=>'API\SocieteController',
-    'transit'=>'API\TransitController',
-    'typeMarchandise'=>'API\TypeMarchandiseController',
+    'reinitialiserMotDePasses'=>'API\ReinitialiserMotDePasseController',
+    'societes'=>'API\SocieteController',
+    'transits'=>'API\TransitController',
+    'typeMarchandises'=>'API\TypeMarchandiseController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
 

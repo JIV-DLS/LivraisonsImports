@@ -75,9 +75,9 @@ class TransitController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "navire"=> 'required',
-            "fournisseur"=> 'required',
-            "marchandise"=> 'required',
+            "navire_id"=> 'required',
+            "societe_id"=> 'required',
+            "marchandise_id"=> 'required',
             "dateArrivee"=> 'required'
             ,"franchise"=> 'required'
             ]);
@@ -122,12 +122,12 @@ class TransitController extends Controller
 	 *      )
      * ),
      */
-    public function show(Transit $Transit)
+    public function show($id)//Transit $Transit)
     {
         // $showTransitById = Transit::with('Transit')->findOrFail($id);
         // return $showTransitById;
 
-        return new TransitsResource($Transit);
+        return new TransitsResource(Transit::with('Navire')->findOrFail($id));
     }
 
     /**

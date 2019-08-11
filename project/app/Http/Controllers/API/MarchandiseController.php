@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Marchandise;
 use Validator;
-use App\Http\Resources\MarchandiseResource;
+use App\Http\Resources\MarchandisesResource;
 
 class MarchandiseController extends Controller
 {
@@ -16,7 +16,7 @@ class MarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/marchandise",
+     *     path="/api/marchandises",
      *     tags={"marchandise"},
      *     summary="List marchandise",
      *     @SWG\Response(
@@ -43,7 +43,7 @@ class MarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/marchandise",
+     *     path="/api/marchandises",
      *     tags={"marchandise"},
      *     summary="Create Marchandise",
      *     @SWG\Parameter(
@@ -76,7 +76,7 @@ class MarchandiseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'typeMarchandise' => 'required'
+            'typeMarchandise_id' => 'required'
             ]);
             
         if ($validator->fails()) {
@@ -94,7 +94,7 @@ class MarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/marchandise/{id}",
+     *     path="/api/marchandises/{id}",
      *     tags={"marchandise"},
      *     summary="Get Marchandise by Id",
      *     @SWG\Parameter(
@@ -124,7 +124,7 @@ class MarchandiseController extends Controller
         // $showMarchandiseById = Marchandise::with('Marchandise')->findOrFail($id);
         // return $showMarchandiseById;
 
-        return new marchandiseResource($Marchandise);
+        return new marchandisesResource($Marchandise);
     }
 
     /**
@@ -135,7 +135,7 @@ class MarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/marchandise/{id}",
+     *     path="/api/marchandises/{id}",
      *     tags={"marchandise"},
      *     summary="Update Marchandise",
      *     @SWG\Parameter(
@@ -175,7 +175,7 @@ class MarchandiseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'typeMarchandise' => 'required'
+            'typeMarchandise_id' => 'required'
             ]);
             
         if ($validator->fails()) {
@@ -195,7 +195,7 @@ class MarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/marchandise/{id}",
+     *     path="/api/marchandises/{id}",
      *     tags={"marchandise"},
      *     summary="Delete Marchandise",
      *     description="Delete the specified Marchandise by id",

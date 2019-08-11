@@ -56,6 +56,8 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required',
+            'profil_id' => 'required',
+            'employe_id' => 'required',
             'password'=> 'required'
         ]);
 
@@ -67,6 +69,8 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'profil_id' => $request->profil_id,
+            'employe_id' => $request->employe_id,
         ]);
 
         $token = auth()->login($user);

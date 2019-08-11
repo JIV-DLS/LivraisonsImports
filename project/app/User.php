@@ -30,13 +30,13 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *          example="123456"
  *    ),
  *     @SWG\Property(
- *          property="profil",
+ *          property="profil_id",
  *          type="string",
  *          description="profil de l'utilisateur",
  *          example="1"
  *    ),
  *     @SWG\Property(
- *          property="employe",
+ *          property="employe_id",
  *          type="string",
  *          description="Employe auquel est associé ce profil",
  *          example="2"
@@ -67,7 +67,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'profil', 'employe', 'etat','emailVerifiedAt',
+        'profil_id', 'employe_id', 'etat','emailVerifiedAt',
     ];
 
     /**

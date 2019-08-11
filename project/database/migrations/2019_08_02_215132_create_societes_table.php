@@ -16,7 +16,7 @@ class CreateSocietesTable extends Migration
         Schema::create('societes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->unsignedInteger('adresse');
+            $table->unsignedInteger('adresse_id');
             $table->timestamps();
         });
     }

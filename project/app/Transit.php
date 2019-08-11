@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Model;
  *     definition="Transit",
  *     required={"navire","fournisseur","marchandise","dateArrivee","franchise"},
  *     @SWG\Property(
- *          property="navire",
+ *          property="navire_id",
  *          type="string",
  *          description="designation décrivant le navire du Transit",
- *          example="Malt"
+ *          example="1"
  *    ),
  *     @SWG\Property(
  *          property="contenance",
@@ -21,22 +21,22 @@ use Illuminate\Database\Eloquent\Model;
  *          example="24"
  *    ),
  *     @SWG\Property(
- *          property="fournisseur",
+ *          property="societe_id",
  *          type="string",
  *          description="designation décrivant le fournisseur du Transit",
- *          example="Hi-tech"
+ *          example="1"
  *    ),
  *     @SWG\Property(
- *          property="marchandise",
+ *          property="marchandise_id",
  *          type="string",
  *          description="designation décrivant la marchandise du Transit",
- *          example="Malta"
+ *          example="1"
  *    ),
  *     @SWG\Property(
  *          property="dateArrivee",
  *          type="string",
  *          description="designation décrivant la date d'arrivée du Transit",
- *          example="16/10/2011"
+ *          example="2011/10/21"
  *    ),
  *     @SWG\Property(
  *          property="franchise",
@@ -49,16 +49,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transit extends Model
 {
+  /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'transits';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'navire',
+        'navire_id',
         'contenance',
-        'fournisseur',
-        'marchandise',
+        'societe_id',
+        'marchandise_id',
         'dateArrivee',
         'franchise'
     ];
@@ -70,18 +76,18 @@ class Transit extends Model
      */
     
     public function livraison() {
-        return $this->belongsTo('App\Livraison');
+        return $this->hasMany('App\Livraison');
       }
     
-    public function fournisseur() {
-        return $this->hasOne('App\Societe');
+    public function societe() {
+        return $this->belongsTo('App\Societe');
       }
     
     public function navire() {
-        return $this->hasOne('App\Navire');
+        return $this->belongsTo('App\Navire');
       }
     
     public function marchandise() {
-        return $this->hasOne('App\Marchandise');
+        return $this->belongsTo('App\Marchandise');
       }
 }

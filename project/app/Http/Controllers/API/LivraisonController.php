@@ -75,15 +75,15 @@ class LivraisonController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "transit"=> 'required',
-            "dateLivrDemBB"=> 'required',
+            "transit_id"=> 'required',
+            "dateLivrDemandeeParBB"=> 'required',
             "dateLivrEffectiveBB"=>'required',
-            "dateConfirmFourn"=>'required',
+            "dateConfirmationFournisseur"=>'required',
             "dateDebStationnement"=>'required',
             "dateDebSures"=>'required',
-            "délaiDateArrDateLivr"=>'required',
-            "etatLivr"=>'required',
-            'libelle' => 'required'
+            "delaiDateArrDateLivr"=>'required',
+            "etats_livraison_id"=>'required',
+            "lieux_livraison_id"=>'required'
             ]);
             
         if ($validator->fails()) {
@@ -126,12 +126,11 @@ class LivraisonController extends Controller
 	 *      )
      * ),
      */
-    public function show(Livraison $Livraison)
+    public function show($id)//Livraison $Livraison)
     {
         // $showLivraisonById = Livraison::with('Livraison')->findOrFail($id);
         // return $showLivraisonById;
-
-        return new LivraisonsResource($Livraison);
+        return new LivraisonsResource(Livraison::with('Transit')->with('lieuxLivraison')->with('etatsLivraison')->findOrFail($id));
     }
 
     /**
@@ -181,15 +180,15 @@ class LivraisonController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "transit"=> 'required',
-            "dateLivrDemBB"=> 'required',
+            "transit_id"=> 'required',
+            "dateLivrDemandeeBB"=> 'required',
             "dateLivrEffectiveBB"=>'required',
-            "dateConfirmFourn"=>'required',
+            "dateConfirmationFournisseur"=>'required',
             "dateDebStationnement"=>'required',
             "dateDebSures"=>'required',
-            "délaiDateArrDateLivr"=>'required',
-            "etatLivr"=>'required',
-            'libelle' => 'required'            ]);
+            "delaiDateArrDateLivr"=>'required',
+            "etats_livraison_id"=>'required',
+            "lieux_livraison_id"=>'required'       ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);    

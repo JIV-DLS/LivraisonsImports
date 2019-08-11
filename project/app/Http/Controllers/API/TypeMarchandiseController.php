@@ -118,12 +118,11 @@ class TypeMarchandiseController extends Controller
 	 *      )
      * ),
      */
-    public function show(TypeMarchandise $TypeMarchandise)
+    public function show($id)//TypeMarchandise $TypeMarchandise)
     {
         // $showTypeMarchandiseById = TypeMarchandise::with('TypeMarchandise')->findOrFail($id);
         // return $showTypeMarchandiseById;
-
-        return new TypeMarchandisesResource($TypeMarchandise);
+        return new TypeMarchandisesResource(TypeMarchandise::with('Marchandise')->findOrFail($id));
     }
 
     /**

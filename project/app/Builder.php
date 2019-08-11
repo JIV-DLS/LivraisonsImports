@@ -57,6 +57,7 @@ class Builder extends Model
      */
 
     public function bike() {
+        // dd($this->hasOne('App\Bike'));
         return $this->hasOne('App\Bike');
     }
 }
