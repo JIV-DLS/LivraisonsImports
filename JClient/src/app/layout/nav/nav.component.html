@@ -8,6 +8,9 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/lieuxLivraisons']" routerLinkActive="active" (click)="setTitle('lieuxLivraison')">lieuxLivraison</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/bikes']" routerLinkActive="active" (click)="setTitle('Bikes')">Bikes</a>
         </li>
         <li class="nav-item">

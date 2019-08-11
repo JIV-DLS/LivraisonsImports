@@ -5,7 +5,7 @@ import { LieuxLivraison } from './../lieuxLivraison';
 import { LieuxLivraisonsService } from '../_services/lieuxLivraisons.service';
 
 @Component({
-  selector: 'app-lieuxLivraison-list',
+  selector: 'app-lieuxlivraison-list',
   templateUrl: './lieuxLivraison-list.component.html',
   styleUrls: ['./lieuxLivraison-list.component.scss']
 })

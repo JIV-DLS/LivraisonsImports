@@ -24,6 +24,19 @@ Route::apiResources([
     'bikes' => 'API\BikeController',
     'builders' => 'API\BuilderController',
     'items' => 'API\ItemController',
+    'actions'=>'API\ActionController',
+    'adresses'=>'API\AdresseController',
+    'employes'=>'API\EmployeController',
+    'etatsLivraisons'=>'API\EtatsLivraisonController',
+    'lieuxLivraisons'=>'API\LieuxLivraisonController',
+    'livraisons'=>'API\LivraisonController',
+    'marchandises'=>'API\MarchandiseController',
+    'navires'=>'API\NavireController',
+    'profils'=>'API\ProfilController',
+    'reinitialiserMotDePasse'=>'API\ReinitialiserMotDePasseController',
+    'societe'=>'API\SocieteController',
+    'transit'=>'API\TransitController',
+    'typeMarchandise'=>'API\TypeMarchandiseController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
 
