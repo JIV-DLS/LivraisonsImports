@@ -4,12 +4,12 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\EtatsLivraison;
+use App\Builder;
 use Validator;
-use App\Http\Resources\EtatsLivraisonsResource;
+use App\Http\Resources\BuildersResource;
 
 
-class EtatsLivraisonController extends Controller
+class BuilderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,12 @@ class EtatsLivraisonController extends Controller
      *
      * @SWG\Get(
      *     path="/api/builders",
-     *     tags={"EtatsLivraisons"},
-     *     summary="List EtatsLivraisons",
+     *     tags={"Builders"},
+     *     summary="List Builders",
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: List all EtatsLivraisons",
-     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *          description="Success: List all Builders",
+     *          @SWG\Schema(ref="#/definitions/Builder")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -33,8 +33,8 @@ class EtatsLivraisonController extends Controller
      */
     public function index()
     {
-        $listEtatsLivraison = EtatsLivraison::all();
-        return $listEtatsLivraison;
+        $listBuilder = Builder::all();
+        return $listBuilder;
     }
 
     /**
@@ -45,19 +45,19 @@ class EtatsLivraisonController extends Controller
      *
      * @SWG\Post(
      *     path="/api/builders",
-     *     tags={"EtatsLivraisons"},
-     *     summary="Create EtatsLivraison",
+     *     tags={"Builders"},
+     *     summary="Create Builder",
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/EtatsLivraison"),
+     * 			@SWG\Schema(ref="#/definitions/Builder"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=201,
-     *          description="Success: A Newly Created EtatsLivraison",
-     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *          description="Success: A Newly Created Builder",
+     *          @SWG\Schema(ref="#/definitions/Builder")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -85,8 +85,8 @@ class EtatsLivraisonController extends Controller
             return response()->json($validator->errors(), 422);    
         }
             
-        $createEtatsLivraison = EtatsLivraison::create($request->all());
-        return  $createEtatsLivraison;
+        $createBuilder = Builder::create($request->all());
+        return  $createBuilder;
     }
 
     /**
@@ -97,19 +97,19 @@ class EtatsLivraisonController extends Controller
      *
      * @SWG\Get(
      *     path="/api/builders/{id}",
-     *     tags={"EtatsLivraisons"},
-     *     summary="Get EtatsLivraison by Id",
+     *     tags={"Builders"},
+     *     summary="Get Builder by Id",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Display the specified EtatsLivraison by id.",
+     *          description="Display the specified Builder by id.",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the EtatsLivraison",
-     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *          description="Success: Return the Builder",
+     *          @SWG\Schema(ref="#/definitions/Builder")
      *      ),
      *     @SWG\Response(
      *          response="404",
@@ -122,12 +122,12 @@ class EtatsLivraisonController extends Controller
      * )
      */
 
-    public function show($id)
+    public function show(Builder $builder)
     {
-        // $showEtatsLivraisonById = EtatsLivraison::with('Bike')->findOrFail($id);
-        // return $showEtatsLivraisonById;
+        // $showBuilderById = Builder::with('Bike')->findOrFail($id);
+        // return $showBuilderById;
         // dd($builder);
-        return new EtatsLivraisonsResource(EtatsLivraison::with('Livraison')->findOrFail($id));
+        return new BuildersResource($builder);
     }
 
     /**
@@ -139,26 +139,26 @@ class EtatsLivraisonController extends Controller
      *
      * @SWG\Put(
      *     path="/api/builders/{id}",
-     *     tags={"EtatsLivraisons"},
-     *     summary="Update EtatsLivraison",
+     *     tags={"Builders"},
+     *     summary="Update Builder",
      *     @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,
      *          type="integer",
-     *          description="Update the specified EtatsLivraison by id.",
+     *          description="Update the specified Builder by id.",
      * 		),
      *     @SWG\Parameter(
      * 			name="body",
      * 			in="body",
      * 			required=true,
-     * 			@SWG\Schema(ref="#/definitions/EtatsLivraison"),
+     * 			@SWG\Schema(ref="#/definitions/Builder"),
      * 			description="Json format",
      * 		),
      *     @SWG\Response(
      *          response=200,
-     *          description="Success: Return the EtatsLivraison updated",
-     *          @SWG\Schema(ref="#/definitions/EtatsLivraison")
+     *          description="Success: Return the Builder updated",
+     *          @SWG\Schema(ref="#/definitions/Builder")
      *      ),
      *     @SWG\Response(
      *          response="422",
@@ -186,9 +186,9 @@ class EtatsLivraisonController extends Controller
             return response()->json($validator->errors(), 422);    
         }
         
-        $updateEtatsLivraisonById = EtatsLivraison::findOrFail($id);
-        $updateEtatsLivraisonById->update($request->all());
-        return $updateEtatsLivraisonById;
+        $updateBuilderById = Builder::findOrFail($id);
+        $updateBuilderById->update($request->all());
+        return $updateBuilderById;
     }
 
     /**
@@ -199,11 +199,11 @@ class EtatsLivraisonController extends Controller
      *
      *     @SWG\Delete(
      *     path="/api/builders/{id}",
-     *     tags={"EtatsLivraisons"},
-     *     summary="Delete EtatsLivraison",
-     *     description="Delete the specified EtatsLivraison by id",
+     *     tags={"Builders"},
+     *     summary="Delete Builder",
+     *     description="Delete the specified Builder by id",
      *     @SWG\Parameter(
-     *         description="EtatsLivraison id to delete",
+     *         description="Builder id to delete",
      *         in="path",
      *         name="id",
      *         required=true,
