@@ -43,7 +43,7 @@ class TypeMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/TypeMarchandises",
+     *     path="/api/typeMarchandises",
      *     tags={"TypeMarchandises"},
      *     summary="Create TypeMarchandise",
      *     @SWG\Parameter(
@@ -93,7 +93,7 @@ class TypeMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/TypeMarchandises/{id}",
+     *     path="/api/typeMarchandises/{id}",
      *     tags={"TypeMarchandises"},
      *     summary="Get TypeMarchandise by Id",
      *     @SWG\Parameter(
@@ -134,7 +134,7 @@ class TypeMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/TypeMarchandises/{id}",
+     *     path="/api/typeMarchandises/{id}",
      *     tags={"TypeMarchandises"},
      *     summary="Update TypeMarchandise",
      *     @SWG\Parameter(
@@ -193,7 +193,7 @@ class TypeMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/TypeMarchandises/{id}",
+     *     path="/api/typeMarchandises/{id}",
      *     tags={"TypeMarchandises"},
      *     summary="Delete TypeMarchandise",
      *     description="Delete the specified TypeMarchandise by id",

@@ -43,7 +43,7 @@ class SocieteController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Societes",
+     *     path="/api/societes",
      *     tags={"Societes"},
      *     summary="Create Societe",
      *     @SWG\Parameter(
@@ -94,7 +94,7 @@ class SocieteController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Societes/{id}",
+     *     path="/api/societes/{id}",
      *     tags={"Societes"},
      *     summary="Get Societe by Id",
      *     @SWG\Parameter(
@@ -135,7 +135,7 @@ class SocieteController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Societes/{id}",
+     *     path="/api/societes/{id}",
      *     tags={"Societes"},
      *     summary="Update Societe",
      *     @SWG\Parameter(
@@ -195,7 +195,7 @@ class SocieteController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Societes/{id}",
+     *     path="/api/societes/{id}",
      *     tags={"Societes"},
      *     summary="Delete Societe",
      *     description="Delete the specified Societe by id",

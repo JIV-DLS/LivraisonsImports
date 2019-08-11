@@ -43,7 +43,7 @@ class NavireController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Navires",
+     *     path="/api/navires",
      *     tags={"Navires"},
      *     summary="Create Navire",
      *     @SWG\Parameter(
@@ -94,7 +94,7 @@ class NavireController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Navires/{id}",
+     *     path="/api/navires/{id}",
      *     tags={"Navires"},
      *     summary="Get Navire by Id",
      *     @SWG\Parameter(
@@ -135,7 +135,7 @@ class NavireController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Navires/{id}",
+     *     path="/api/navires/{id}",
      *     tags={"Navires"},
      *     summary="Update Navire",
      *     @SWG\Parameter(
@@ -195,7 +195,7 @@ class NavireController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Navires/{id}",
+     *     path="/api/navires/{id}",
      *     tags={"Navires"},
      *     summary="Delete Navire",
      *     description="Delete the specified Navire by id",

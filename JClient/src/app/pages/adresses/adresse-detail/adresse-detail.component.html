@@ -9,8 +9,11 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ adresse?.name }} </h5>
-              <p class="card-text">{{ adresse?.description }} </p>
+              <h5 class="card-title">{{ adresse?.rue }} </h5>
+              <p class="card-text">arrondissement: {{ adresse?.arrondissement }}
+                  ville: {{ adresse?.ville }}
+                  region: {{ adresse?.region }}
+                  pays: {{ adresse?.pays }} </p>
             </div>
             <div class="card-header">
               <strong>Featured Bike</strong>:
@@ -19,6 +22,7 @@
               <img src="{{ adresse?.bike.picture }}" alt="" srcset="">
             </div>
             <ul class="list-group list-group-flush">
+                
               <li class="list-group-item">Make: {{ adresse?.bike.make }} |
                 <span class="text-secondary">Year: {{ adresse?.bike.year}}</span>
               </li>

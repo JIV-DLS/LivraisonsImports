@@ -43,7 +43,7 @@ class ReinitialiserMotDePasseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/ReinitialiserMotDePasses",
+     *     path="/api/reinitialiserMotDePasses",
      *     tags={"ReinitialiserMotDePasses"},
      *     summary="Create ReinitialiserMotDePasse",
      *     @SWG\Parameter(
@@ -94,7 +94,7 @@ class ReinitialiserMotDePasseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/ReinitialiserMotDePasses/{id}",
+     *     path="/api/reinitialiserMotDePasses/{id}",
      *     tags={"ReinitialiserMotDePasses"},
      *     summary="Get ReinitialiserMotDePasse by Id",
      *     @SWG\Parameter(
@@ -135,7 +135,7 @@ class ReinitialiserMotDePasseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/ReinitialiserMotDePasses/{id}",
+     *     path="/api/reinitialiserMotDePasses/{id}",
      *     tags={"ReinitialiserMotDePasses"},
      *     summary="Update ReinitialiserMotDePasse",
      *     @SWG\Parameter(
@@ -195,7 +195,7 @@ class ReinitialiserMotDePasseController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/ReinitialiserMotDePasses/{id}",
+     *     path="/api/reinitialiserMotDePasses/{id}",
      *     tags={"ReinitialiserMotDePasses"},
      *     summary="Delete ReinitialiserMotDePasse",
      *     description="Delete the specified ReinitialiserMotDePasse by id",

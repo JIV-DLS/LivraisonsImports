@@ -43,7 +43,7 @@ class TransitController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Transits",
+     *     path="/api/transits",
      *     tags={"Transits"},
      *     summary="Create Transit",
      *     @SWG\Parameter(
@@ -97,7 +97,7 @@ class TransitController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Transits/{id}",
+     *     path="/api/transits/{id}",
      *     tags={"Transits"},
      *     summary="Get Transit by Id",
      *     @SWG\Parameter(
@@ -138,7 +138,7 @@ class TransitController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Transits/{id}",
+     *     path="/api/transits/{id}",
      *     tags={"Transits"},
      *     summary="Update Transit",
      *     @SWG\Parameter(
@@ -201,7 +201,7 @@ class TransitController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Transits/{id}",
+     *     path="/api/transits/{id}",
      *     tags={"Transits"},
      *     summary="Delete Transit",
      *     description="Delete the specified Transit by id",

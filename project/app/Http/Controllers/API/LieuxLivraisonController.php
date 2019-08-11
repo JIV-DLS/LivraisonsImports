@@ -43,7 +43,7 @@ class LieuxLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/LieuxLivraisons",
+     *     path="/api/lieuxLivraisons",
      *     tags={"LieuxLivraisons"},
      *     summary="Create LieuxLivraison",
      *     @SWG\Parameter(
@@ -93,7 +93,7 @@ class LieuxLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/LieuxLivraisons/{id}",
+     *     path="/api/lieuxLivraisons/{id}",
      *     tags={"LieuxLivraisons"},
      *     summary="Get LieuxLivraison by Id",
      *     @SWG\Parameter(
@@ -134,7 +134,7 @@ class LieuxLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/LieuxLivraisons/{id}",
+     *     path="/api/lieuxLivraisons/{id}",
      *     tags={"LieuxLivraisons"},
      *     summary="Update LieuxLivraison",
      *     @SWG\Parameter(
@@ -193,7 +193,7 @@ class LieuxLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/LieuxLivraisons/{id}",
+     *     path="/api/lieuxLivraisons/{id}",
      *     tags={"LieuxLivraisons"},
      *     summary="Delete LieuxLivraison",
      *     description="Delete the specified LieuxLivraison by id",

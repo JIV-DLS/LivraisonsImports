@@ -7,9 +7,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/lieuxLivraisons']" routerLinkActive="active" (click)="setTitle('lieuxLivraison')">lieuxLivraison</a>
-        </li>
+          <li class="nav-item">
+              <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Services</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a class="btn" [routerLink]="['/lieuxLivraisons']" routerLinkActive="active" (click)="setTitle('lieuxLivraison')">lieuxLivraison</a>
+          <a class="btn" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('adresses')">adresses</a>
+          <a class="btn" [routerLink]="['/employes']" routerLinkActive="active" (click)="setTitle('employes')">employes</a>
+          <a class="btn" [routerLink]="['/etatsLivraisons']" routerLinkActive="active" (click)="setTitle('etatsLivraisons')">etatsLivraisons</a>
+          <a class="btn" [routerLink]="['/Livraisons']" routerLinkActive="active" (click)="setTitle('Livraison')">Livraison</a>
+          <a class="btn" [routerLink]="['/marchandises']" routerLinkActive="active" (click)="setTitle('marchandises')">marchandises</a>
+          <a class="btn" [routerLink]="['/navires']" routerLinkActive="active" (click)="setTitle('navires')">navires</a>
+          <a class="btn" [routerLink]="['/profils']" routerLinkActive="active" (click)="setTitle('profils')">profils</a>
+          <a class="btn" [routerLink]="['/reinitialiserMotDePasses']" routerLinkActive="active" (click)="setTitle('reinitialiserMotDePasses')">reinitialiserMotDePasses</a>
+          <a class="btn" [routerLink]="['/societes']" routerLinkActive="active" (click)="setTitle('societes')">societes</a>
+          <a class="btn" [routerLink]="['/transits']" routerLinkActive="active" (click)="setTitle('transits')">transits</a>
+          <a class="btn" [routerLink]="['/typeMarchandises']" routerLinkActive="active" (click)="setTitle('typeMarchandises')">typeMarchandises</a>
+                  
+                </div>
+              </div>
+            </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/bikes']" routerLinkActive="active" (click)="setTitle('Bikes')">Bikes</a>
         </li>

@@ -9,13 +9,14 @@
         <div class="col-md-4" *ngFor="let adresse of adresses">
           <div class="card mb-4 box-shadow">
             <div class="card-header">
-              <h4 class="my-0 font-weight-normal">{{ adresse?.name }}</h4>
+              <h4 class="my-0 font-weight-normal">{{ adresse?.rue}}</h4>
             </div>
             <div class="card-body">
               <p class="mt-3 mb-4">
-                {{ adresse?.description }}
+                rue: {{ adresse?.rue }}
+                quartier: {{ adresse?.quartier }}
               </p>
-              <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">View Bike</button>
+              <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Voir le propriétaire</button>
             </div>
             <div class="card-footer text-muted">
               {{ adresse?.location }}

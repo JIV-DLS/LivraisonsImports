@@ -43,7 +43,7 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Profils",
+     *     path="/api/profils",
      *     tags={"Profils"},
      *     summary="Create Profil",
      *     @SWG\Parameter(
@@ -93,7 +93,7 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Profils/{id}",
+     *     path="/api/profils/{id}",
      *     tags={"Profils"},
      *     summary="Get Profil by Id",
      *     @SWG\Parameter(
@@ -134,7 +134,7 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Profils/{id}",
+     *     path="/api/profils/{id}",
      *     tags={"Profils"},
      *     summary="Update Profil",
      *     @SWG\Parameter(
@@ -193,7 +193,7 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Profils/{id}",
+     *     path="/api/profils/{id}",
      *     tags={"Profils"},
      *     summary="Delete Profil",
      *     description="Delete the specified Profil by id",

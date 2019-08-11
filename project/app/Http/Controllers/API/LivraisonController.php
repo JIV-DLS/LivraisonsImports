@@ -43,7 +43,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Livraisons",
+     *     path="/api/livraisons",
      *     tags={"Livraisons"},
      *     summary="Create Livraison",
      *     @SWG\Parameter(
@@ -101,7 +101,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Livraisons/{id}",
+     *     path="/api/livraisons/{id}",
      *     tags={"Livraisons"},
      *     summary="Get Livraison by Id",
      *     @SWG\Parameter(
@@ -142,7 +142,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Livraisons/{id}",
+     *     path="/api/livraisons/{id}",
      *     tags={"Livraisons"},
      *     summary="Update Livraison",
      *     @SWG\Parameter(
@@ -208,7 +208,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Livraisons/{id}",
+     *     path="/api/livraisons/{id}",
      *     tags={"Livraisons"},
      *     summary="Delete Livraison",
      *     description="Delete the specified Livraison by id",

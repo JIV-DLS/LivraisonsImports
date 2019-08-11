@@ -43,7 +43,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Actions",
+     *     path="/api/actions",
      *     tags={"Actions"},
      *     summary="Create Action",
      *     @SWG\Parameter(
@@ -94,7 +94,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Actions/{id}",
+     *     path="/api/actions/{id}",
      *     tags={"Actions"},
      *     summary="Get Action by Id",
      *     @SWG\Parameter(
@@ -135,7 +135,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Actions/{id}",
+     *     path="/api/actions/{id}",
      *     tags={"Actions"},
      *     summary="Update Action",
      *     @SWG\Parameter(
@@ -195,7 +195,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Actions/{id}",
+     *     path="/api/actions/{id}",
      *     tags={"Actions"},
      *     summary="Delete Action",
      *     description="Delete the specified Action by id",

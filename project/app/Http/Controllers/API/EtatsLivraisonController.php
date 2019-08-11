@@ -43,7 +43,7 @@ class EtatsLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/EtatsLivraisons",
+     *     path="/api/etatsLivraisons",
      *     tags={"EtatsLivraisons"},
      *     summary="Create EtatsLivraison",
      *     @SWG\Parameter(
@@ -93,7 +93,7 @@ class EtatsLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/EtatsLivraisons/{id}",
+     *     path="/api/etatsLivraisons/{id}",
      *     tags={"EtatsLivraisons"},
      *     summary="Get EtatsLivraison by Id",
      *     @SWG\Parameter(
@@ -134,7 +134,7 @@ class EtatsLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/EtatsLivraisons/{id}",
+     *     path="/api/etatsLivraisons/{id}",
      *     tags={"EtatsLivraisons"},
      *     summary="Update EtatsLivraison",
      *     @SWG\Parameter(
@@ -193,7 +193,7 @@ class EtatsLivraisonController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/EtatsLivraisons/{id}",
+     *     path="/api/etatsLivraisons/{id}",
      *     tags={"EtatsLivraisons"},
      *     summary="Delete EtatsLivraison",
      *     description="Delete the specified EtatsLivraison by id",

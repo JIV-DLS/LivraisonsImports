@@ -43,7 +43,7 @@ class AdresseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Adresses",
+     *     path="/api/adresses",
      *     tags={"Adresses"},
      *     summary="Create Adresse",
      *     @SWG\Parameter(
@@ -94,7 +94,7 @@ class AdresseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Adresses/{id}",
+     *     path="/api/adresses/{id}",
      *     tags={"Adresses"},
      *     summary="Get Adresse by Id",
      *     @SWG\Parameter(
@@ -135,7 +135,7 @@ class AdresseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Adresses/{id}",
+     *     path="/api/adresses/{id}",
      *     tags={"Adresses"},
      *     summary="Update Adresse",
      *     @SWG\Parameter(
@@ -195,7 +195,7 @@ class AdresseController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Adresses/{id}",
+     *     path="/api/adresses/{id}",
      *     tags={"Adresses"},
      *     summary="Delete Adresse",
      *     description="Delete the specified Adresse by id",

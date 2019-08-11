@@ -43,7 +43,7 @@ class EmployeController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/Employes",
+     *     path="/api/employes",
      *     tags={"Employes"},
      *     summary="Create Employe",
      *     @SWG\Parameter(
@@ -97,7 +97,7 @@ class EmployeController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/Employes/{id}",
+     *     path="/api/employes/{id}",
      *     tags={"Employes"},
      *     summary="Get Employe by Id",
      *     @SWG\Parameter(
@@ -138,7 +138,7 @@ class EmployeController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/Employes/{id}",
+     *     path="/api/employes/{id}",
      *     tags={"Employes"},
      *     summary="Update Employe",
      *     @SWG\Parameter(
@@ -201,7 +201,7 @@ class EmployeController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/Employes/{id}",
+     *     path="/api/employes/{id}",
      *     tags={"Employes"},
      *     summary="Delete Employe",
      *     description="Delete the specified Employe by id",
