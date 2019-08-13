@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 // App imports
 import { environment } from '../../../../environments/environment';
 import { User } from '../user';
+import { HandleError } from 'src/app/shared/_services/http-handle-error.service';
 // Setup headers
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,6 +24,8 @@ export class AuthService {
   private readonly apiUrl = environment.apiUrl;
   private registerUrl = this.apiUrl + '/register';
   private loginUrl = this.apiUrl + '/login';
+  private userUrl = this.apiUrl + '/user';
+  private handleErrors: HandleError;
 
   constructor(
     private http: HttpClient,
@@ -109,7 +112,54 @@ export class AuthService {
     }
     return false;
   }
+  /** GET users from users endpoint */
+  getusers(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl)
+      .pipe(
+        catchError(this.handleErrors('getusers', []))
+      );
+  }
 
+  /** GET user detail from user-detail endpoint */
+  getuserDetail(id: number): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl + `/${id}`)
+      .pipe(
+        catchError(this.handleErrors('getuserDetail', []))
+      );
+  }
+
+  /** POST user to users endpoint */
+  adduser (user: User): Observable<User> {
+    return this.http.post<User>(this.userUrl, user)
+      .pipe(
+        catchError(this.handleErrors('adduser', user))
+      );
+  }
+
+  /** PUT user to users endpoint */
+  updateuser (id: number, user: User): Observable<User> {
+    return this.http.put<User>(this.userUrl + `/${id}`, user)
+      .pipe(
+        catchError(this.handleErrors('updateuser', user))
+      );
+  }
+
+  /** DELETE user user endpoint */
+  deleteuser (id: number): Observable<any> {
+    return this.http.delete<User>(this.userUrl + `/${id}`)
+      .pipe(
+        catchError(this.handleErrors('deleteuser'))
+      );
+  }
+
+  /** Vote on user */
+  voteOnuser (vote: number, user: number): Observable<any> {
+    const rating = vote;
+    return this.http.post(this.userUrl + `/${user}/ratings`, {rating})
+      .pipe(
+        catchError(this.handleErrors('voteOnuser', []))
+      );
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side error.

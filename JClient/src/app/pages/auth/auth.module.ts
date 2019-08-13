@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { AuthGuard } from './_guards/auth.guard';
     ReactiveFormsModule
   ],
   providers: [AuthGuard],
-  declarations: [LoginComponent, RegisterComponent, LogoutComponent]
+  declarations: [LoginComponent, RegisterComponent, LogoutComponent, UserListComponent, UserDetailComponent]
 })
 export class AuthModule { }
