@@ -208,11 +208,11 @@ text-shadow:#ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0
 	outline:none;
 	position:absolute;
 	top:5px;
-	-webkit-transition:border-color.2s;
-	-moz-transition:border-color.2s;
-	-ms-transition:border-color.2s;
-	-o-transition:border-color.2s;
-	transition:border-color.2s;
+	 -webkit-transition:border-color 2s;
+	 -moz-transition:border-color 2s;
+	 -ms-transition:border-color 2s;
+	 -o-transition:border-color 2s;
+	 transition:border-color 2s;
 }
 .ts-forms .radio i,
 .ts-forms .checkbox i { width:18px; }
@@ -349,11 +349,11 @@ text-shadow:#ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0
 .ts-forms .widget .addon-btn,
 .ts-forms .widget .addon-btn i {
 	cursor:pointer;
-	-webkit-transition:all.2s;
-	-moz-transition:all.2s;
-	-ms-transition:all.2s;
-	-o-transition:all.2s;
-	transition:all.2s;
+	 -webkit-transition:all 2s;
+	 -moz-transition:all 2s;
+	 -ms-transition:all 2s;
+	 -o-transition:all 2s;
+	 transition:all 2s;
 }
 .ts-forms .widget .addon-btn:hover,
 .ts-forms .widget .addon-btn:focus { background-color:#d6d6d6; color:rgba(0,0,0,.87); }
@@ -435,11 +435,11 @@ text-shadow:#ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
-	-webkit-transition:all.4s;
-	-moz-transition:all.4s;
-	-ms-transition:all.4s;
-	-o-transition:all.4s;
-	transition:all.4s;
+	-webkit-transition:all 4s;
+	-moz-transition:all 4s;
+	-ms-transition:all 4s;
+	-o-transition:all 4s;
+	transition:all 4s;
 }
 .ts-forms input[type="text"]:hover,
 .ts-forms input[type="password"]:hover,
@@ -638,11 +638,11 @@ white-space: nowrap;
 .ts-forms .file-button,
 .ts-forms .secondary-btn {
 	background:#FF0000;
-	-webkit-transition:background.2s;
-	-moz-transition:background.2s;
-	-ms-transition:background.2s;
-	-o-transition:background.2s;
-	transition:background.2s;
+	-webkit-transition:background 2s;
+	-moz-transition:background 2s;
+	-ms-transition:background 2s;
+	-o-transition:background 2s;
+	transition:background 2s;
 }
 .ts-forms .primary-btn:hover,
 .ts-forms .file-button:hover,
@@ -1022,11 +1022,11 @@ white-space: nowrap;
 	font-size:20px;
 	float:right;
 	padding:0 2px;
-	-webkit-transition:color.2s;
-	-moz-transition:color.2s;
-	-ms-transition:color.2s;
-	-o-transition:color.2s;
-	transition:color.2s;
+	-webkit-transition:color 2s;
+	-moz-transition:color 2s;
+	-ms-transition:color 2s;
+	-o-transition:color 2s;
+	transition:color 2s;
 }
 .ts-forms .ratings input + label:hover,
 .ts-forms .ratings input + label:hover ~ label,
@@ -1082,11 +1082,11 @@ white-space: nowrap;
 	overflow:hidden;
 	height:48px;
 	white-space:nowrap;
-	-webkit-transition:background.2s;
-	-moz-transition:background.2s;
-	-ms-transition:background.2s;
-	-o-transition:background.2s;
-	transition:background.2s;
+	-webkit-transition:background 2s;
+	-moz-transition:background 2s;
+	-ms-transition:background 2s;
+	-o-transition:background 2s;
+	transition:background 2s;
 }
 .ts-forms .social-btn button { width:100%; }
 
@@ -1212,11 +1212,11 @@ white-space: nowrap;
 	cursor:pointer;
 	display:block;
 	height:50%;
-	-webkit-transition:background-color.4s;
-	-moz-transition:background-color.4s;
-	-ms-transition:background-color.4s;
-	-o-transition:background-color.4s;
-	transition:background-color.4s;
+	-webkit-transition:background-color 4s;
+	-moz-transition:background-color 4s;
+	-ms-transition:background-color 4s;
+	-o-transition:background-color 4s;
+	transition:background-color 4s;
 }
 .ts-forms .stepper .stepper-arrow:hover { background-color:#d6d6d6; }
 
@@ -1229,11 +1229,11 @@ white-space: nowrap;
 	content:'';
 	position:absolute;
 	right:16px;
-	-webkit-transition:all.4s;
-	-moz-transition:all.4s;
-	-ms-transition:all.4s;
-	-o-transition:all.4s;
-	transition:all.4s;
+	-webkit-transition:all 4s;
+	-moz-transition:all 4s;
+	-ms-transition:all 4s;
+	-o-transition:all 4s;
+	transition:all 4s;
 }
 .ts-forms .stepper .stepper-arrow.down:after { border-top:7px solid rgba(0,0,0,.56); bottom:13px; }
 
@@ -1281,9 +1281,9 @@ white-space: nowrap;
 	top:6px;
 	width:30px;
 }
-.ui-datepicker-prev { border-right:1px solid #FF0000; left:0; background:url(../images/left.png) no-repeat center; }
+.ui-datepicker-prev { border-right:1px solid #FF0000; left:0; background:url(../scss/template/img/left.png) no-repeat center; }
 
-.ui-datepicker-next { border-left:1px solid #FF0000; right:0; background:url(../images/right.png) no-repeat center; }
+.ui-datepicker-next { border-left:1px solid #FF0000; right:0; background:url(../scss/template/img/right.png) no-repeat center; }
 
 .ui-datepicker-calendar { border-collapse:collapse; line-height:1.5; width:100%; }
 
@@ -1363,11 +1363,11 @@ white-space: nowrap;
 	font:14px 'Open Sans',Helvetica,Arial,sans-serif;
 	padding:5px 10px;
 	margin:10px 5px 0;
-	-webkit-transition:all.15s;
-	-moz-transition:all.15s;
-	-ms-transition:all.15s;
-	-o-transition:all.15s;
-	transition:all.15s;
+	-webkit-transition:all 15s;
+	-moz-transition:all 15s;
+	-ms-transition:all 15s;
+	-o-transition:all 15s;
+	transition:all 15s;
 	outline:none;
 }
 .ui-datepicker-buttonpane button:hover { background:#d6d6d6; color:rgba(0,0,0,.87); }
@@ -1452,11 +1452,11 @@ white-space: nowrap;
 	-ms-transform:translateY(-4%);
 	-o-transform:translateY(-4%);
 	transform:translateY(-4%);
-	-webkit-transition:opacity.3s, -webkit-transform.3s;
-	-moz-transition:opacity.3s, -moz-transform.3s;
-	-ms-transition:opacity.3s, -ms-transform.3s;
-	-o-transition:opacity.3s, -o-transform.3s;
-	transition:opacity.3s, transform.3s;
+	-webkit-transition:opacity 3s, -webkit-transform 3s;
+	-moz-transition:opacity 3s, -moz-transform 3s;
+	-ms-transition:opacity 3s, -ms-transform 3s;
+	-o-transition:opacity 3s, -o-transform 3s;
+	transition:opacity 3s, transform 3s;
 }
 .ts-forms .steps {
 	border:1px solid rgba(0,0,0,.12);
@@ -1466,11 +1466,11 @@ white-space: nowrap;
 	border-radius:3px;
 	margin-bottom:25px;
 	text-align:center;
-	-webkit-transition:all.3s;
-	-moz-transition:all.3s;
-	-ms-transition:all.3s;
-	-o-transition:all.3s;
-	transition:all.3s;
+	-webkit-transition:all 3s;
+	-moz-transition:all 3s;
+	-ms-transition:all 3s;
+	-o-transition:all 3s;
+	transition:all 3s;
 	padding:4px 0;
 }
 .ts-forms .active-fieldset {
@@ -1556,11 +1556,11 @@ white-space: nowrap;
 	position:absolute;
 	right:8px;
 	top:11px;
-	-webkit-transition:background-color.15s;
-	-moz-transition:background-color.15s;
-	-ms-transition:background-color.15s;
-	-o-transition:background-color.15s;
-	transition:background-color.15s;
+	-webkit-transition:background-color 15s;
+	-moz-transition:background-color 15s;
+	-ms-transition:background-color 15s;
+	-o-transition:background-color 15s;
+	transition:background-color 15s;
 }
 .ts-forms .modal-close:hover,
 .ts-forms .modal-close:focus { background-color:rgba(0,0,0,.6); }
@@ -1643,11 +1643,11 @@ white-space: nowrap;
 	position:absolute;
 	left:-9999px;
 	width:400px;
-	-webkit-animation:popup-list-open.4s both;
-	-moz-animation:popup-list-open.4s both;
-	-ms-animation:popup-list-open.4s both;
-	-o-animation:popup-list-open.4s both;
-	animation:popup-list-open.4s both;
+	-webkit-animation:popup-list-open 4s both;
+	-moz-animation:popup-list-open 4s both;
+	-ms-animation:popup-list-open 4s both;
+	-o-animation:popup-list-open 4s both;
+	animation:popup-list-open 4s both;
 }
 @-webkit-keyframes popup-list-open {
 	from { -webkit-transform:translate(0,-10px); transform:translate(0,-10px); }
@@ -1675,11 +1675,11 @@ white-space: nowrap;
 .popup-btm-640 {
 	bottom:0;
 	position:fixed;
-	-webkit-transition:width.3s;
-	-moz-transition:width.3s;
-	-ms-transition:width.3s;
-	-o-transition:width.3s;
-	transition:width.3s;
+	-webkit-transition:width 3s;
+	-moz-transition:width 3s;
+	-ms-transition:width 3s;
+	-o-transition:width 3s;
+	transition:width 3s;
 	right:1%;
 	z-index:1000;
 }
@@ -1698,11 +1698,11 @@ white-space: nowrap;
 	height:auto;
 	position:absolute;
 	right:0;
-	-webkit-transition:all.4s ease-in-out;
-	-moz-transition:all.4s ease-in-out;
-	-ms-transition:all.4s ease-in-out;
-	-o-transition:all.4s ease-in-out;
-	transition:all.4s ease-in-out;
+	-webkit-transition:all 4s ease-in-out;
+	-moz-transition:all 4s ease-in-out;
+	-ms-transition:all 4s ease-in-out;
+	-o-transition:all 4s ease-in-out;
+	transition:all 4s ease-in-out;
 	width:100%;
 	z-index:1000;
 }
@@ -1754,11 +1754,11 @@ white-space: nowrap;
 	padding:0 30px;
 	position:fixed;
 	right:1%;
-	-webkit-transition:opacity.4s ease-in-out.05s;
-	-moz-transition:opacity.4s ease-in-out.05s;
-	-ms-transition:opacity.4s ease-in-out.05s;
-	-o-transition:opacity.4s ease-in-out.05s;
-	transition:opacity.4s ease-in-out.05s;
+	-webkit-transition:opacity 4s ease-in-out 05s;
+	-moz-transition:opacity 4s ease-in-out 05s;
+	-ms-transition:opacity 4s ease-in-out 05s;
+	-o-transition:opacity 4s ease-in-out 05s;
+	transition:opacity 4s ease-in-out 05s;
 	white-space:nowrap;
 	z-index: 9999;
 }
@@ -1773,11 +1773,11 @@ white-space: nowrap;
 	position:absolute;
 	right:0;
 	top:-25px;
-	-webkit-transition:background-color.15s;
-	-moz-transition:background-color.15s;
-	-ms-transition:background-color.15s;
-	-o-transition:background-color.15s;
-	transition:background-color.15s;
+	-webkit-transition:background-color 15s;
+	-moz-transition:background-color 15s;
+	-ms-transition:background-color 15s;
+	-o-transition:background-color 15s;
+	transition:background-color 15s;
 }
 .popup-btm-400 .popup-btm-close:hover,
 .popup-btm-400 .popup-btm-close:focus,
@@ -1967,7 +1967,7 @@ white-space: nowrap;
 }
 
 span.error-view{
-background: rgba(0, 0, 0, 0) url("../images/Error-128.png") no-repeat scroll right center;
+background: rgba(0, 0, 0, 0) url("../scss/template/img/Error-128.png") no-repeat scroll right center;
 float: right;
 height: 26px !important;
 margin: 0 !important;

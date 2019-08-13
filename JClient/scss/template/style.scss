@@ -77,9 +77,9 @@ body {}
 @font-face {
   font-family: 'educate-icon';
   src:
-    url('fonts/educate-icon.ttf?ka5vvx') format('truetype'),
-    url('fonts/educate-icon.woff?ka5vvx') format('woff'),
-    url('fonts/educate-icon.svg?ka5vvx#educate-icon') format('svg');
+    url('../scss/template/fonts/educate-icon.ttf?ka5vvx') format('truetype'),
+    url('../scss/template/fonts/educate-icon.woff?ka5vvx') format('woff'),
+    url('../scss/template/fonts/educate-icon.svg?ka5vvx#educate-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -228,7 +228,7 @@ body {}
 }
 .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .left-menu-dropdown a:hover{
 	padding:15px 30px;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 	background:#fff;
 }
 .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown{
@@ -252,7 +252,7 @@ body {}
 	display: block;
     padding: 15px 20px;
     color: #444;
-    transition: all .4s ease 0s;
+    transition: all  4s ease 0s;
     font-size: 16px;
 }
 .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:hover, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:focus, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:active, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:visited{
@@ -279,7 +279,7 @@ body {}
 /*  4.1 Left Sidebar switcher
 /*----------------------------------------*/
 .menu-switcher-pro {
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .mini-navbar .menu-switcher-pro {
     transition: all 0.3s;
@@ -1242,11 +1242,11 @@ ul.breadcome-menu li a:hover{
     color: #fff !important;
     margin-top: 0px;
     margin-bottom: 5px;
-	transition: all .4s ease 0s;
+	transition: all  4s ease 0s;
 }
 .social-media-in a:hover{
     background: #006DF0;
-	transition: all .4s ease 0s;
+	transition: all  4s ease 0s;
 }
 .custom-panel-jw h3 {
     font-size: 16px;
@@ -1288,7 +1288,7 @@ ul.tab-custon-design li, ul.tab-review-design li {
     padding-right: 40px;
     text-transform: capitalize;
 	position:relative;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 #myTab3.tab-review-design li a:before, #myTab4.tab-review-design li a:before, #myTabedu1.tab-review-design li a:before {
     position: absolute;
@@ -1298,7 +1298,7 @@ ul.tab-custon-design li, ul.tab-review-design li {
     height: 2px;
     background: #006DF0;
     content: "";
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 #myTab3.tab-review-design li.active a:before, #myTab4.tab-review-design li.active a:before, #myTabedu1.tab-review-design li.active a:before {
     position: absolute;
@@ -1308,7 +1308,7 @@ ul.tab-custon-design li, ul.tab-review-design li {
     height: 2px;
     background: #006DF0;
     content: "";
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 ul.tab-custon-design li.active a, ul.tab-review-design li.active a {
     color: #006DF0 !important;
@@ -1451,7 +1451,7 @@ ul.tab-custon-design, ul.tab-review-design {
 	color:#fff;
 	padding:5px 10px;
 	border-radius:3px;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 	font-size:14px;
 }
 #single-product-tab .active img{
@@ -1602,7 +1602,7 @@ ul#single-product-tab li{
   width: 150px;
   background: #e12503 none repeat scroll 0 0;
   border-radius: 25px;
-  transition: all .4s ease 0s;
+  transition: all  4s ease 0s;
 }
 .pro-button a, .pro-button a:focus, .list-pro-button a, .list-pro-button a:focus{
   color: #fff;
@@ -2260,7 +2260,7 @@ ul.two-part-sp li{
     background: #006DF0;
     border: none;
     border-radius: 2px;
-    transition: all .4s ease 0s;
+    transition: all  4s ease 0s;
 	outline:none;
 }
 .coment-area textarea {
@@ -2273,7 +2273,7 @@ ul.two-part-sp li{
     padding-right: 40px;
     text-transform: capitalize;
 	position:relative;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .payment-card {
     padding: 20px;
@@ -2445,7 +2445,7 @@ ul.mailbox-list li a, ul.h-list li a {
    padding: 8px 15px;
     display: block;
     font-size: 14px;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 	color:#303030;
 }
 ul.mailbox-list li a:first-child{
@@ -2470,24 +2470,24 @@ ul.mailbox-list li a:first-child{
     font-size: 14px;
     color: #444;
     margin-top: 15px;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .contact-footer, .panel-footer {
     background: #F6F8FA;
 }
 .active-hook .btn-default{
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 	outline:none;
 }
 .active-hook .btn-default:active{
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 	outline:none;
 }
 .active-hook .btn-default:hover, .active-hook .btn-default:active, .active-hook .btn-default:focus{
 	background: #006DF0;
 	color:#fff;
 	border:1px solid #006DF0;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .hpanel.email-compose {
     background: #fff;
@@ -2748,7 +2748,7 @@ td.text-right.mail-date {
     padding: 0;
     width: 22px;
     height: 22px;
-    background: url(img/green1.png) no-repeat;
+    background: url(../scss/template/img/green1.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -3133,11 +3133,11 @@ td.text-right.mail-date {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-transition: all.4s;
-    -moz-transition: all.4s;
-    -ms-transition: all.4s;
-    -o-transition: all.4s;
-    transition: all.4s;
+    -webkit-transition: all 4s;
+    -moz-transition: all 4s;
+    -ms-transition: all 4s;
+    -o-transition: all 4s;
+    transition: all 4s;
 }
 .sp-replacer {
     background-color: #e0e0e0;
@@ -3157,11 +3157,11 @@ td.text-right.mail-date {
     top: 0;
     width: 52px;
     color: rgba(0,0,0,.56);
-    -webkit-transition: color.4s;
-    -moz-transition: color.4s;
-    -ms-transition: color.4s;
-    -o-transition: color.4s;
-    transition: color.4s;
+    -webkit-transition: color 4s;
+    -moz-transition: color 4s;
+    -ms-transition: color 4s;
+    -o-transition: color 4s;
+    transition: color 4s;
 }
 .sp-preview-inner, .sp-alpha-inner, .sp-thumb-inner {
     display: block;
@@ -3337,7 +3337,7 @@ td.text-right.mail-date {
     padding: 10px 30px;
     border-radius: 3px;
     background: #006DF0;
-    transition: all .4s ease 0s;
+    transition: all  4s ease 0s;
 }
 .login-footer a{
 	color:#006DF0;
@@ -3419,7 +3419,7 @@ td.text-right.mail-date {
     padding: 0;
     width: 22px;
     height: 22px;
-    background: url(img/green1.png) no-repeat;
+    background: url(../scss/template/img/green1.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -3789,7 +3789,7 @@ div#sparklinehome canvas {
 }
 .product-buttons button:hover{
 	background:#006DF0;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .single-product-text a, .single-latest-text a{
     color: #444;
@@ -3807,11 +3807,11 @@ div#sparklinehome canvas {
 }
 .single-product-text a:hover, .single-latest-text a:hover{
 	color:#006DF0;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .single-product-text .button-default.cart-btn:hover{
 	background:#006DF0;
-	transition:all .4s ease 0s;
+	transition:all  4s ease 0s;
 }
 .single-latest-image {
     float: left;
@@ -3831,7 +3831,7 @@ div#sparklinehome canvas {
 	background:#86bc42;
 	padding: 5px 10px;
     border-radius: 3px;
-    transition: all .4s ease 0s;
+    transition: all  4s ease 0s;
 	color:#fff;
 	display: inline;
 }
