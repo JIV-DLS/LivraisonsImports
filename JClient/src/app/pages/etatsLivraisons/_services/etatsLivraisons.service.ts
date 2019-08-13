@@ -14,7 +14,7 @@ import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-ha
 })
 export class EtatsLivraisonssService {
   private readonly apiUrl = environment.apiUrl;
-  private etatsLivraisonssUrl = this.apiUrl + '/etatsLivraisonss';
+  private etatsLivraisonssUrl = this.apiUrl + '/etatsLivraisons';
   private handleError: HandleError;
 
   constructor(

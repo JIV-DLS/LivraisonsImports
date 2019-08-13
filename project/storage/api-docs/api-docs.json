@@ -577,14 +577,14 @@
         "/api/builders": {
             "get": {
                 "tags": [
-                    "EtatsLivraisons"
+                    "Builders"
                 ],
-                "summary": "List EtatsLivraisons",
+                "summary": "List Builders",
                 "responses": {
                     "200": {
-                        "description": "Success: List all EtatsLivraisons",
+                        "description": "Success: List all Builders",
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     },
                     "404": {
@@ -594,9 +594,9 @@
             },
             "post": {
                 "tags": [
-                    "EtatsLivraisons"
+                    "Builders"
                 ],
-                "summary": "Create EtatsLivraison",
+                "summary": "Create Builder",
                 "parameters": [
                     {
                         "name": "body",
@@ -604,15 +604,15 @@
                         "description": "Json format",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "Success: A Newly Created EtatsLivraison",
+                        "description": "Success: A Newly Created Builder",
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     },
                     "422": {
@@ -630,23 +630,23 @@
         "/api/builders/{id}": {
             "get": {
                 "tags": [
-                    "EtatsLivraisons"
+                    "Builders"
                 ],
-                "summary": "Get EtatsLivraison by Id",
+                "summary": "Get Builder by Id",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Display the specified EtatsLivraison by id.",
+                        "description": "Display the specified Builder by id.",
                         "required": true,
                         "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success: Return the EtatsLivraison",
+                        "description": "Success: Return the Builder",
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     },
                     "404": {
@@ -659,14 +659,14 @@
             },
             "put": {
                 "tags": [
-                    "EtatsLivraisons"
+                    "Builders"
                 ],
-                "summary": "Update EtatsLivraison",
+                "summary": "Update Builder",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Update the specified EtatsLivraison by id.",
+                        "description": "Update the specified Builder by id.",
                         "required": true,
                         "type": "integer"
                     },
@@ -676,15 +676,15 @@
                         "description": "Json format",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success: Return the EtatsLivraison updated",
+                        "description": "Success: Return the Builder updated",
                         "schema": {
-                            "$ref": "#/definitions/EtatsLivraison"
+                            "$ref": "#/definitions/Builder"
                         }
                     },
                     "422": {
@@ -700,15 +700,15 @@
             },
             "delete": {
                 "tags": [
-                    "EtatsLivraisons"
+                    "Builders"
                 ],
-                "summary": "Delete EtatsLivraison",
-                "description": "Delete the specified EtatsLivraison by id",
+                "summary": "Delete Builder",
+                "description": "Delete the specified Builder by id",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "EtatsLivraison id to delete",
+                        "description": "Builder id to delete",
                         "required": true,
                         "type": "integer",
                         "format": "int64"

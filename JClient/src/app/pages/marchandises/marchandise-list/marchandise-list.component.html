@@ -9,19 +9,27 @@
         <div class="col-md-4" *ngFor="let marchandise of marchandises">
           <div class="card mb-4 box-shadow">
             <div class="card-header">
-              <h4 class="my-0 font-weight-normal">{{ marchandise?.name }}</h4>
+              <h4 class="my-0 font-weight-normal">Marchandise n°{{marchandise?.id}}</h4>
             </div>
             <div class="card-body">
               <p class="mt-3 mb-4">
-                {{ marchandise?.description }}
+                {{ marchandise?.libelle}}
               </p>
-              <button routerLink="/marchandises/{{ marchandise?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">View Bike</button>
+              <button routerLink="/marchandises/{{ marchandise?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Plus de détails</button>
             </div>
             <div class="card-footer text-muted">
               {{ marchandise?.location }}
             </div>
           </div>
         </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Ajouter</h4>
+            </div>
+            <div class="card-body">
+              <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Ajouter une marchandise</button>
+            </div>
+          </div>
       </div>
     </div>
   </div>

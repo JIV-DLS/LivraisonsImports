@@ -7,7 +7,7 @@ import { EtatsLivraisonsListComponent } from './etatsLivraison-list/etatsLivrais
 
 const routes: Routes = [
   {
-    path: 'etatsLivraisonss',
+    path: 'etatsLivraisons',
     children: [
       {
         path: '',

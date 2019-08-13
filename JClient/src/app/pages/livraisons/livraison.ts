@@ -5,6 +5,9 @@ import { EtatsLivraisons } from '../etatsLivraisons/etatsLivraison';
 export class Livraison {
   id: number;
   transit?: Transit;
+  transit_id: number;
+  etats_livraison_id: number;
+  lieux_livraison_id?: number;
   lieuxLivraison?: LieuxLivraison;
   etatsLivraison?: EtatsLivraisons;
   dateLivrDemandeeParBB: Date;
