@@ -9,23 +9,55 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ transit?.name }} </h5>
-              <p class="card-text">{{ transit?.description }} </p>
+              <h5 class="card-title">Transit N°{{ transit?.id }} </h5>
+              <p class="card-text">Contenance:{{ transit?.contenance }} </p>
+              <p class="card-text">Franchise:{{ transit?.franchise }} </p>
+              <p class="card-text">Date d'arrivée:{{ transit?.dateArrivee }} </p>
             </div>
             <div class="card-header">
-              <strong>Featured Bike</strong>:
-            </div>
-            <div class="card-img-top text-md-center">
-              <img src="{{ transit?.bike.picture }}" alt="" srcset="">
+              <strong>Navire</strong>:
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Make: {{ transit?.bike.make }} |
-                <span class="text-secondary">Year: {{ transit?.bike.year}}</span>
+              <li class="list-group-item">Libelle: {{ transit?.navire['libelle'] }} |
+                Conteance Totale: {{ transit?.navire['contenanceTotale']}}
               </li>
-              <li class="list-group-item">Model: {{ transit?.bike.model }} </li>
-              <li class="list-group-item">Mods: {{ transit?.bike.mods }} </li>
               <li class="list-group-item">
-                <a routerLink="/bikes/{{ transit?.bike['id'] }}" routerLinkActive="router-link-active" class="card-link">Bike Details</a>
+                <a routerLink="/navires/{{ transit?.navire['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détails</a>
+              </li>
+            </ul>
+            <div class="card-header">
+              <strong>Marchandise</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Libelle: {{ transit?.marchandise['libelle'] }} 
+              </li>
+              <li class="list-group-item">
+                <a routerLink="/marchandises/{{ transit?.marchandise['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détails</a>
+              </li>
+            </ul>
+            <div class="card-header">
+              <strong>Societe</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Libelle: {{ transit?.societe['libelle'] }} 
+              </li>
+              <li class="list-group-item">
+                <a routerLink="/societes/{{ transit?.societe['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détails</a>
+              </li>
+            </ul>
+            <div class="card-header">
+              <strong>Livraison</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <p class="mt-3 mb-4">
+                Cette livraison 
+                <strong>{{ transit?.livraison['etats_livraison_id']==1? "a été effectuée":"est en attente"  }}</strong>
+                <br>
+                la date de livraison 
+                <strong>                  {{transit?.livraison['etats_livraison_id']==1? "effective est "+transit?.livraison['dateLivrEffectiveBB']:" demandée par la BB est "+transit?.livraison['dateLivrDemandeeParBB']}}                    </strong>
+            </p>
+              <li class="list-group-item">
+                <a routerLink="/livraisons/{{ transit?.livraison['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détails</a>
               </li>
             </ul>
           </div>

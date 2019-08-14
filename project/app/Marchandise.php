@@ -48,7 +48,7 @@ class Marchandise extends Model
      */
     
     public function transit() {
-        return $this->belongsTo('App\Transit');
+        return $this->hasMany('App\Transit');
       }
     
     public function typeMarchandise() {

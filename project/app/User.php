@@ -107,17 +107,17 @@ class User extends Authenticatable implements JWTSubject
 
     public function action()
     {
-      return $this->hasMany('App\Action');
+      return $this->belongsTo('App\Action');
     }
 
     public function profil()
     {
-      return $this->hasOne('App\Profil');
+      return $this->belongsTo('App\Profil');
     }
 
     public function employe()
     {
-      return $this->hasOne('App\Employe');
+      return $this->belongsTo('App\Employe');
     }
 
 }

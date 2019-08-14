@@ -21,7 +21,7 @@ Route::post('login', 'API\AuthController@login');
 Route::post('logout', 'API\AuthController@logout');
 
 Route::apiResources([
-    'users' => 'API\UserController',
+    'users' => 'Auth\UserController',
     'bikes' => 'API\BikeController',
     'builders' => 'API\BuilderController',
     'items' => 'API\ItemController',

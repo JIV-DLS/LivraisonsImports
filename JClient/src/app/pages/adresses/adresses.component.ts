@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-adresses',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adresses.component.scss']
 })
 export class AdressesComponent implements OnInit {
-
+  private titleTagService: Title;
   constructor() { }
 
   ngOnInit() {
+    this.titleTagService.setTitle('adressesJiv');
   }
 
 }

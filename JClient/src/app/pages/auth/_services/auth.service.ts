@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 // App imports
 import { environment } from '../../../../environments/environment';
 import { User } from '../user';
-import { HandleError } from 'src/app/shared/_services/http-handle-error.service';
+import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 // Setup headers
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,12 +24,15 @@ export class AuthService {
   private readonly apiUrl = environment.apiUrl;
   private registerUrl = this.apiUrl + '/register';
   private loginUrl = this.apiUrl + '/login';
-  private userUrl = this.apiUrl + '/user';
+  private userUrl = this.apiUrl + '/users';
   private handleErrors: HandleError;
 
   constructor(
     private http: HttpClient,
-    private router: Router) {}
+    private router: Router,
+    httpErrorHandler: HttpErrorHandler ) {
+      this.handleErrors = httpErrorHandler.createHandleError('AdressesService');
+    }
 
   onRegister(user: User): Observable<User> {
 
@@ -121,10 +124,13 @@ export class AuthService {
   }
 
   /** GET user detail from user-detail endpoint */
-  getuserDetail(id: number): Observable<User[]> {
+  getUserDetail(id: number): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl + `/${id}`)
       .pipe(
-        catchError(this.handleErrors('getuserDetail', []))
+        catchError(
+          // error => this.handleError(error)
+           this.handleErrors('getUserDetail', [])
+        )
       );
   }
 

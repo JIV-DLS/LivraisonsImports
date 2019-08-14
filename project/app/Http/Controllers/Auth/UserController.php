@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-      $this->middleware('auth:api')->except(['index']);
+      //$this->middleware('auth:api')->except(['index']);
     }
 
 
@@ -42,9 +42,10 @@ class UserController extends Controller
      *   )
      * ),
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->user()->profil_id !==1) {
+        // dd(Auth::check());
+        if (Auth::guest()||Auth::user()->profil_id !==1) {
             return response()->json(['error' => 'You are not authorised to do this operation.'], 403);
         }
         $listUsers = User::all();
@@ -84,12 +85,15 @@ class UserController extends Controller
      *   )
      * ),
      */
-    public function show(User $user)
+    public function show($id)
     {
-        if ($request->user()->profil_id !==1 && $request->user()->id !== $user->id) {
-            return response()->json(['error' => 'You can only check your own account.'], 403);
-        }
-        return new UsersResource($user);
+        return (Auth::check())?
+        (Auth::user()->profil_id ==1 || Auth::user()->id == $id)?
+        new UsersResource(User::with('Employe')->findOrFail($id))
+        :
+        response()->json(['error' => 'You can only check your own account.'], 403)
+        :
+        response()->json(['error' => 'Sorry you are not allow to do this operation.'], 403);
     }
 
     /**
@@ -137,7 +141,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'profil_id' => 'required',
             'employe_id' => 'required',
         ]);
@@ -146,6 +150,7 @@ class UserController extends Controller
         }
 
         // check if currently authenticated user is the user owner
+        if(Auth::guest())return response()->json(['error' => 'You are not authorised to do this operation.'], 403);
         if ($request->user()->profil_id !==1 && $request->user()->id !== $user->id) {
             return response()->json(['error' => 'You can only edit your own account.'], 403);
         }
@@ -188,9 +193,9 @@ class UserController extends Controller
      *     ),
      * )
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        if ($request->user()->profil_id !==1) {
+        if (Auth::user()->profil_id !==1) {
             return response()->json(['error' => 'You are not authorised to do this operation.'], 403);
         }
         $deleteUserById = User::find($id)->delete();

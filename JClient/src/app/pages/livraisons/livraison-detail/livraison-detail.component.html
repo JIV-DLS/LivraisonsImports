@@ -36,7 +36,7 @@ Date de livraison effective à la BB: <strong>{{livraison?.dateLivrEffectiveBB}}
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Libelle: {{ livraison?.etatLivraison['libelle'] }} </li>
               <li class="list-group-item">
-                <a routerLink="/etatLivraisons/{{ livraison?.etatLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison avec ce état</a>
+                <a routerLink="/etatsLivraisons/{{ livraison?.etatLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison avec ce état</a>
               </li>
             </ul>
             <div class="card-header">
@@ -45,7 +45,7 @@ Date de livraison effective à la BB: <strong>{{livraison?.dateLivrEffectiveBB}}
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Libelle: {{ livraison?.lieuLivraison['libelle'] }} </li>
               <li class="list-group-item">
-                <a routerLink="/lieuLivraisons/{{ livraison?.lieuLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison ayant été fait à cet lieu</a>
+                <a routerLink="/lieuxLivraisons/{{ livraison?.lieuLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison ayant été fait à cet lieu</a>
               </li>
             </ul>
             <div class="card-header">
