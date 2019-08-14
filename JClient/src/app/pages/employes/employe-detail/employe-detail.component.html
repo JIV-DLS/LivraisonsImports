@@ -22,8 +22,9 @@
               <img src="{{ employe?.bike.picture }}" alt="" srcset="">
             </div> -->
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">rue: {{ employe?.adresse.rue }} |
-                quartier: {{ employe?.adresse.quartier}}
+              <li class="list-group-item">Rue: {{ employe?.adresse['rue'] }} <br>
+                Quartier: {{ employe?.adresse['quartier']}}  <br>
+                Nom d'Utilisateur: {{ employe?.user['name']}} 
               </li>
               <!-- <li class="list-group-item">Model: {{ employe?.bike.model }} </li>
               <li class="list-group-item">Mods: {{ employe?.bike.mods }} </li>-->

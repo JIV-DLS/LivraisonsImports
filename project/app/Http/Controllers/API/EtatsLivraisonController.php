@@ -118,12 +118,12 @@ class EtatsLivraisonController extends Controller
 	 *      )
      * ),
      */
-    public function show(EtatsLivraison $EtatsLivraison)
+    public function show($id)//EtatsLivraison $EtatsLivraison)
     {
-        // $showEtatsLivraisonById = EtatsLivraison::with('EtatsLivraison')->findOrFail($id);
+        // $showEtatsLivraisonById = EtatsLivraison::with('Livraison')->findOrFail($id);
         // return $showEtatsLivraisonById;
 
-        return new EtatsLivraisonsResource($EtatsLivraison);
+        return new EtatsLivraisonsResource(EtatsLivraison::with('Livraison')->findOrFail($id));
     }
 
     /**

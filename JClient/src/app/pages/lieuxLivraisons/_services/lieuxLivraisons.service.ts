@@ -32,7 +32,7 @@ export class LieuxLivraisonsService {
   }
 
   /** GET lieuxLivraison detail from lieuxLivraison-detail endpoint */
-  getLieuxLivraisonDetail (id: number): Observable<LieuxLivraison[]> {
+  getLieuxLivraisonDetail(id: number): Observable<LieuxLivraison[]> {
     return this.http.get<LieuxLivraison[]>(this.lieuxLivraisonsUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('getLieuxLivraisonDetail', []))
@@ -40,7 +40,7 @@ export class LieuxLivraisonsService {
   }
 
   /** POST lieuxLivraison to lieuxLivraisons endpoint */
-  addLieuxLivraison (lieuxLivraison: LieuxLivraison): Observable<LieuxLivraison> {
+  addLieuxLivraison(lieuxLivraison: LieuxLivraison): Observable<LieuxLivraison> {
     return this.http.post<LieuxLivraison>(this.lieuxLivraisonsUrl, lieuxLivraison)
       .pipe(
         catchError(this.handleError('addLieuxLivraison', lieuxLivraison))
@@ -48,7 +48,7 @@ export class LieuxLivraisonsService {
   }
 
   /** PUT lieuxLivraison to lieuxLivraisons endpoint */
-  updateLieuxLivraison (lieuxLivraison: LieuxLivraison, id: number): Observable<LieuxLivraison> {
+  updateLieuxLivraison(lieuxLivraison: LieuxLivraison, id: number): Observable<LieuxLivraison> {
     return this.http.put<LieuxLivraison>(this.lieuxLivraisonsUrl + `/${id}`, lieuxLivraison)
       .pipe(
         catchError(this.handleError('updateLieuxLivraison', lieuxLivraison))
@@ -56,7 +56,7 @@ export class LieuxLivraisonsService {
   }
 
   /** DELETE lieuxLivraison lieuxLivraison endpoint */
-  deleteLieuxLivraison (id: number): Observable<any> {
+  deleteLieuxLivraison(id: number): Observable<any> {
     return this.http.delete<LieuxLivraison[]>(this.lieuxLivraisonsUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('deleteLieuxLivraison'))

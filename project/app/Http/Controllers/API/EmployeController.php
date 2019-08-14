@@ -124,7 +124,7 @@ class EmployeController extends Controller
     {
         // $showEmployeById = Employe::with('Employe')->findOrFail($id);
         // return $showEmployeById;
-        return new EmployesResource(Employe::with('Adresse')->findOrFail($id));
+        return new EmployesResource(Employe::with('Adresse')->with('User')->findOrFail($id));
     }
 
     /**

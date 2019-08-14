@@ -9,23 +9,52 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ livraison?.name }} </h5>
-              <p class="card-text">{{ livraison?.description }} </p>
+              <h5 class="card-title">Livraison N°{{ livraison?.id }} </h5>
+              <!-- <p class="card-text">{{ livraison?.description }} </p> -->
             </div>
             <div class="card-header">
-              <strong>Featured Bike</strong>:
-            </div>
-            <div class="card-img-top text-md-center">
-              <img src="{{ livraison?.bike.picture }}" alt="" srcset="">
+              <strong>Caractéristiques:</strong>:
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Make: {{ livraison?.bike.make }} |
-                <span class="text-secondary">Year: {{ livraison?.bike.year}}</span>
-              </li>
-              <li class="list-group-item">Model: {{ livraison?.bike.model }} </li>
-              <li class="list-group-item">Mods: {{ livraison?.bike.mods }} </li>
               <li class="list-group-item">
-                <a routerLink="/bikes/{{ livraison?.bike['id'] }}" routerLinkActive="router-link-active" class="card-link">Bike Details</a>
+                Libelle: <strong>{{ livraison?.etatLivraison['libelle'] }}</strong> <br>
+                Date de livraison demandée par la BB: <strong>{{livraison?.dateLivrDemandeeParBB}}</strong><br>
+                Date de report après echec Livraison: <strong>{{livraison?.dateReportApresEchecDeLivr}}</strong><br>
+  Date de comfirmation du fournisseur: <strong>{{livraison?.dateComfirmationFournisseur}}</strong><br>
+Date de livraison effective à la BB: <strong>{{livraison?.dateLivrEffectiveBB}}</strong><br>
+  Date de début de stationnement: <strong>{{livraison?.dateDebStationnement}}</strong><br>
+  Date de début de Sures: <strong>{{livraison?.dateDebSures}}</strong><br>
+  Délai entre la date arrivé et la date de livraison: <strong>{{livraison?.delaiDateArrDateLivr}}</strong><br>
+  Nombre de jour de stationnement subi: <strong>{{livraison?.nombreJourDeStationnementSubi}}</strong><br>
+  Nombre de jour de sures subi: <strong>{{livraison?.nombreJourSuresSubi}}</strong><br>
+  commentaires par rapport à la livraison: <strong>{{livraison?.commentaires}}</strong><br>
+               </li>
+            </ul>
+            <div class="card-header">
+              <strong>Etat</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Libelle: {{ livraison?.etatLivraison['libelle'] }} </li>
+              <li class="list-group-item">
+                <a routerLink="/etatLivraisons/{{ livraison?.etatLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison avec ce état</a>
+              </li>
+            </ul>
+            <div class="card-header">
+              <strong>Lieu</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Libelle: {{ livraison?.lieuLivraison['libelle'] }} </li>
+              <li class="list-group-item">
+                <a routerLink="/lieuLivraisons/{{ livraison?.lieuLivraison['id'] }}" routerLinkActive="router-link-active" class="card-link">autres livraison ayant été fait à cet lieu</a>
+              </li>
+            </ul>
+            <div class="card-header">
+              <strong>Transit Concerné</strong>:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Contenance: {{ livraison?.transit['contenance'] }} </li>
+              <li class="list-group-item">
+                <a routerLink="/transits/{{ livraison?.transit['id'] }}" routerLinkActive="router-link-active" class="card-link">voir le transit concerné</a>
               </li>
             </ul>
           </div>

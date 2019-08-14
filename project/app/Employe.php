@@ -66,6 +66,7 @@ class Employe extends Model
       }
     public function adresse() {
       // dd($this->hasOne('App\Adresse'));
+      // dd($this->belongsTo('App\Adresse'));
       return $this->belongsTo('App\Adresse');
     }
 }

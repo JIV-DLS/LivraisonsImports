@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use Validator;
 use App\Http\Resources\Auth\UsersResource;
@@ -149,8 +150,9 @@ class UserController extends Controller
             return response()->json(['error' => 'You can only edit your own account.'], 403);
         }
 
+        $request['password']= Hash::make($request['password']);
         if($user->profil_id !==1)
-        $user->update($request->only(['make', 'model', 'year', 'mods', 'picture']));
+        $user->update($request->only(['email', 'name', 'password']));
         else
         $user->update($request->all());
 

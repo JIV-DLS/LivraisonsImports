@@ -8,8 +8,8 @@ export class Livraison {
   transit_id: number;
   etats_livraison_id: number;
   lieux_livraison_id?: number;
-  lieuxLivraison?: LieuxLivraison;
-  etatsLivraison?: EtatsLivraisons;
+  lieuLivraison?: LieuxLivraison;
+  etatLivraison?: EtatsLivraisons;
   dateLivrDemandeeParBB: Date;
   dateReportApresEchecDeLivr: Date;
   dateComfirmationFournisseur: Date;

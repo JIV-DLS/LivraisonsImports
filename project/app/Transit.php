@@ -76,7 +76,7 @@ class Transit extends Model
      */
     
     public function livraison() {
-        return $this->hasMany('App\Livraison');
+        return $this->hasOne('App\Livraison');
       }
     
     public function societe() {

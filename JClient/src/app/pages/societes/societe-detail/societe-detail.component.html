@@ -1,36 +1,62 @@
 <main role="main">
-  <div class="py-5">
-    <div class="container">
-      <div *ngIf="isLoading" class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-      </div>
-      <div class="row" *ngIf="!isLoading">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{ societe?.name }} </h5>
-              <p class="card-text">{{ societe?.description }} </p>
+    <div class="py-5">
+      <div class="container">
+        <div *ngIf="isLoading" class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+        <div class="row" *ngIf="!isLoading">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Société N°{{ societe?.id }} </h5>
+                <p class="card-text">Libelle: {{ societe?.libelle }} </p>
+              </div>
+              <div class="card-header">
+                <strong>Adresse de la société</strong>:
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Rue: {{ societe?.adresse['rue'] }} <br>
+                  Quartier: {{ societe?.adresse['quartier']}}  <br>
+                </li>
+                <li class="list-group-item">
+                  <a routerLink="/bikes/{{ societe?.adresse['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détail sur l'adresse</a>
+                </li>
+              </ul>
+              <div class="card-header">
+                <strong>Transits</strong>:
+              </div>
+              <div class="py-5 bg-light">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4" *ngFor="let transit of societe?.transits">
+                        <div class="card mb-4 box-shadow">
+                          <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Transit n°{{ transit['id'] }}</h4>
+                          </div>
+                          <div class="card-body">
+                            <p class="mt-3 mb-4">
+                              {{ transit['dateArrivee'] }}
+                            </p>
+                            <button routerLink="/transits/{{ transit['id'] }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Plus de détails</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mb-4 box-shadow">
+                          <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Ajouter</h4>
+                          </div>
+                          <div class="card-body">
+                            <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Ajouter un transit</button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
             </div>
-            <div class="card-header">
-              <strong>Featured Bike</strong>:
-            </div>
-            <div class="card-img-top text-md-center">
-              <img src="{{ societe?.bike.picture }}" alt="" srcset="">
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Make: {{ societe?.bike.make }} |
-                <span class="text-secondary">Year: {{ societe?.bike.year}}</span>
-              </li>
-              <li class="list-group-item">Model: {{ societe?.bike.model }} </li>
-              <li class="list-group-item">Mods: {{ societe?.bike.mods }} </li>
-              <li class="list-group-item">
-                <a routerLink="/bikes/{{ societe?.bike['id'] }}" routerLinkActive="router-link-active" class="card-link">Bike Details</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+  
