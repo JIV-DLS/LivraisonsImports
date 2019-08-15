@@ -1,5 +1,8 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
-
+// ,
+//               {
+//                 "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+//               }
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
 import {
