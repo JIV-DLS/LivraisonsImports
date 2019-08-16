@@ -7,9 +7,36 @@ use App\Http\Controllers\Controller;
 use App\Adresse;
 use Validator;
 use App\Http\Resources\AdressesResource;
+use Illuminate\Support\Facades\DB;
 
 class AdresseController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/api/adressesNotRelated",
+     *     tags={"Adresses"},
+     *     summary="List Adresses with have'nt related",
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Success: List all Adresses which are not related",
+     *          @SWG\Schema(ref="#/definitions/Adresse")
+     *      ),
+     *     @SWG\Response(
+     *          response="404",
+     *          description="Not Found"
+     *   )
+     * ),
+     */
+    public function allNotRelated()
+    {
+        $listAdresse = DB::select("SELECT  adresses.id,adresses.rue,adresses.quartier,adresses.quartier,adresses.arrondissement,adresses.ville,adresses.pays,adresses.region  FROM    adresses LEFT JOIN employes t1 ON      t1.adresse_id = adresses.id LEFT JOIN societes t2 ON      t2.adresse_id = adresses.id WHERE   t1.adresse_id IS NULL AND t2.adresse_id IS NULL ");
+        //dd(DB::select("SELECT  *  FROM    adresses LEFT JOIN employes t1 ON      t1.adresse_id = adresses.id LEFT JOIN societes t2 ON      t2.adresse_id = adresses.id WHERE   t1.adresse_id IS NULL AND t2.adresse_id IS NULL "));
+        return $listAdresse;
+    }
     /**
      * Display a listing of the resource.
      *

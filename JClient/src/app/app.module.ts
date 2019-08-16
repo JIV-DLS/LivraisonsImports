@@ -32,13 +32,15 @@ import { AppHttpInterceptorService } from './shared/_services/app-http-intercept
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AsideComponent } from './layout/aside/aside.component';
+import { EmployeAddComponent } from './employes/employe-add/employe-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    AsideComponent
+    AsideComponent,
+    EmployeAddComponent
   ],
   imports: [
     BrowserModule,

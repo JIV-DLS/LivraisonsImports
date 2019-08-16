@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // App imports
 import { Adresse } from './../adresse';
 import { AdressesService } from '../_services/adresses.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-adresse-list',
@@ -14,7 +15,7 @@ export class AdresseListComponent implements OnInit {
     adresses: Adresse[];
     isLoading: Boolean = false;
 
-  constructor(private adresseService: AdressesService) { }
+  constructor(private adresseService: AdressesService, private titleTagService: Title) { }
 
   ngOnInit() {
     // Get adresse detail
@@ -27,6 +28,10 @@ export class AdresseListComponent implements OnInit {
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));
+  }
+
+  public setTitle( pageTitle: string) {
+    this.titleTagService.setTitle( pageTitle );
   }
 
   protected handleResponse(response: Adresse[]) {

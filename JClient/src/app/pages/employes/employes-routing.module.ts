@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Employe Routes Imports
 import { EmployeDetailComponent } from './employe-detail/employe-detail.component';
 import { EmployeListComponent } from './employe-list/employe-list.component';
+import { EmployeAddComponent } from './employe-add/employe-add.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,15 @@ const routes: Routes = [
       {
         path: ':id',
         component: EmployeDetailComponent
+      }
+    ]
+  },
+  {
+    path: 'employesAdd',
+    children: [
+      {
+        path: '',
+        component: EmployeAddComponent
       }
     ]
   }

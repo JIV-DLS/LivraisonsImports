@@ -13,7 +13,6 @@ export class EmployeListComponent implements OnInit {
     // Using Employe Model class
     employes: Employe[];
     isLoading: Boolean = false;
-
   constructor(private employeService: EmployesService) { }
 
   ngOnInit() {
@@ -28,7 +27,7 @@ export class EmployeListComponent implements OnInit {
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
-
+  
   protected handleResponse(response: Employe[]) {
     this.isLoading = false,
     this.employes = response;

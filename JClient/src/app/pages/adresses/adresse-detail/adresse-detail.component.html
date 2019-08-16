@@ -1,5 +1,133 @@
 <main role="main">
-  <div class="py-5">
+    <div class="single-pro-review-area mt-t-30 mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                        <ul id="myTabedu1" class="tab-review-design">
+                            <li [ngClass]="one? 'active':''"><a (click)="changeBoard('1')" href="/adresses/{{adresse?.id}}#details">Détails</a></li>
+                            <li [ngClass]="two? 'active':''"><a (click)="changeBoard('2')" href="/adresses/{{adresse?.id}}#proprietaire"> {{adresse?.employe? "Employe":"Societe"}}</a></li>
+                            <li [ngClass]="tree? 'active':''"><a (click)="changeBoard('3')" href="/adresses/{{adresse?.id}}#adresse">Mettre à jour l'adresse</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
+                            <div *ngIf="one" class="product-tab-list tab-pane fade active in" id="description">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Rue</b><br> {{adresse?.rue}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Quartier</b><br>{{adresse?.quartier}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Arrondissement</b><br> {{adresse?.arrondissement}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Ville</b><br> {{adresse?.ville}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Pays</b><br> {{adresse?.pays}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                    <div class="address-hr biography">
+                                                        <p><b>Région</b><br> {{adresse?.region}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+ 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="two" class="product-tab-list " id="reviews">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="chat-discussion" style="height: auto">
+                                                 
+              <li class="list-group-item">Type: {{ adresse?.employe? "Employé":"Société" }}
+                 
+                </li>
+                <div *ngIf="adresse?.employe">
+                    <li class="list-group-item">Nom: {{ adresse?.employe['nom'] }} |
+                        Prenom: {{ adresse?.employe['prenom']}}
+                      </li>
+                    <li class="list-group-item">
+                        <a routerLink="/employes/{{ adresse?.employe['id'] }}" routerLinkActive="router-link-active" class="card-link">Voir l'employé associé</a>
+                    </li>
+                      </div>
+                <div *ngIf="!adresse?.employe">
+                    <li class="list-group-item">Libellé: {{ adresse?.societe['libelle'] }} </li>
+                    <li class="list-group-item">
+                        <a routerLink="/societes/{{ adresse?.societe['id'] }}" routerLinkActive="router-link-active" class="card-link">Voir la societe associée</a>
+                    </li>
+                      </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="tree" class="product-tab-list " id="INFORMATION">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input name="rue" type="text" class="form-control" value="{{adresse?.rue}}" placeholder="{{adresse?.rue}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="arrondissement" type="text" class="form-control" value="{{adresse?.arrondissement}}" placeholder="{{adresse?.arrondissement}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="quartier" type="text" class="form-control" value="{{adresse?.quartier}}" placeholder="{{adresse?.quartier}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                  
+                                                    <div class="form-group">
+                                                        <input name="ville" type="text" class="form-control" value="{{adresse?.ville}}" placeholder="{{adresse?.ville}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="region" type="text" class="form-control" value="{{adresse?.region}}" placeholder="{{adresse?.region}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input name="pays" type="text" class="form-control" value="{{adresse?.pays}}" placeholder="{{adresse?.pays}}">
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="payment-adress mg-t-15">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- <div class="py-5">
     <div class="container">
       <div *ngIf="isLoading" class="spinner">
         <div class="double-bounce1"></div>
@@ -20,14 +148,10 @@
             <div class="card-header">
               <strong>Propriétaire</strong>:
             </div>
-            <!-- <div class="card-img-top text-md-center">
-              <img src="{{ adresse?.bike.picture }}" alt="" srcset="">
-            </div> -->
             <ul class="list-group list-group-flush">
                 
               <li class="list-group-item">Type: {{ adresse?.employe? "Employé":"Société" }}
-                 <!-- |
-                <span class="text-secondary">Year: {{ adresse?.bike.year}}</span> -->
+                 
               </li>
               <div *ngIf="adresse?.employe">
                   <li class="list-group-item">Nom: {{ adresse?.employe['nom'] }} |
@@ -48,5 +172,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </main>

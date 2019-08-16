@@ -8,9 +8,9 @@
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li>
-                        <a class="has-arrow" href="index.html">
+                        <a class="has-arrow" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('Adresses')">
                                <span class="educate-icon educate-home icon-wrap"></span>
-                               <span class="mini-click-non">Education</span>
+                               <span class="mini-click-non">Adresses</span>
                             </a>
                         <ul class="submenu-angle collapse" aria-expanded="true">
                             <li><a title="Dashboard v.1" href="index.html"><span class="mini-sub-pro">Dashboard v.1</span></a></li>
@@ -60,11 +60,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
+                        <a class="has-arrow" [routerLink]="['/employes']" routerLinkActive="active" (click)="setTitle('Adresses')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Employes</span></a>
                         <ul class="submenu-angle collapse" aria-expanded="false">
-                            <li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Departments List</span></a></li>
-                            <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Departments</span></a></li>
-                            <li><a title="Edit Departments" href="edit-department.html"><span class="mini-sub-pro">Edit Departments</span></a></li>
+                            <li><a title="List des Adresses" [routerLink]="['/employes']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Liste des employes</span></a></li>
+                            <li><a title="Ajouter une Adresse" [routerLink]="['/employes/add']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Ajouter une adresse</span></a></li>
+                            <li><a title="Modifier une Adresse" [routerLink]="['/employes/edit']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Modifier une adresse</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('Adresses')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Adresses</span></a>
+                        <ul class="submenu-angle collapse" aria-expanded="false">
+                            <li><a title="List des Adresses" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Liste des adresses</span></a></li>
+                            <li><a title="Ajouter une Adresse" [routerLink]="['/adresses/add']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Ajouter une adresse</span></a></li>
+                            <li><a title="Modifier une Adresse" [routerLink]="['/adresses/edit']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Modifier une adresse</span></a></li>
                         </ul>
                     </li>
                     <li>

@@ -1,5 +1,28 @@
 <main role="main">
-  <div class="py-5 bg-light">
+    <div class="contacts-area mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div *ngIf="isLoading" class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                  </div>
+                <div *ngFor="let employe of employes" class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="student-inner-std res-mg-b-30">
+                        <div class="student-img">
+                            <img src="assets/img/defaultUser.jpg" alt="">
+                        </div>
+                        <div class="student-dtl">
+                            <h2>{{employe?.nom}} {{employe?.prenom}}</h2>
+                            <p class="dp">{{employe?.dateNaiss}}</p>
+                            <!-- <p class="dp-ag"><b>Age:</b> 20 Years</p> -->
+                        </div>
+                        <button routerLink="/employes/{{ employe?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">plus de détails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- <div class="py-5 bg-light">
     <div class="container">
       <div *ngIf="isLoading" class="spinner">
         <div class="double-bounce1"></div>
@@ -37,5 +60,5 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </main>

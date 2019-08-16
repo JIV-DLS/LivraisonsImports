@@ -14,4 +14,7 @@ export class AdressesComponent implements OnInit {
     this.titleTagService.setTitle('adressesJiv');
   }
 
+  public setTitle( pageTitle: string) {
+    this.titleTagService.setTitle( pageTitle );
+  }
 }

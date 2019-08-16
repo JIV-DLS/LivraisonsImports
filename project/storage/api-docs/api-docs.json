@@ -167,6 +167,25 @@
                 }
             }
         },
+        "/api/adressesNotRelated": {
+            "get": {
+                "tags": [
+                    "Adresses"
+                ],
+                "summary": "List Adresses with have'nt related",
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Adresses which are not related",
+                        "schema": {
+                            "$ref": "#/definitions/Adresse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/api/adresses": {
             "get": {
                 "tags": [

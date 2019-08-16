@@ -1,5 +1,157 @@
 <main role="main">
-  <div class="py-5">
+    <main role="main">
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div *ngIf="isLoading" class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                      </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="profile-info-inner">
+                            <div class="profile-img">
+                                <img src="assets/img/defaultUser.jpg" alt="">
+                            </div>
+                            <div class="profile-details-hr">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                        <div class="address-hr">
+                                            <p><b>Name</b><br> {{employe?.nom}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                        <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                            <p><b>prenom</b><br> {{employe?.prenom}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                        <div class="address-hr">
+                                            <p><b>Date de naissance</b><br>{{employe?.dateNaiss}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li [ngClass]="one? 'active':''"><a (click)="changeBoard('1')" href="/employes/{{employe?.id}}#details">Détails</a></li>
+                                <li [ngClass]="two? 'active':''"><a (click)="changeBoard('2')" href="/employes/{{employe?.id}}#employes"> Adresse</a></li>
+                                <li [ngClass]="tree? 'active':''"><a (click)="changeBoard('3')" href="/employes/{{employe?.id}}#user"> User</a></li>
+                                <li [ngClass]="four? 'active':''"><a (click)="changeBoard('4')" href="/employes/{{employe?.id}}#employes">Mettre à jour l'employe</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
+                                <div *ngIf="one" class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                        <div class="address-hr biography">
+                                                            <p><b>Nom</b><br> {{employe?.nom}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                        <div class="address-hr biography">
+                                                            <p><b>Prenom</b><br>{{employe?.prenom}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                        <div class="address-hr biography">
+                                                            <p><b>Date de naissance</b><br> {{employe?.dateNaiss}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+     
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="two" class="product-tab-list " id="reviews">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="chat-discussion" style="height: auto">
+                                                     
+                                                    <li class="list-group-item">Rue: {{ employe?.adresse['rue'] }} <br>
+                                                      Quartier: {{ employe?.adresse['quartier']}}  <br>
+                                                    </li>
+                                                    <li class="list-group-item"> 
+                                                      <a routerLink="/adresses/{{ employe?.adresse['id'] }}" routerLinkActive="router-link-active" class="card-link">Détail de l'employé</a>
+                                                      
+                                                    </li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tree" class="product-tab-list " id="reviews">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="chat-discussion" style="height: auto">
+                                                     
+                                                    <li class="list-group-item">
+                                                      Nom d'Utilisateur: {{ employe?.user['name']}} 
+                                                    </li>
+                                                    <li class="list-group-item">  <a routerLink="/users/{{ employe?.user['id'] }}" routerLinkActive="router-link-active" class="card-link">Utilisateur</a>
+                                                    </li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="four" class="product-tab-list " id="INFORMATION">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                              <form (ngSubmit)="onSubmit(employeUpdateForm)" #employeUpdateForm="ngForm" name=employeUpdateForm>
+                                                  <div class="row">
+                                                      <div class="col-lg-6">
+                                                          <div class="form-group">
+                                                              <input name="nom" [(ngModel)]="employe.nom" type="text" class="form-control" value="{{employe?.nom}}" placeholder="{{employe?.nom}}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                              <input name="prenom" [(ngModel)]="employe.prenom" type="text" class="form-control" value="{{employe?.prenom}}" placeholder="{{employe?.prenom}}">
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-lg-6">
+                                                        
+                                                          <div class="form-group">
+                                                              <input name="dateNaiss" [(ngModel)]="employe.dateNaiss" type="date" class="form-control" value="{{employe?.dateNaiss}}" placeholder="{{employe?.dateNaiss}}">
+                                                          </div>
+                                                          <div class="form-group">
+                                                              <label for="inputState">Adresse</label>
+                                                              <select [(ngModel)]="employe.adresse.id" name="adresse_id" class="form-control">
+                                                                <option *ngFor="let adresse of adresses" [(ngValue)]="adresse.id">{{adresse.rue}}|{{adresse.arrondissement}}|{{adresse.quartier}}</option>
+                                                              </select>
+                                                            </div>
+                                                        </div>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-lg-12">
+                                                          <div class="payment-adress mg-t-15">
+                                                              <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <!-- <div class="py-5">
     <div class="container">
       <div *ngIf="isLoading" class="spinner">
         <div class="double-bounce1"></div>
@@ -18,18 +170,13 @@
             <div class="card-header">
               <strong>Adresse associée</strong>:
             </div>
-            <!-- <div class="card-img-top text-md-center">
-              <img src="{{ employe?.bike.picture }}" alt="" srcset="">
-            </div> -->
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Rue: {{ employe?.adresse['rue'] }} <br>
-                Quartier: {{ employe?.adresse['quartier']}}  <br>
+              <li class="list-group-item">Rue: {{ employe?.employes['rue'] }} <br>
+                Quartier: {{ employe?.employes['quartier']}}  <br>
                 Nom d'Utilisateur: {{ employe?.user['name']}} 
               </li>
-              <!-- <li class="list-group-item">Model: {{ employe?.bike.model }} </li>
-              <li class="list-group-item">Mods: {{ employe?.bike.mods }} </li>-->
               <li class="list-group-item"> 
-                <a routerLink="/adresses/{{ employe?.adresse['id'] }}" routerLinkActive="router-link-active" class="card-link">Détail de l'adresse</a>
+                <a routerLink="/employes/{{ employe?.employes['id'] }}" routerLinkActive="router-link-active" class="card-link">Détail de l'employes</a>
                  | <a routerLink="/users/{{ employe?.user['id'] }}" routerLinkActive="router-link-active" class="card-link">Utilisateur</a>
               </li>
             </ul>
@@ -37,5 +184,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </main>

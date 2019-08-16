@@ -30,6 +30,12 @@ export class AdressesService {
         catchError(this.handleError('getAdresses', []))
       );
   }
+  getAdressesNotRelated (): Observable<Adresse[]> {
+    return this.http.get<Adresse[]>(this.apiUrl + '/adressesNotRelated')
+      .pipe(
+        catchError(this.handleError('getAdresses', []))
+      );
+  }
 
   /** GET adresse detail from adresse-detail endpoint */
   getAdresseDetail (id: number): Observable<Adresse[]> {

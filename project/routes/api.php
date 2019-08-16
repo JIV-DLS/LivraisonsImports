@@ -19,6 +19,7 @@ use App\Http\Resources\BikesResource;
 Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login');
 Route::post('logout', 'API\AuthController@logout');
+Route::get('adressesNotRelated', 'API\AdresseController@allNotRelated');
 
 Route::apiResources([
     'users' => 'Auth\UserController',
