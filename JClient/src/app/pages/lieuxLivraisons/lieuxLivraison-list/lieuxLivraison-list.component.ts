@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 // App imports
 import { LieuxLivraison } from './../lieuxLivraison';
 import { LieuxLivraisonsService } from '../_services/lieuxLivraisons.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-lieuxlivraison-list',
+  selector: 'app-lieuxLivraison-list',
   templateUrl: './lieuxLivraison-list.component.html',
   styleUrls: ['./lieuxLivraison-list.component.scss']
 })
@@ -13,8 +14,8 @@ export class LieuxLivraisonListComponent implements OnInit {
     // Using LieuxLivraison Model class
     lieuxLivraisons: LieuxLivraison[];
     isLoading: Boolean = false;
-
-  constructor(private lieuxLivraisonService: LieuxLivraisonsService) { }
+ 
+  constructor(private lieuxLivraisonService: LieuxLivraisonsService,private router: Router) { }
 
   ngOnInit() {
     // Get lieuxLivraison detail

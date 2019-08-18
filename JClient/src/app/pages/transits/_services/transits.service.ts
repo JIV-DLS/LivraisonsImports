@@ -30,6 +30,13 @@ export class TransitsService {
         catchError(this.handleError('getTransits', []))
       );
   }
+  /** GET transits from transits which are not related endpoint */
+  getTransitsNotRelated (): Observable<Transit[]> {
+    return this.http.get<Transit[]>(this.apiUrl + '/transitsNotRelated')
+      .pipe(
+        catchError(this.handleError('getTransits', []))
+      );
+  }
 
   /** GET transit detail from transit-detail endpoint */
   getTransitDetail (id: number): Observable<Transit[]> {

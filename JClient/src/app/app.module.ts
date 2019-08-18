@@ -33,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { EmployeAddComponent } from './employes/employe-add/employe-add.component';
+import { LivraisonListComponent } from './pages/livraisons/livraison-list/livraison-list.component';
 
 @NgModule({
   declarations: [

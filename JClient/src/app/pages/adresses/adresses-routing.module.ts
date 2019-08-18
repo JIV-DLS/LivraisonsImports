@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Adresse Routes Imports
 import { AdresseDetailComponent } from './adresse-detail/adresse-detail.component';
 import { AdresseListComponent } from './adresse-list/adresse-list.component';
+import { AdresseAddComponent } from './adresse-add/adresse-add.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,15 @@ const routes: Routes = [
       {
         path: ':id',
         component: AdresseDetailComponent
+      }
+    ]
+  },
+  {
+    path: 'adressesAdd',
+    children: [
+      {
+        path: '',
+        component: AdresseAddComponent
       }
     ]
   }

@@ -27,7 +27,7 @@ class CreateLivraisonsTable extends Migration
             $table->dateTime('dateLivrEffectiveBB');
             $table->dateTime('dateDebStationnement');
             $table->dateTime('dateDebSures');
-            $table->dateTime('delaiDateArrDateLivr');
+            $table->integer('delaiDateArrDateLivr');
             $table->timestamps();
         });
     }

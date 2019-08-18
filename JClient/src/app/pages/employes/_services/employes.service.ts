@@ -30,6 +30,12 @@ export class EmployesService {
         catchError(this.handleError('getEmployes', []))
       );
   }
+  getEmployesNotRelated (): Observable<Employe[]> {
+    return this.http.get<Employe[]>(this.apiUrl + '/employesNotRelated')
+      .pipe(
+        catchError(this.handleError('getEmployes', []))
+      );
+  }
 
   /** GET employe detail from employe-detail endpoint */
   getEmployeDetail (id: number): Observable<Employe[]> {

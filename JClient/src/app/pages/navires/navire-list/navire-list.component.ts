@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // App imports
 import { Navire } from './../navire';
 import { NaviresService } from '../_services/navires.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navire-list',
@@ -13,8 +14,8 @@ export class NavireListComponent implements OnInit {
     // Using Navire Model class
     navires: Navire[];
     isLoading: Boolean = false;
-
-  constructor(private navireService: NaviresService) { }
+ 
+  constructor(private navireService: NaviresService,private router: Router) { }
 
   ngOnInit() {
     // Get navire detail

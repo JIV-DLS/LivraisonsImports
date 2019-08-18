@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // LieuxLivraison Routes Imports
 import { LieuxLivraisonDetailComponent } from './lieuxLivraison-detail/lieuxLivraison-detail.component';
 import { LieuxLivraisonListComponent } from './lieuxLivraison-list/lieuxLivraison-list.component';
+import { LieuxLivraisonAddComponent } from './lieux-livraison-add/lieux-livraison-add.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,15 @@ const routes: Routes = [
       {
         path: ':id',
         component: LieuxLivraisonDetailComponent
+      }
+    ]
+  },
+  {
+    path: 'lieuxLivraisonsAdd',
+    children: [
+      {
+        path: '',
+        component: LieuxLivraisonAddComponent
       }
     ]
   }

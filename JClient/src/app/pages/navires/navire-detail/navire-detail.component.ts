@@ -14,7 +14,31 @@ export class NavireDetailComponent implements OnInit {
 
   navire: Navire;
   isLoading: Boolean = false;
+  one:Boolean = true;
+  two:Boolean = false;
+  tree:Boolean = false;
 
+  changeBoard( boardTitle: string ):void
+  {
+    switch(boardTitle)
+    {
+      case "1":
+        this.one=true;
+        this.two=false;
+        this.tree=false;
+        break;
+      case "2":
+        this.one=false;
+        this.two=true;
+        this.tree=false;
+        break;
+      case "3":
+        this.one=false;
+        this.two=false;
+        this.tree=true;
+        break;
+    }
+  }
   constructor(
     private naviresService: NaviresService,
     private route: ActivatedRoute) { }
@@ -22,6 +46,18 @@ export class NavireDetailComponent implements OnInit {
   ngOnInit() {
     // Get navire detail
     this.getNavireDetail();
+  }
+
+  onSubmit(navire) {
+    this.isLoading = true;
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.naviresService.updateNavire(navire.value, id )
+      .subscribe(response => {
+        this.navire = response['data'];
+        
+        this.isLoading = false;
+      });
+      console.log(navire);
   }
 
   getNavireDetail(): void {

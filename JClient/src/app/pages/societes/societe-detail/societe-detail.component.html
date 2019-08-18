@@ -1,5 +1,147 @@
-<main role="main">
-    <div class="py-5">
+  <main role="main">
+      <main role="main">
+          <div class="single-pro-review-area mt-t-30 mg-b-15">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div *ngIf="isLoading" class="spinner">
+                          <div class="double-bounce1"></div>
+                          <div class="double-bounce2"></div>
+                        </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div class="profile-info-inner">
+                              <div class="profile-img">
+                                  <img src="assets/img/defaultSociety.jpg" alt="">
+                              </div>
+                              <div class="profile-details-hr">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                          <div class="address-hr">
+                                              <p><b>Libelle</b><br> {{societe?.libelle}}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                          <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                              <ul id="myTabedu1" class="tab-review-design">
+                                  <li [ngClass]="one? 'active':''"><a (click)="changeBoard('1')" >Détails</a></li>
+                                  <li [ngClass]="two? 'active':''"><a (click)="changeBoard('2')" >Adresse</a></li>
+                                  <li [ngClass]="tree? 'active':''"><a (click)="changeBoard('3')" >Transits</a></li>
+                                  <li [ngClass]="four? 'active':''"><a (click)="changeBoard('4')" >Mettre à jour la societe</a></li>
+                              </ul>
+                              <div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
+                                  <div *ngIf="one" class="product-tab-list tab-pane fade active in" id="description">
+                                      <div class="row">
+                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <div class="review-content-section">
+                                                  <div class="row">
+                                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                          <div class="address-hr biography">
+                                                              <p><b>Libelle</b><br> {{societe?.libelle}}</p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                 
+       
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div *ngIf="two" class="product-tab-list " id="reviews">
+                                      <div class="row">
+                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <div class="review-content-section">
+                                                  <div class="chat-discussion" style="height: auto">
+                                                      <li class="list-group-item">Rue: {{ societe?.adresse['rue'] }} <br>
+                                                        Quartier: {{ societe?.adresse['quartier']}}  <br>
+                                                      </li>
+                                                      <li class="list-group-item">
+                                                        <a routerLink="/adresses/{{ societe?.adresse['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détail sur l'adresse</a>
+                                                      </li>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div *ngIf="tree" class="product-tab-list " id="reviews">
+                                      <div class="row">
+                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <div class="review-content-section">
+                                                  <div class="chat-discussion" style="height: auto">
+                                                      <div class="py-5 bg-light">
+                                                          <div class="container">
+                                                            <div class="row">
+                                                              <div class="col-md-4" *ngFor="let transit of societe?.transits">
+                                                                <div class="card mb-4 box-shadow">
+                                                                  <div class="card-header">
+                                                                    <h4 class="my-0 font-weight-normal">Transit n°{{ transit['id'] }}</h4>
+                                                                  </div>
+                                                                  <div class="card-body">
+                                                                    <p class="mt-3 mb-4">
+                                                                      {{ transit['dateArrivee'] }}
+                                                                    </p>
+                                                                    <button routerLink="/transits/{{ transit['id'] }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Plus de détails</button>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="card mb-4 box-shadow">
+                                                                  <div class="card-header">
+                                                                    <h4 class="my-0 font-weight-normal">Ajouter</h4>
+                                                                  </div>
+                                                                  <div class="card-body">
+                                                                    <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Ajouter un transit</button>
+                                                                  </div>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div *ngIf="four" class="product-tab-list " id="INFORMATION">
+                                      <div class="row">
+                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <div class="review-content-section">
+                                                <form (ngSubmit)="onSubmit(societeUpdateForm)" #societeUpdateForm="ngForm" name=societeUpdateForm>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <input name="libelle" [(ngModel)]="societe.libelle" type="text" class="form-control" value="{{societe?.libelle}}" placeholder="{{societe?.libelle}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label for="inputState">Adresse</label>
+                                                                <select [(ngModel)]="societe.adresse.id" name="adresse_id" class="form-control">
+                                                                  <option *ngFor="let adresse of adresses" [(ngValue)]="adresse.id">{{adresse.rue}}|{{adresse.arrondissement}}|{{adresse.quartier}}</option>
+                                                                </select>
+                                                              </div>
+                                                          </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="payment-adress mg-t-15">
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                  
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    <!-- <div class="py-5">
       <div class="container">
         <div *ngIf="isLoading" class="spinner">
           <div class="double-bounce1"></div>
@@ -9,54 +151,29 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Société N°{{ societe?.id }} </h5>
-                <p class="card-text">Libelle: {{ societe?.libelle }} </p>
+                <h5 class="card-title">{{ societe?.id }} </h5>
+                <p class="card-text">Nom: {{ societe?.nom}} <br>
+                  Prenom: {{ societe?.prenom}} <br>
+                  Date de naissance: {{ societe?.dateNaiss}} <br>
+                 </p>
               </div>
               <div class="card-header">
-                <strong>Adresse de la société</strong>:
+                <strong>Adresse associée</strong>:
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Rue: {{ societe?.adresse['rue'] }} <br>
-                  Quartier: {{ societe?.adresse['quartier']}}  <br>
+                <li class="list-group-item">Rue: {{ societe?.societes['rue'] }} <br>
+                  Quartier: {{ societe?.societes['quartier']}}  <br>
+                  Nom d'Utilisateur: {{ societe?.user['name']}} 
                 </li>
-                <li class="list-group-item">
-                  <a routerLink="/adresses/{{ societe?.adresse['id'] }}" routerLinkActive="router-link-active" class="card-link">Plus de détail sur l'adresse</a>
+                <li class="list-group-item"> 
+                  <a routerLink="/societes/{{ societe?.societes['id'] }}" routerLinkActive="router-link-active" class="card-link">Détail de l'societes</a>
+                   | <a routerLink="/users/{{ societe?.user['id'] }}" routerLinkActive="router-link-active" class="card-link">Utilisateur</a>
                 </li>
               </ul>
-              <div class="card-header">
-                <strong>Transits</strong>:
-              </div>
-              <div class="py-5 bg-light">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-4" *ngFor="let transit of societe?.transits">
-                        <div class="card mb-4 box-shadow">
-                          <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Transit n°{{ transit['id'] }}</h4>
-                          </div>
-                          <div class="card-body">
-                            <p class="mt-3 mb-4">
-                              {{ transit['dateArrivee'] }}
-                            </p>
-                            <button routerLink="/transits/{{ transit['id'] }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Plus de détails</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card mb-4 box-shadow">
-                          <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Ajouter</h4>
-                          </div>
-                          <div class="card-body">
-                            <button routerLink="/adresses/{{ adresse?.id }}" type="button" class="btn btn-lg btn-block btn-outline-primary">Ajouter un transit</button>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </main>
   

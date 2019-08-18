@@ -7,7 +7,7 @@ export class Livraison {
   transit?: Transit;
   transit_id: number;
   etats_livraison_id: number;
-  lieux_livraison_id?: number;
+  lieux_livraison_id: number;
   lieuLivraison?: LieuxLivraison;
   etatLivraison?: EtatsLivraisons;
   dateLivrDemandeeParBB: Date;

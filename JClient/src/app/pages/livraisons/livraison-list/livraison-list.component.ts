@@ -13,6 +13,8 @@ export class LivraisonListComponent implements OnInit {
     // Using Livraison Model class
     livraisons: Livraison[];
     isLoading: Boolean = false;
+    public searchTextA: string;
+    public searchTextB: string;
 
   constructor(private livraisonService: LivraisonsService) { }
 

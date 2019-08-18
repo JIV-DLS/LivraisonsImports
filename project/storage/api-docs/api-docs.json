@@ -746,6 +746,25 @@
                 }
             }
         },
+        "/api/employesNotRelated": {
+            "get": {
+                "tags": [
+                    "Employes"
+                ],
+                "summary": "List Employes whos are not related",
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Employes who are not related",
+                        "schema": {
+                            "$ref": "#/definitions/Employe"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/api/employes": {
             "get": {
                 "tags": [
@@ -2467,6 +2486,25 @@
                     },
                     "204": {
                         "description": "Success: successful deleted"
+                    }
+                }
+            }
+        },
+        "/api/transitsNotRelated": {
+            "get": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "List Transits which are not related",
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Transits which are not related",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             }

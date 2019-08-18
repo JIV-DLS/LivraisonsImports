@@ -7,9 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Employe;
 use Validator;
 use App\Http\Resources\EmployesResource;
+use Illuminate\Support\Facades\DB;
 
 class EmployeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/api/employesNotRelated",
+     *     tags={"Employes"},
+     *     summary="List Employes whos are not related",
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Success: List all Employes who are not related",
+     *          @SWG\Schema(ref="#/definitions/Employe")
+     *      ),
+     *     @SWG\Response(
+     *          response="404",
+     *          description="Not Found"
+     *   )
+     * ),
+     */
+    public function allNotRelated()
+    {
+        $listEmploye = DB::select("SELECT  employes.id,employes.nom,employes.prenom,employes.dateNaiss  FROM    employes LEFT JOIN users t1 ON      t1.employe_id = employes.id  WHERE   t1.employe_id IS NULL");
+        return $listEmploye;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,6 +61,49 @@ class EmployeController extends Controller
         $listEmploye = Employe::all();
         return $listEmploye;
     }
+
+    /**
+     * Jean-Claude
+     */
+
+    public function adresse_id(Request $r)
+    {
+        $l = DB::select("SELECT * from employes
+        WHERE adresse_id = ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+
+    public function nom(Request $r)
+    {
+        $l = DB::select("SELECT * from employes 
+        WHERE nom LIKE '".$r->data."%'", 
+        []);
+
+        return response()->json($l, 200);
+    }
+
+    public function prenom(Request $r)
+    {
+        $l = DB::select("SELECT * from employes 
+        WHERE prenom LIKE '".$r->data."%'", 
+        []);
+
+        return response()->json($l, 200);
+    }
+
+    public function dateNaiss(Request $r)
+    {
+        $l = DB::select("SELECT * from employes
+        WHERE dateNaiss >= ? and dateNaiss <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    /**
+     * Jean-Claude
+     */
 
     /**
      * Store a newly created resource in storage.

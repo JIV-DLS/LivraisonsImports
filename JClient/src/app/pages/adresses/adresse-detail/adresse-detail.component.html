@@ -6,9 +6,9 @@
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
                         <ul id="myTabedu1" class="tab-review-design">
-                            <li [ngClass]="one? 'active':''"><a (click)="changeBoard('1')" href="/adresses/{{adresse?.id}}#details">Détails</a></li>
-                            <li [ngClass]="two? 'active':''"><a (click)="changeBoard('2')" href="/adresses/{{adresse?.id}}#proprietaire"> {{adresse?.employe? "Employe":"Societe"}}</a></li>
-                            <li [ngClass]="tree? 'active':''"><a (click)="changeBoard('3')" href="/adresses/{{adresse?.id}}#adresse">Mettre à jour l'adresse</a></li>
+                            <li [ngClass]="one? 'active':''"><a (click)="changeBoard('1')" >Détails</a></li>
+                            <li [ngClass]="two? 'active':''"><a (click)="changeBoard('2')"> {{adresse?.employe? "Employe":"Societe"}}</a></li>
+                            <li [ngClass]="tree? 'active':''"><a (click)="changeBoard('3')" >Mettre à jour l'adresse</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
                             <div *ngIf="one" class="product-tab-list tab-pane fade active in" id="description">

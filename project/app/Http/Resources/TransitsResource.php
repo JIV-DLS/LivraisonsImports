@@ -19,11 +19,10 @@ class TransitsResource extends JsonResource
             "navire" => $this->navire,
             "contenance" => $this->contenance,
             "marchandise" => $this->marchandise,
-            "dateArrivee" => $this->dateArrivee,
+            "dateArrivee" => explode(" ",(string)$this->dateArrivee)[0],
             "franchise" => $this->franchise,
             "livraison" => $this->livraison,
             "societe" => $this->societe,
-            "societe" => $this->navire,
             // Casting objects to string, to avoid receive create_at and update_at as object
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at

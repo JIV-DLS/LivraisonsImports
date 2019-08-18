@@ -14,7 +14,31 @@ export class LieuxLivraisonDetailComponent implements OnInit {
 
   lieuxLivraison: LieuxLivraison;
   isLoading: Boolean = false;
+  one:Boolean = true;
+  two:Boolean = false;
+  tree:Boolean = false;
 
+  changeBoard( boardTitle: string ):void
+  {
+    switch(boardTitle)
+    {
+      case "1":
+        this.one=true;
+        this.two=false;
+        this.tree=false;
+        break;
+      case "2":
+        this.one=false;
+        this.two=true;
+        this.tree=false;
+        break;
+      case "3":
+        this.one=false;
+        this.two=false;
+        this.tree=true;
+        break;
+    }
+  }
   constructor(
     private lieuxLivraisonsService: LieuxLivraisonsService,
     private route: ActivatedRoute) { }
@@ -22,6 +46,18 @@ export class LieuxLivraisonDetailComponent implements OnInit {
   ngOnInit() {
     // Get lieuxLivraison detail
     this.getLieuxLivraisonDetail();
+  }
+
+  onSubmit(lieuxLivraison) {
+    this.isLoading = true;
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.lieuxLivraisonsService.updateLieuxLivraison(lieuxLivraison.value, id )
+      .subscribe(response => {
+        this.lieuxLivraison = response['data'];
+        
+        this.isLoading = false;
+      });
+      console.log(lieuxLivraison);
   }
 
   getLieuxLivraisonDetail(): void {

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Societe;
 use Validator;
 use App\Http\Resources\SocietesResource;
+use DB;
 
 class SocieteController extends Controller
 {
@@ -35,6 +36,34 @@ class SocieteController extends Controller
         $listSociete = Societe::all();
         return $listSociete;
     }
+
+    /**
+     * Jean-Claude
+     */
+
+
+    public function adresse_id(Request $r)
+    {
+        $l = DB::select("SELECT * from societes
+        WHERE adresse_id = ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+
+    public function libelle(Request $r)
+    {
+        $l = DB::select("SELECT * from societes 
+        WHERE libelle LIKE '".$r->data."%'", 
+        []);
+
+        return response()->json($l, 200);
+    }
+
+    /**
+     * Jean-Claude
+     */
+
 
     /**
      * Store a newly created resource in storage.
@@ -175,7 +204,7 @@ class SocieteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'adresse' => 'required'
+            'adresse_id' => 'required'
             ]);
             
         if ($validator->fails()) {

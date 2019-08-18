@@ -13,7 +13,9 @@ export class AsideComponent implements OnInit {
   public constructor(
     private titleTagService: Title,
     public auth: AuthService,
-    private router: Router ) {}
+    private router: Router ) {
+      auth.getUser();
+    }
 
   public setTitle( pageTitle: string) {
     this.titleTagService.setTitle( pageTitle );

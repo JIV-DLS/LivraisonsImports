@@ -66,7 +66,7 @@ export class EmployeDetailComponent implements OnInit {
 
   getAdresses(): void {
     this.isLoading = true;
-    this.adressesService.getAdresses()
+    this.adressesService.getAdressesNotRelated()
       .subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error));

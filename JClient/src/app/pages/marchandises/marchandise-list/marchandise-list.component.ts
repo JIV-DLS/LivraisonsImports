@@ -13,6 +13,7 @@ export class MarchandiseListComponent implements OnInit {
     // Using Marchandise Model class
     marchandises: Marchandise[];
     isLoading: Boolean = false;
+  adressesService: any;
 
   constructor(private marchandiseService: MarchandisesService) { }
 
@@ -20,7 +21,7 @@ export class MarchandiseListComponent implements OnInit {
     // Get marchandise detail
     this.getMarchandises();
   }
-
+  
   getMarchandises(): void {
     this.isLoading = true;
     this.marchandiseService.getMarchandises()

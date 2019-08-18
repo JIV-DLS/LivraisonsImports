@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Marchandise;
 use Validator;
 use App\Http\Resources\MarchandisesResource;
+use DB;
 
 class MarchandiseController extends Controller
 {
@@ -35,6 +36,33 @@ class MarchandiseController extends Controller
         $listMarchandise = Marchandise::all();
         return $listMarchandise;
     }
+
+     /**
+     * Jean-Claude
+     */
+
+    public function type_marchandise_id(Request $r)
+    {
+        $l = DB::select("SELECT * from marchandises
+        WHERE type_marchandise_id = ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+
+    public function libelle(Request $r)
+    {
+        $l = DB::select("SELECT * from marchandises 
+        WHERE libelle LIKE '".$r->data."%'", 
+        []);
+
+        return response()->json($l, 200);
+    }
+
+
+    /**
+     * Jean-Claude
+     */
 
     /**
      * Store a newly created resource in storage.

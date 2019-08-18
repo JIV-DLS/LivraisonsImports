@@ -1,12 +1,17 @@
 import { Navire } from '../navires/navire';
 import { Societe } from '../societes/societe';
 import { Marchandise } from '../marchandises/marchandise';
+import { Livraison } from '../livraisons/livraison';
 
 export class Transit {
   id: number;
   navire?: Navire;
-  fournisseur?: Societe;
+  navire_id: number;
+  societe_id: number;
+  marchandise_id:number;
+  societe?: Societe;
   marchandise?: Marchandise;
+  livraison?: Livraison;
   contenance: number;
   franchise: number;
   dateArrivee: Date;

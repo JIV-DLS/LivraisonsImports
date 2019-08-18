@@ -1,0 +1,65 @@
+<main role="main">
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+                <div class="container-fluid">
+                          
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="product-payment-inner-st">
+                                <ul id="myTabedu1" class="tab-review-design">
+                                    <li class="active"><a >Ajouter un marchandise</a></li>
+                                    
+                                    
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                        <div *ngIf="isLoading" class="spinner">
+                                                                <div class="double-bounce1"></div>
+                                                                <div class="double-bounce2"></div>
+                                                              </div>
+                                                              <div *ngIf="marchandise&&!isLoading&&(typeMarchandises.length==0)" >
+                                                                    <p>Désolé aucune typeMarchandise ne pourra <br> être affectées à l'employé <br> que vous essayez de creer. Veuillez Ajouter <a [routerLink]="['/TypeMarchandisesAdd']" routerLinkActive="active" (click)="setTitle('Ajouter une typeMarchandise')">une nouvelle typeMarchandise </a> Puis revenez ici pour réessayer.</p>
+                                                                  </div>  
+                                                              <div *ngIf="sucess" >
+                                                                    <p>Marchandise ajoutée avec succès! <a [routerLink]="['/marchandises']" routerLinkActive="active" (click)="setTitle('Sociétés')">Voir les société.</a> </p>
+                                                                  </div>  
+                                                        <form *ngIf="marchandise&&!isLoading&&(typeMarchandises.length>0)" (ngSubmit)="onSubmit(marchandiseAddForm)" #marchandiseAddForm="ngForm" name=marchandiseAddForm>
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <input name="libelle" [(ngModel)]="marchandise.libelle" type="text" class="form-control" value="" placeholder="libellé de la marchandise">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                      
+                                                                        <div class="form-group">
+                                                                            <label for="inputState">TypeMarchandise</label>
+                                                                            <select [(ngModel)]="marchandise.typeMarchandise.id" name="typeMarchandise_id" class="form-control">
+                                                                              <option *ngFor="let typeMarchandise of typeMarchandises" [(ngValue)]="typeMarchandise.id">{{typeMarchandise.libelle}}</option>
+                                                                            </select>
+                                                                          </div>
+                                                                      </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="payment-adress mg-t-15">
+                                                                            <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>

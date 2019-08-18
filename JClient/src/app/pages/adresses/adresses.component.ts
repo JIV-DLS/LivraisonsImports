@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { EtatsLivraisonssModule } from '../etatsLivraisons/etatsLivraisons.module';
 
+@NgModule({
+  imports: [
+    EtatsLivraisonssModule
+  ]
+})
 @Component({
   selector: 'app-adresses',
   templateUrl: './adresses.component.html',

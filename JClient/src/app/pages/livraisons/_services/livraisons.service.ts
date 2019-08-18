@@ -62,4 +62,41 @@ export class LivraisonsService {
         catchError(this.handleError('deleteLivraison'))
       );
   }
+
+  rechDateLivrDemandeeParBB(dateDebut:Date, dateFin:Date)
+  {
+      var data:any = {
+        dateDebut:dateDebut,
+        dateFin:dateFin
+      }
+
+      return this.http.get<Livraison[]>(this.livraisonsUrl + '/dateLivrDemandeeParBB', data)
+      .pipe(
+        catchError(this.handleError('rechDateLivrDemandeeParBB'))
+      );
+  }
+
+  rechTransit_id(id:Number)
+  {
+      var data:any = {
+        id:id
+      }
+
+      return this.http.get<Livraison[]>(this.livraisonsUrl + '/transit_id', data)
+      .pipe(
+        catchError(this.handleError('rechTransit_id'))
+      );
+  }
+
+  rechLieux_livraison_id(id:Number)
+  {
+    var data:any = {
+      id:id
+    }
+
+      return this.http.get<Livraison[]>(this.livraisonsUrl + '/lieux_livraison_id', data)
+      .pipe(
+        catchError(this.handleError('rechLieux_livraison_id'))
+      );
+  }
 }

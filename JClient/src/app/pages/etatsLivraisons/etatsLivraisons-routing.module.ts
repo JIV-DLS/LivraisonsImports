@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // EtatsLivraisons Routes Imports
-import { EtatsLivraisonsDetailComponent } from './etatsLivraison-detail/etatsLivraison-detail.component';
-import { EtatsLivraisonsListComponent } from './etatsLivraison-list/etatsLivraison-list.component';
+import { EtatsLivraisonDetailComponent } from './etatsLivraison-detail/etatsLivraison-detail.component';
+import { EtatsLivraisonListComponent } from './etatsLivraison-list/etatsLivraison-list.component';
+import { EtatsLivraisonAddComponent } from './etats-livraison-add/etats-livraison-add.component';
 
 const routes: Routes = [
   {
@@ -11,11 +12,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: EtatsLivraisonsListComponent
+        component: EtatsLivraisonListComponent
       },
       {
         path: ':id',
-        component: EtatsLivraisonsDetailComponent
+        component: EtatsLivraisonDetailComponent
+      }
+    ]
+  },
+  {
+    path: 'etatsLivraisonsAdd',
+    children: [
+      {
+        path: '',
+        component: EtatsLivraisonAddComponent
       }
     ]
   }

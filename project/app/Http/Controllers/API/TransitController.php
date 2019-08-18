@@ -7,9 +7,35 @@ use App\Http\Controllers\Controller;
 use App\Transit;
 use Validator;
 use App\Http\Resources\TransitsResource;
+use Illuminate\Support\Facades\DB;
 
 class TransitController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/api/transitsNotRelated",
+     *     tags={"Transits"},
+     *     summary="List Transits which are not related",
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Success: List all Transits which are not related",
+     *          @SWG\Schema(ref="#/definitions/Transit")
+     *      ),
+     *     @SWG\Response(
+     *          response="404",
+     *          description="Not Found"
+     *   )
+     * ),
+     */
+    public function allNotRelated()
+    {
+        $listEmploye = DB::select("SELECT  transits.id,transits.franchise,transits.dateArrivee,transits.contenance  FROM    transits LEFT JOIN livraisons t1 ON      t1.id = transits.id WHERE   t1.id IS NULL");
+        return $listEmploye;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,6 +61,74 @@ class TransitController extends Controller
         $listTransit = Transit::all();
         return $listTransit;
     }
+
+     /**
+     * Jean-Claude
+     */
+
+    public function navire_id(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.navire_id >= ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+    public function societe_id(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.societe_id >= ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+    public function marchandise_id(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.marchandise_id >= ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+  
+    public function dateArrivee(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.dateArrivee >= ? and tr.dateArrivee <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function contenance(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.contenance = ?", 
+        [$r->data]);
+        return response()->json($l, 200);
+    }
+
+    public function franchise(Request $r)
+    {
+        $l = DB::select("SELECT * from transits tr join navires na on(tr.navire_id = na.id)
+        join societes so on(tr.societe_id = so.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE tr.franchise = ?", 
+        [$r->data]);
+        return response()->json($l, 200);
+    }
+
+    /**
+     * Jean-Claude
+     */
 
     /**
      * Store a newly created resource in storage.
@@ -177,9 +271,9 @@ class TransitController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "navire"=> 'required',
-            "fournisseur"=> 'required',
-            "marchandise"=> 'required',
+            "navire_id"=> 'required',
+            "societe_id"=> 'required',
+            "marchandise_id"=> 'required',
             "dateArrivee"=> 'required'
             ,"franchise"=> 'required'
             ]);

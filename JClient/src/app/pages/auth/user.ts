@@ -6,8 +6,9 @@ export class User {
   name?: string;
   email?: string;
   password?: string;
-  employe?: Employe;
+  employe_id?: Employe;
   profil?: Profil;
+  profil_id?: number;
 
   constructor() {}
 

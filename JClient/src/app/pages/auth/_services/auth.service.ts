@@ -35,9 +35,12 @@ export class AuthService {
     }
 
   onRegister(user: User): Observable<User> {
-
+// console.log(user);
     const request = JSON.stringify(
-      { name: user.name, email: user.email, password: user.password }
+      { name: user.name, 
+        email: user.email,
+         password: user.password,
+          employe_id: user.employe_id  }
     );
 
     return this.http.post(this.registerUrl, request, httpOptions)

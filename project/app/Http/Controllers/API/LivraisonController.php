@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Livraison;
 use Validator;
 use App\Http\Resources\LivraisonsResource;
+use DB;
 
 class LivraisonController extends Controller
 {
@@ -35,6 +36,105 @@ class LivraisonController extends Controller
         $listLivraison = Livraison::all();
         return $listLivraison;
     }
+
+    /**
+     * Jean-Claude
+     */
+
+    public function transit_id(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id)
+        WHERE li.transit_id >= ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+    public function lieux_livraison_id(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id) 
+        WHERE li.lieux_livraison_id >= ? ", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+    public function etats_livraison_id(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id) 
+        WHERE li.etats_livraison_id >= ?", 
+        [$r->id]);
+        return response()->json($l, 200);
+    }
+
+      
+    public function dateLivrDemandeeParBB(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id) 
+        WHERE li.dateLivrDemandeeParBB >= ? and li.dateLivrDemandeeParBB <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function dateReportApresEchecDeLivr(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id) 
+        WHERE li.dateReportApresEchecDeLivr >= ? and li.dateReportApresEchecDeLivr <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function dateConfirmationFournisseur(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id)
+        WHERE li.dateConfirmationFournisseur >= ? and li.dateConfirmationFournisseur <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function dateLivrEffectiveBB(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id)
+        WHERE li.dateLivrEffectiveBB >= ? and li.dateLivrEffectiveBB <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function dateDebStationnement(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id)
+        WHERE li.dateDebStationnement >= ? and li.dateDebStationnement <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    public function dateDebSures(Request $r)
+    {
+        $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
+        join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
+        join etats_livraisons el on(li.etats_livraison_id = el.id) 
+        WHERE li.dateDebSures >= ? and li.dateDebSures <= ?", 
+        [$r->dateDebut, $r->dateFin]);
+        return response()->json($l, 200);
+    }
+
+    /**
+     * Jean-Claude
+     */
 
     /**
      * Store a newly created resource in storage.
@@ -181,7 +281,7 @@ class LivraisonController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "transit_id"=> 'required',
-            "dateLivrDemandeeBB"=> 'required',
+            "dateLivrDemandeeParBB"=> 'required',
             "dateLivrEffectiveBB"=>'required',
             "dateConfirmationFournisseur"=>'required',
             "dateDebStationnement"=>'required',
