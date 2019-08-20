@@ -12,70 +12,26 @@ import { LieuxLivraisonsService } from '../../lieuxLivraisons/_services/lieuxLiv
 import { TransitsService } from '../../transits/_services/transits.service';
 
 @Component({
-  selector: 'app-livraison-detail',
-  templateUrl: './livraison-detail.component.html',
-  styleUrls: ['./livraison-detail.component.scss']
+  selector: 'app-livraison-add',
+  templateUrl: './livraison-add.component.html',
+  styleUrls: ['./livraison-add.component.scss']
 })
-export class LivraisonDetailComponent implements OnInit {
+export class LivraisonAddComponent implements OnInit {
 
   livraison: Livraison;
   isLoading: Boolean = false;
-  one:Boolean = true;
-  two:Boolean = false;
-  tree:Boolean = false;
-  four:Boolean = false;
-  five:Boolean = false;
   transits: Transit[];
   etatsLivraisons: EtatsLivraisons[];
   lieuxLivraisons: LieuxLivraison[];
+  sucess: boolean= false;
 
-  changeBoard( boardTitle: string ):void
-  {
-    switch(boardTitle)
-    {
-      case "1":
-        this.one=true;
-        this.two=false;
-        this.tree=false;
-        this.four=false;
-        this.five=false;
-        break;
-      case "2":
-        this.one=false;
-        this.two=true;
-        this.tree=false;
-        this.four=false;
-        this.five=false;
-        break;
-      case "3":
-        this.one=false;
-        this.two=false;
-        this.tree=true;
-        this.four=false;
-        this.five=false;
-        break;
-      case "4":
-        this.one=false;
-        this.two=false;
-        this.tree=false;
-        this.four=true;
-        this.five=false;
-        break;
-      case "5":
-        this.one=false;
-        this.two=false;
-        this.tree=false;
-        this.four=false;
-        this.five=true;
-        break;
-    }
-  }
   constructor(
     private etatsLivraisonservice: EtatsLivraisonssService,
     private lieuxLivraisonservice: LieuxLivraisonsService,
     private transitservice: TransitsService,
     private livraisonsService: LivraisonsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute) { 
+
       this.getEtatsLivraison();
       this.getLieuxLivraison();
       this.getTransits();
@@ -83,7 +39,11 @@ export class LivraisonDetailComponent implements OnInit {
 
   ngOnInit() {
     // Get livraison detail
-    this.getLivraisonDetail();
+   // this.getLivraisonDetail();
+   this.livraison= new Livraison();
+   this.livraison.etatLivraison= new EtatsLivraisons();
+   this.livraison.lieuLivraison= new LieuxLivraison();
+   this.livraison.transit= new Transit();
   }
   getEtatsLivraison(): void {
     this.isLoading = true;
@@ -115,11 +75,13 @@ export class LivraisonDetailComponent implements OnInit {
     console.log(livraison);
     console.log("================");
     const id = +this.route.snapshot.paramMap.get('id');
-    this.livraisonsService.updateLivraison(livraison.value, id)
+    this.livraisonsService.addLivraison(livraison.value)
       .subscribe(response => {
         this.isLoading = false;
         this.livraison= response['data'];
       });
+      if(this.livraison)
+     { this.sucess=true;}
   }
   protected handleResponseT(response: Transit[]) {
     this.isLoading = false,
@@ -136,6 +98,7 @@ export class LivraisonDetailComponent implements OnInit {
     this.lieuxLivraisons = response;
   }
 
+  
   protected handleError(error: any) {
     this.isLoading = false,
     console.error(error);

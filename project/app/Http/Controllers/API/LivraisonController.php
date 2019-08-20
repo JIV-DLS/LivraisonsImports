@@ -8,6 +8,7 @@ use App\Livraison;
 use Validator;
 use App\Http\Resources\LivraisonsResource;
 use DB;
+use App\Action;
 
 class LivraisonController extends Controller
 {
@@ -74,11 +75,13 @@ class LivraisonController extends Controller
       
     public function dateLivrDemandeeParBB(Request $r)
     {
+        // Action::create(['user_id'=>'1',
+        // 'libelle'=>" WHERE li.dateLivrDemandeeParBB >= '".$r->dateDebut."' and li.dateLivrDemandeeParBB <='".$r->dateFin."'"]);
+        // return response()->json($r, 500);
         $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
         join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
         join etats_livraisons el on(li.etats_livraison_id = el.id) 
-        WHERE li.dateLivrDemandeeParBB >= ? and li.dateLivrDemandeeParBB <= ?", 
-        [$r->dateDebut, $r->dateFin]);
+        WHERE li.dateLivrDemandeeParBB >= '".$r->dateDebut."' and li.dateLivrDemandeeParBB <='".$r->dateFin."'");
         return response()->json($l, 200);
     }
 
@@ -97,18 +100,19 @@ class LivraisonController extends Controller
         $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
         join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
         join etats_livraisons el on(li.etats_livraison_id = el.id)
-        WHERE li.dateConfirmationFournisseur >= ? and li.dateConfirmationFournisseur <= ?", 
-        [$r->dateDebut, $r->dateFin]);
+        WHERE li.dateConfirmationFournisseur >= '".$r->dateDebut."' and li.dateConfirmationFournisseur <= '".$r->dateFin."'");
         return response()->json($l, 200);
     }
 
     public function dateLivrEffectiveBB(Request $r)
     {
+        Action::create(['user_id'=>'1',
+        'libelle'=>" WHERE li.dateLivrEffectiveBB >= '".$r->dateDebut."' and li.dateLivrEffectiveBB <= '".$r->dateFin."'"]);
+        
         $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
         join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
         join etats_livraisons el on(li.etats_livraison_id = el.id)
-        WHERE li.dateLivrEffectiveBB >= ? and li.dateLivrEffectiveBB <= ?", 
-        [$r->dateDebut, $r->dateFin]);
+        WHERE li.dateLivrEffectiveBB >= '".$r->dateDebut."' and li.dateLivrEffectiveBB <= '".$r->dateFin."'");
         return response()->json($l, 200);
     }
 

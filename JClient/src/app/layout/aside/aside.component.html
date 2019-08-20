@@ -9,71 +9,74 @@
                 <ul class="metismenu" id="menu1">
                     
                     <li *ngIf="auth.currentUser&&auth.currentUser.profil_id==1">
-                        <a class="has-arrow" [routerLink]="['/employes']" routerLinkActive="active" (click)="setTitle('Adresses')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Employes</span></a>
-                        <ul class="submenu-angle " aria-expanded="false">
+                        <button (click)="show('employes')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Employes</span></button>
+                        <ul *ngIf="employes" class="submenu-angle " aria-expanded="false">
                             <li><a title="List des Adresses" [routerLink]="['/employes']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Liste des employés</span></a></li>
                             <li><a title="Ajouter une Adresse" [routerLink]="['/employesAdd']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Ajouter un employé</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('Adresses')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Adresses</span></a>
-                        <ul class="submenu-angle " aria-expanded="false">
+                        <a class="has-arrow" (click)="show('bdc')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Bon de commande</span></a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" (click)="show('adresse')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Adresses</span></a>
+                        <ul *ngIf="adresse" class="submenu-angle " aria-expanded="false">
                             <li><a title="List des Adresses" [routerLink]="['/adresses']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Liste des adresses</span></a></li>
                             <li><a title="Ajouter une Adresse" [routerLink]="['/adressesAdd']" routerLinkActive="active" (click)="setTitle('Adresses')"><span class="mini-sub-pro">Ajouter une adresse</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/societes']" routerLinkActive="active" (click)="setTitle('societes')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Sociétes</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('societes')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Sociétes</span></a>
+                        <ul *ngIf="societes" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des Sociétés" [routerLink]="['/societes']" routerLinkActive="active" (click)="setTitle('Sociétés')"><span class="mini-sub-pro">Liste des sociétés</span></a></li>
                             <li><a title="Ajouter une Société" [routerLink]="['/societesAdd']" routerLinkActive="active" (click)="setTitle('Sociétés')"><span class="mini-sub-pro">Ajouter une société</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/marchandises']" routerLinkActive="active" (click)="setTitle('marchandises')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Marchandises</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('marchandise')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Marchandises</span></a>
+                        <ul *ngIf="marchandise" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des marchandises" [routerLink]="['/marchandises']" routerLinkActive="active" (click)="setTitle('Marchandises')"><span class="mini-sub-pro">Liste des marchandises</span></a></li>
                             <li><a title="Ajouter une marchanide" [routerLink]="['/marchandisesAdd']" routerLinkActive="active" (click)="setTitle('Marchandise')"><span class="mini-sub-pro">Ajouter une marchandise</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/navires']" routerLinkActive="active" (click)="setTitle('navires')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Navires</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('navire')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Navires</span></a>
+                        <ul *ngIf="navire" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des navires" [routerLink]="['/navires']" routerLinkActive="active" (click)="setTitle('navires')"><span class="mini-sub-pro">Liste des navires</span></a></li>
                             <li><a title="Ajouter une navire" [routerLink]="['/naviresAdd']" routerLinkActive="active" (click)="setTitle('navire')"><span class="mini-sub-pro">Ajouter un navire</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/transits']" routerLinkActive="active" (click)="setTitle('transits')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Transits</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('transit')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Transits</span></a>
+                        <ul *ngIf="transit" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des transits" [routerLink]="['/transits']" routerLinkActive="active" (click)="setTitle('transits')"><span class="mini-sub-pro">Liste des transits</span></a></li>
                             <li><a title="Ajouter une navire" [routerLink]="['/transitsAdd']" routerLinkActive="active" (click)="setTitle('transit')"><span class="mini-sub-pro">Ajouter un transit</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/livraisons']" routerLinkActive="active" (click)="setTitle('livraisons')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Livraisons</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('livraison')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Livraisons</span></a>
+                        <ul *ngIf="livraison" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des livraisons" [routerLink]="['/livraisons']" routerLinkActive="active" (click)="setTitle('livraisons')"><span class="mini-sub-pro">Liste des livraisons</span></a></li>
                             <li><a title="Ajouter une livraison" [routerLink]="['/livraisonsAdd']" routerLinkActive="active" (click)="setTitle('livraisons')"><span class="mini-sub-pro">Ajouter une livraison</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/etatsLivraisons']" routerLinkActive="active" (click)="setTitle('etatsLivraisons')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Etats Livraisons</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('etatsLivraisons')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Etats Livraisons</span></a>
+                        <ul *ngIf="etatsLivraisons" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des etatsLivraisons" [routerLink]="['/etatsLivraisons']" routerLinkActive="active" (click)="setTitle('etatsLivraisons')"><span class="mini-sub-pro">Liste des Etats Livraisons</span></a></li>
                             <li><a title="Ajouter une navire" [routerLink]="['/etatsLivraisonsAdd']" routerLinkActive="active" (click)="setTitle('etatsLivraisons')"><span class="mini-sub-pro">Ajouter un Etat Livraisons</span></a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" [routerLink]="['/lieuxLivraisons']" routerLinkActive="active" (click)="setTitle('lieuxLivraisons')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Lieux de Livraisons</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('lieuxLivraisons')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Lieux de Livraisons</span></a>
+                        <ul *ngIf="lieuxLivraisons" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des lieux de Livraisons" [routerLink]="['/lieuxLivraisons']" routerLinkActive="active" (click)="setTitle('lieuxLivraisons')"><span class="mini-sub-pro">Liste des Lieux de Livraisons</span></a></li>
                             <li><a title="Ajouter un lieu de Livraison" [routerLink]="['/lieuxLivraisonsAdd']" routerLinkActive="active" (click)="setTitle('lieuxLivraisons')"><span class="mini-sub-pro">Ajouter un Lieu de Livraisons</span></a></li>
                         </ul>
                     </li>
                     <li *ngIf="auth.currentUser&&auth.currentUser.profil_id==1">
-                        <a class="has-arrow" [routerLink]="['/profils']" routerLinkActive="active" (click)="setTitle('profils')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Profils</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
+                        <a class="has-arrow" (click)="show('profil')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Profils</span></a>
+                        <ul *ngIf="profil" class="submenu-angle" aria-expanded="false">
                             <li><a title="List des profils" [routerLink]="['/profils']" routerLinkActive="active" (click)="setTitle('profils')"><span class="mini-sub-pro">Liste des profils</span></a></li>
                             <li><a title="Ajouter un profil" [routerLink]="['/profilsAdd']" routerLinkActive="active" (click)="setTitle('profils')"><span class="mini-sub-pro">Ajouter un profil</span></a></li>
                         </ul>

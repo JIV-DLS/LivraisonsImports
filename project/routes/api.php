@@ -15,9 +15,7 @@ use App\Http\Resources\BikesResource;
 |
 */
 
-/**
- * Jean-Claude
- */
+
     // Livraison
     Route::get('livraisons/transit_id', 'API\LivraisonController@transit_id');
     Route::get('livraisons/lieux_livraison_id', 'API\LivraisonController@lieux_livraison_id');
@@ -51,9 +49,6 @@ use App\Http\Resources\BikesResource;
     Route::get('employes/prenom', 'API\EmployeController@prenom');
     Route::get('employes/dateNaiss', 'API\EmployeController@dateNaiss');
 
- /**
- * Jean-Claude
- */
 
 // Register Routes
 Route::post('register', 'API\AuthController@register');
