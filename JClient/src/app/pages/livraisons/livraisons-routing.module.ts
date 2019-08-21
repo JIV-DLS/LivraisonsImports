@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.component';
 import { LivraisonListComponent } from './livraison-list/livraison-list.component';
 import { LivraisonAddComponent } from './livraison-add/livraison-add.component';
+import { BdcComponent } from './bdc/bdc.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,16 @@ const routes: Routes = [
       {
         path: '',
         component: LivraisonAddComponent
+      }
+    ]
+  
+  },
+  {
+    path: 'bcd',
+    children: [
+      {
+        path: '',
+        component: BdcComponent
       }
     ]
   }

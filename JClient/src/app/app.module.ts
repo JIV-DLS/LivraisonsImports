@@ -34,7 +34,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { EmployeAddComponent } from './employes/employe-add/employe-add.component';
 import { LivraisonListComponent } from './pages/livraisons/livraison-list/livraison-list.component';
-import { BdcComponent } from './pages/bdc/bdc.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,9 @@ import { BdcComponent } from './pages/bdc/bdc.component';
     NavComponent,
     FooterComponent,
     AsideComponent,
-    EmployeAddComponent,
-    BdcComponent
+    EmployeAddComponent
+    // ,
+    // BdcComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.co
 import { LivraisonListComponent } from './livraison-list/livraison-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LivraisonAddComponent } from './livraison-add/livraison-add.component';
+import { BdcComponent } from './bdc/bdc.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { LivraisonAddComponent } from './livraison-add/livraison-add.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [LivraisonsComponent, LivraisonDetailComponent, LivraisonListComponent, LivraisonAddComponent]
+  declarations: [LivraisonsComponent, LivraisonDetailComponent, LivraisonListComponent, LivraisonAddComponent, BdcComponent]
 })
 export class LivraisonsModule { }
