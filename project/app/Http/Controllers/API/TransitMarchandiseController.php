@@ -67,16 +67,23 @@ class TransitMarchandiseController extends Controller
      /**
      * Jean-Claude
      */
-
-    public function transit_id(Request $r)
+    public function count($v)
     {
-        
+        $i=0;
+        foreach ($v as $key => $value) {
+            $i++;
+        }
+        return $i;
+    }
+    public function transit_id(Request $r,$t=null)
+    {
         $l = DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
         
         join marchandises ma on(tr.marchandise_id = ma.id)
         WHERE state=1 and tr.transit_id = ".$r->id);
-        
-        return response()->json($l, 200);
+        $l=collect($l);
+
+        return $t? $l:response()->json($l, 200);
     }
 
     public function marchandise_id(Request $r)
@@ -153,14 +160,17 @@ class TransitMarchandiseController extends Controller
         }
 
         // $createTransit = TransitMarchandise::create($request->all());
+        
         return  $createTransit;
     }
     public function store(Request $request)
     {
         $request['id']=2;
-        dump("avant");
-        // dd((self::transit_id($request))->Count());
-        dump("après");
+         dd(self::transit_id($request,true)->count());
+        //  dd(json_decode(self::transit_id($request)), true);
+        // yjfgjfu((self::transit_id($request))->count());
+            
+        // dump("après");
         if(($tM=TransitMarchandise::where(['transit_id'=>$request['transit_id'],'state'=>'1']))->exists())
         {
             // dd($request);

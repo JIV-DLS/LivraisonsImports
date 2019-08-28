@@ -7,3 +7,4 @@
 # Ignore Storage folder due size.
 storage-db
 .DS_Store
+project/phpunit.xml
