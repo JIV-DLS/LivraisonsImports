@@ -23,6 +23,8 @@ export class MarchandiseDetailComponent implements OnInit {
   tree:Boolean = false;
   four:Boolean = false;
   typeMarchandises: TypeMarchandise[];
+  
+  private transits: Transit[];
 
   changeBoard( boardTitle: string ):void
   {
@@ -56,7 +58,6 @@ export class MarchandiseDetailComponent implements OnInit {
   }
   constructor(
     private transitService: TransitsService,
-    private transits: Transit[],
     private typeMarchandiseservice: TypeMarchandisesService,
     private marchandisesService: MarchandisesService,
     private route: ActivatedRoute) { }
@@ -84,7 +85,7 @@ export class MarchandiseDetailComponent implements OnInit {
         response => this.handleResponse(response),
         error => this.handleError(error));
   }
-  
+
   getTransits(): void {
     this.isLoading = true;
     this.transitService.getTransits()

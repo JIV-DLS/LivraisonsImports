@@ -43,8 +43,8 @@
           <div *ngIf="etat" class="col-sm-8">
               <label for="inputState">Etat</label>
               <select  class="form-control">
-                <option  >Livré</option>
-                <option  >En attente</option>
+                <option  (click)="searchetats_livraison_id(1)">Livré</option>
+                <option  (click)="searchetats_livraison_id(2)">En attente</option>
               </select>
           </div>
           <div *ngIf="datlivBB" class="col-sm-8">

@@ -20,6 +20,9 @@ export class Livraison {
   nombreJourDeStationnementSubi: number;
   nombreJourSuresSubi: number;
   commentaires: string;
+  data: Livraison;
 
-  constructor() {}
+  constructor(id?: number) {
+    this.transit_id = id;
+  }
 }

@@ -17,6 +17,7 @@ class CreateTransitMarchandisesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('transit_id');
             $table->unsignedInteger('marchandise_id');
+            $table->boolean('state');
             $table->timestamps();
         });
     }

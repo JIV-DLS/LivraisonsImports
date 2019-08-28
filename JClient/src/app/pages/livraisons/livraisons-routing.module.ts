@@ -6,6 +6,7 @@ import { LivraisonDetailComponent } from './livraison-detail/livraison-detail.co
 import { LivraisonListComponent } from './livraison-list/livraison-list.component';
 import { LivraisonAddComponent } from './livraison-add/livraison-add.component';
 import { BdcComponent } from './bdc/bdc.component';
+import { BdcfComponent } from './bdcf/bdcf.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,15 @@ const routes: Routes = [
       {
         path: '',
         component: BdcComponent
+      }
+    ]
+  },
+  {
+    path: 'bcdf',
+    children: [
+      {
+        path: '',
+        component: BdcfComponent
       }
     ]
   }

@@ -3,9 +3,14 @@
     <div class="container text-center">
       <h1 class="display-3 ">Logiciel de suivi des imports et livraisons des matières premières</h1>
       <p>Livraisons et Transits</p>
-      <p>
+      <p *ngIf="!auth.currentUser">
         <a class="btn btn-primary btn-lg" [routerLink]="['/register']" role="button">S'inscrire</a>
+        ou
+        <a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Se connecter</a>
       </p>
+      <p *ngIf="auth.currentUser">
+          <a class="btn btn-primary btn-lg" [routerLink]="['/transitsAdd']" role="button">Ajouter un transit</a>
+        </p>
     </div>
   </div>
   <div class="container">

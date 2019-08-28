@@ -95,6 +95,14 @@ export class LivraisonListComponent implements OnInit {
         error => this.handleError(error));
   }
 
+  searchetats_livraison_id(id: number): void {
+    this.isLoading = true;
+    this.livraisonService.rechetats_livraison_id(id)
+      .subscribe(
+        response => this.handleResponse(response),
+        error => this.handleError(error));
+  }
+
   protected handleResponse(response: Livraison[]) {
     this.isLoading = false,
     this.livraisons = response;

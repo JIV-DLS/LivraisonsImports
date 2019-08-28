@@ -34,6 +34,10 @@ use App\Http\Resources\BikesResource;
     Route::get('transits/dateArrivee', 'API\TransitController@dateArrivee');
     Route::get('transits/contenance', 'API\TransitController@contenance');
     Route::get('transits/franchise', 'API\TransitController@franchise');
+    
+    // TransitMarchandise
+    Route::get('transitMarchandises/transit_id', 'API\TransitMarchandiseController@transit_id');
+    Route::get('transitMarchandises/marchandise_id', 'API\TransitMarchandiseController@marchandise_id');
 
     // Marchandise
     Route::get('marchandises/type_marchandise_id', 'API\MarchandiseController@type_marchandise_id');
@@ -76,6 +80,7 @@ Route::apiResources([
     'societes'=>'API\SocieteController',
     'transits'=>'API\TransitController',
     'typeMarchandises'=>'API\TypeMarchandiseController',
+    'transitMarchandises'=>'API\TransitMarchandiseController',
     'bikes/{bike}/ratings' => 'API\RatingController'
 ]);
 

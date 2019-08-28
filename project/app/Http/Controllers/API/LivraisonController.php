@@ -67,8 +67,7 @@ class LivraisonController extends Controller
         $l = DB::select("SELECT * from livraisons li join transits tr on(li.transit_id = tr.id)
         join lieux_livraisons ll on(li.lieux_livraison_id = ll.id)
         join etats_livraisons el on(li.etats_livraison_id = el.id) 
-        WHERE li.etats_livraison_id >= ?", 
-        [$r->id]);
+        WHERE li.etats_livraison_id >= ".$r->id);
         return response()->json($l, 200);
     }
 

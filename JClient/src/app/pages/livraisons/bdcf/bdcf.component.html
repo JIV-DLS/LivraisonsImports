@@ -1,0 +1,58 @@
+<main role="main">
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+                <div class="container-fluid">
+                          
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="product-payment-inner-st">
+                                <ul id="myTabedu1" class="tab-review-design">
+                                    <li class="active"><a >Enregistrer le bon de confirmation de la Livraison n°112</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                        <div *ngIf="isLoading" class="spinner">
+                                                                <div class="double-bounce1"></div>
+                                                                <div class="double-bounce2"></div>
+                                                              </div>
+                                                        <form *ngIf="livraison&&!isLoading" (ngSubmit)="onSubmit(livraisonAddForm)" #livraisonAddForm="ngForm" name=livraisonAddForm>
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                  <div class="form-group">
+                                                                    <label for="inputState">societe</label>
+                                                                    <input name="societe"  type="text" class="form-control" value="BOLORE" placeholder="">
+
+                                                                  </div>
+                                                                   
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                  
+                                                                    <div class="form-group">
+                                                                        <label for="">Date de confirmation dla societe Bolloré</label>
+                                                                        <input name="dateConfirmationFournisseur" [(ngModel)]="livraison.dateComfirmationFournisseur" type="date" class="form-control" value="{{livraison?.dateComfirmationFournisseur}}" placeholder="{{livraison?.dateComfirmationFournisseur}}">
+                                                                    </div>
+                                                                  </div>
+                                                            </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="payment-adress mg-t-15">
+                                                                            <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>

@@ -38,7 +38,7 @@ class Marchandise extends Model
      */
     protected $fillable = [
         'libelle',
-        'type_Marchandise_id'
+        'type_marchandise_id'
     ];
 
     /**

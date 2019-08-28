@@ -1,0 +1,15 @@
+Pour l'utilisation de cette application vous devez 
+1-Installer au préalable MySql,
+2-Utiliser le script de génération de la base de donnée "bd.sql"
+
+###backend
+1-Acceder au dossier backend via l'invite de commande
+2-Entrer la commande "Composer install" pour installer les dépendances
+3-Modifier le fichier .env qui se trouve à la racine de du dossier backend en 
+changeant le userName et le password pour la connexion à votre base de donnée
+
+###frontEnd
+1-Acceder au dossier frontend via l'invite de commande
+2-Entrer la commande "Npm install" pour installer les dépendances
+
+ça y est vous pouvez jouir de la totalité de l'application...

@@ -62,7 +62,7 @@
                             <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                 <div class="header-top-menu tabl-d-n">
                                     <ul class="nav navbar-nav mai-top-nav">
-                                        <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                        <li class="nav-item"><a href="#" class="nav-link">Acceuil</a>
                                         </li>
                                         
                                         
@@ -75,10 +75,10 @@
                                     <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                         
                                             <li *ngIf="!auth.isAuthenticated()" class="nav-item">
-                                                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Login')">Login</a>
+                                                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" (click)="setTitle('Login')">Se connecter</a>
                                                   </li>
                                                   <li *ngIf="!auth.isAuthenticated()" class="nav-item">
-                                                    <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Register')">Register</a>
+                                                    <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active" (click)="setTitle('Register')">S'inscrire</a>
                                                   </li>
                                         <li *ngIf="auth.isAuthenticated()" class="nav-item">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
@@ -87,9 +87,9 @@
                                                     <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                 </a>
                                             <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+                                                <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>Mon compte</a>
                                                 </li>
-                                                <li><a href=""><span class="edu-icon edu-settings author-log-ic" (click)="onLogout();"></span>Logout</a>
+                                                <li><a href=""><span class="edu-icon edu-settings author-log-ic" (click)="onLogout();"></span>se déconnecter</a>
                                                 </li>
                                             </ul>
                                         </li>

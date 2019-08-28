@@ -104,7 +104,7 @@ class MarchandiseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'libelle' => 'required',
-            'typeMarchandise_id' => 'required'
+            'type_marchandise_id' => 'required'
             ]);
             
         if ($validator->fails()) {

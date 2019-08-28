@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  /**
  * @SWG\Definition(
  *     definition="Transit",
- *     required={"navire","fournisseur","marchandise","dateArrivee","franchise"},
+ *     required={"navire_id","societe_id"},
  *     @SWG\Property(
  *          property="navire_id",
  *          type="string",

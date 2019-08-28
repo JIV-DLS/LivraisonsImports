@@ -2662,6 +2662,178 @@
                 }
             }
         },
+        "/api/transitMarchandiseNotRelated": {
+            "get": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "List Transits which are not related",
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Transits which are not related",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/transitMarchandise": {
+            "get": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "List Transits",
+                "responses": {
+                    "200": {
+                        "description": "Success: List all Transits",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "Create Transit",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success: A Newly Created Transit",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "422": {
+                        "description": "Missing mandatory field"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "405": {
+                        "description": "Invalid HTTP Method"
+                    }
+                }
+            }
+        },
+        "/api/transitMarchandise/{id}": {
+            "get": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "Get Transit by Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Display the specified Transit by id.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success: Return the Transit",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "405": {
+                        "description": "Invalid HTTP Method"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "Update Transit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Update the specified Transit by id.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Json format",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success: Return the Transit updated",
+                        "schema": {
+                            "$ref": "#/definitions/Transit"
+                        }
+                    },
+                    "422": {
+                        "description": "Missing mandatory field"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "405": {
+                        "description": "Invalid HTTP Method"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Transits"
+                ],
+                "summary": "Delete Transit",
+                "description": "Delete the specified Transit by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Transit id to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "405": {
+                        "description": "Invalid HTTP Method"
+                    },
+                    "204": {
+                        "description": "Success: successful deleted"
+                    }
+                }
+            }
+        },
         "/api/typeMarchandises": {
             "get": {
                 "tags": [
@@ -3339,11 +3511,8 @@
         },
         "Transit": {
             "required": [
-                "navire",
-                "fournisseur",
-                "marchandise",
-                "dateArrivee",
-                "franchise"
+                "navire_id",
+                "societe_id"
             ],
             "properties": {
                 "navire_id": {
@@ -3433,6 +3602,30 @@
                     "description": "date \u00e0 laquelle \u00e0 \u00e9t\u00e9 v\u00e9rifi\u00e9e l'adresse email",
                     "type": "string",
                     "example": "12/04/2016"
+                }
+            }
+        },
+        "transitMarchandise": {
+            "required": [
+                "transit_id",
+                "marchandise_id",
+                "quantite"
+            ],
+            "properties": {
+                "transit_id": {
+                    "description": "designation d\u00e9crivant le transit du qui a apport\u00e9 la quantit\u00e9 de marchandise en question",
+                    "type": "string",
+                    "example": "1"
+                },
+                "marchandise_id": {
+                    "description": "designation d\u00e9crivant la marchandise qui a \u00e9t\u00e9 transit\u00e9e",
+                    "type": "string",
+                    "example": "1"
+                },
+                "quantit\u00e9": {
+                    "description": "designation d\u00e9crivant la quantit\u00e9 de marchandise qui a \u00e9t\u00e9 transit\u00e9",
+                    "type": "string",
+                    "example": "1"
                 }
             }
         }

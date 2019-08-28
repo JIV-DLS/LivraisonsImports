@@ -7,5 +7,10 @@ export class Marchandise {
   typeMarchandise?: TypeMarchandise;
   transits: Transit;
 
-  constructor() {}
+  constructor(marchandise?: Marchandise) {
+    this.id = marchandise.id;
+    this.libelle = marchandise.libelle;
+    this.typeMarchandise = marchandise.typeMarchandise;
+    this.transits = marchandise.transits;
+  }
 }

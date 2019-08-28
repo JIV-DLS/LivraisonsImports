@@ -170,10 +170,7 @@ class TransitController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "navire_id"=> 'required',
-            "societe_id"=> 'required',
-            "marchandise_id"=> 'required',
-            "dateArrivee"=> 'required'
-            ,"franchise"=> 'required'
+            "societe_id"=> 'required'
             ]);
             
         if ($validator->fails()) {
@@ -272,10 +269,7 @@ class TransitController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "navire_id"=> 'required',
-            "societe_id"=> 'required',
-            "marchandise_id"=> 'required',
-            "dateArrivee"=> 'required'
-            ,"franchise"=> 'required'
+            "societe_id"=> 'required'
             ]);
             
         if ($validator->fails()) {

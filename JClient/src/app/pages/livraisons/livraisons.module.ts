@@ -8,6 +8,7 @@ import { LivraisonListComponent } from './livraison-list/livraison-list.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LivraisonAddComponent } from './livraison-add/livraison-add.component';
 import { BdcComponent } from './bdc/bdc.component';
+import { BdcfComponent } from './bdcf/bdcf.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { BdcComponent } from './bdc/bdc.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [LivraisonsComponent, LivraisonDetailComponent, LivraisonListComponent, LivraisonAddComponent, BdcComponent]
+  declarations: [LivraisonsComponent, LivraisonDetailComponent, LivraisonListComponent, LivraisonAddComponent, BdcComponent, BdcfComponent]
 })
 export class LivraisonsModule { }

@@ -62,9 +62,17 @@ export class LivraisonsService {
     return this.rechDate('lieux_livraison_id', dateDebut, dateFin);
       }
   
-  rechetats_livraison_id(dateDebut: Date, dateFin: Date): Observable<Livraison[]> {
+  rechetats_livraison_id(id: Number): Observable<Livraison[]> {
     // tslint:disable-next-line: prefer-const
-    return this.rechDate('etats_livraison_id', dateDebut, dateFin);
+    return this.http.get<Livraison[]>(this.livraisonsUrl + '/' + 'etats_livraison_id' , {
+      params: {
+        dateDebut: id.toString()
+      },
+      responseType: 'json'
+    })
+          .pipe(
+            catchError(this.handleError('rechetats_livraison_id', []))
+          );
       }
 
   rechdateConfirmationFournisseur(dateDebut: Date, dateFin: Date): Observable<Livraison[]> {

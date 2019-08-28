@@ -15,5 +15,9 @@ export class Transit {
   contenance: number;
   franchise: number;
   dateArrivee: Date;
-  constructor() {}
+  data: Transit;
+  constructor(state?: Boolean) {
+    this.navire_id = 0;
+    this.societe_id = 0;
+  }
 }

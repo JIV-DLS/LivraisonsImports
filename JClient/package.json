@@ -25,6 +25,7 @@
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.6.9",
+    "ink.angular": "^1.0.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

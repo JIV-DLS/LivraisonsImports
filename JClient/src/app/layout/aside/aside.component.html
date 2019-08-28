@@ -4,7 +4,7 @@
             <a href="index.html"><img class="main-logo" height="120" width="121" src="assets/img/BB.jpg" alt=""></a>
             <strong><a href="index.html"><img height="120" width="121" src="assets/img/BB.jpg" alt=""></a></strong>
         </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar mCustomScrollbar _mCS_1 mCS-autoHide" style="position: relative; overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-light-1 mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+        <div *ngIf="auth.currentUser" class="left-custom-menu-adp-wrap comment-scrollbar mCustomScrollbar _mCS_1 mCS-autoHide" style="position: relative; overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-light-1 mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     
@@ -17,6 +17,9 @@
                     </li>
                     <li>
                         <a class="has-arrow" [routerLink]="['/bcd']" routerLinkActive="active" (click)="show('bdc')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Bon de commande</span></a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" [routerLink]="['/bcdf']" routerLinkActive="active" (click)="show('bdcf')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Bon de confirmation</span></a>
                     </li>
                     <li>
                         <a class="has-arrow" (click)="show('adresse')" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Adresses</span></a>
