@@ -2662,7 +2662,7 @@
                 }
             }
         },
-        "/api/transitMarchandiseNotRelated": {
+        "/api/transitMarchandisesNotRelated": {
             "get": {
                 "tags": [
                     "Transits"
@@ -2681,7 +2681,7 @@
                 }
             }
         },
-        "/api/transitMarchandise": {
+        "/api/transitMarchandises": {
             "get": {
                 "tags": [
                     "Transits"
@@ -2734,7 +2734,7 @@
                 }
             }
         },
-        "/api/transitMarchandise/{id}": {
+        "/api/transitMarchandises/{id}": {
             "get": {
                 "tags": [
                     "Transits"

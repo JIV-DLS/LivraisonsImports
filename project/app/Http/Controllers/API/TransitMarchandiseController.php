@@ -19,7 +19,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/transitMarchandiseNotRelated",
+     *     path="/api/transitMarchandisesNotRelated",
      *     tags={"Transits"},
      *     summary="List Transits which are not related",
      *     @SWG\Response(
@@ -44,7 +44,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/transitMarchandise",
+     *     path="/api/transitMarchandises",
      *     tags={"Transits"},
      *     summary="List Transits",
      *     @SWG\Response(
@@ -77,13 +77,9 @@ class TransitMarchandiseController extends Controller
     }
     public function transit_id(Request $r,$t=null)
     {
-        $l = DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
-        
+        return $this->selectCollectionJson(DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
         join marchandises ma on(tr.marchandise_id = ma.id)
-        WHERE state=1 and tr.transit_id = ".$r->id);
-        $l=collect($l);
-
-        return $t? $l:response()->json($l, 200);
+        WHERE state=1 and tr.transit_id = ".$r->id),$t);
     }
 
     public function marchandise_id(Request $r)
@@ -117,7 +113,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Post(
-     *     path="/api/transitMarchandise",
+     *     path="/api/transitMarchandises",
      *     tags={"Transits"},
      *     summary="Create Transit",
      *     @SWG\Parameter(
@@ -166,16 +162,11 @@ class TransitMarchandiseController extends Controller
     public function store(Request $request)
     {
         $request['id']=2;
-         dd(self::transit_id($request,true)->count());
-        //  dd(json_decode(self::transit_id($request)), true);
-        // yjfgjfu((self::transit_id($request))->count());
-            
-        // dump("après");
-        if(($tM=TransitMarchandise::where(['transit_id'=>$request['transit_id'],'state'=>'1']))->exists())
-        {
-            // dd($request);
+
+        if(($tM=self::transit_id($request,true))->count()>0)
+        
             return self::update($request,$request['transit_id']);
-        }
+        
         $validator = Validator::make($request->all(), [
             "transit_id"=> 'required',
             "marchandises"=> 'required'
@@ -195,7 +186,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *     path="/api/transitMarchandise/{id}",
+     *     path="/api/transitMarchandises/{id}",
      *     tags={"Transits"},
      *     summary="Get Transit by Id",
      *     @SWG\Parameter(
@@ -236,7 +227,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Put(
-     *     path="/api/transitMarchandise/{id}",
+     *     path="/api/transitMarchandises/{id}",
      *     tags={"Transits"},
      *     summary="Update Transit",
      *     @SWG\Parameter(
@@ -297,7 +288,7 @@ class TransitMarchandiseController extends Controller
      * @return \Illuminate\Http\Response
      *
      *     @SWG\Delete(
-     *     path="/api/transitMarchandise/{id}",
+     *     path="/api/transitMarchandises/{id}",
      *     tags={"Transits"},
      *     summary="Delete Transit",
      *     description="Delete the specified Transit by id",

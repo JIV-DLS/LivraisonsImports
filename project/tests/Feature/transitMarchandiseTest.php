@@ -13,7 +13,7 @@ class transitMarchandiseTest extends TestCase
     
         //$this->$route = 'http://localhost:8000/api/transitMarchandises';
       
-    // $route='/transitMarchandises';
+    private $route='http://localhost:8000/api/transitMarchandises';
     /**
      * A basic test example.
      *
@@ -24,6 +24,24 @@ class transitMarchandiseTest extends TestCase
         $this->assertTrue(true);
     }
     /**
+     * A test to check if we can delete a transitMarchandise whith the delete method
+     *
+     * @return void
+     */
+    public function testdeleteTransitMarchandiseWitchNotExistedWithStore()
+    {
+        $route = 'http://localhost:8000/api/transitMarchandises';
+        $response=$this->withHeaders([
+            'X-Header'=> 'Value'
+        ])->json('delete',$route.'/2');
+            // dd($response);
+        $response
+        ->assertStatus(204);
+        // ->assertJson([
+        //     'created'=>true,
+        // ]);
+    }
+    /**
      * A test to check if we can add a transitMarchandise whith the store method
      *
      * @return void
@@ -31,6 +49,7 @@ class transitMarchandiseTest extends TestCase
     public function testaddTransitMarchandiseWitchNotExistedWithStore()
     {
         $route = 'http://localhost:8000/api/transitMarchandises';
+        dump("S'assurer que le le transitMarchandise n'exite");
         $TransitMarchandise=
         [
             'transit_id'=>'2',
@@ -52,6 +71,7 @@ class transitMarchandiseTest extends TestCase
         //     'created'=>true,
         // ]);
     }
+    
     /**
      * A test to check if we can add a transitMarchandise whith the store method
      *
@@ -73,10 +93,32 @@ class transitMarchandiseTest extends TestCase
         ];
         $response=$this->withHeaders([
             'X-Header'=> 'Value'
+        ])->json('Get',$route.'/2');
+        dump($response->assertStatus(200));
+        $response=$this->withHeaders([
+            'X-Header'=> 'Value'
         ])->json('POST',$route,$TransitMarchandise);
             // dd($response);
         $response
-        ->assertStatus(201);
+        ->assertStatus(200);
+        // ->assertJson([
+        //     'created'=>true,
+        // ]);
+    }
+    /**
+     * A test to check if we can take a transitMarchandise whith the show method
+     *
+     * @return void
+     */
+    public function testshowTransitMarchandisebyIdWithShow()
+    {
+        $route = 'http://localhost:8000/api/transitMarchandises';
+        $response=$this->withHeaders([
+            'X-Header'=> 'Value'
+        ])->json('Get',$route.'/2');
+            // dd($response);
+        $response
+        ->assertStatus(200);
         // ->assertJson([
         //     'created'=>true,
         // ]);
