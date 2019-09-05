@@ -65,6 +65,7 @@ Route::get('employesNotRelated', 'API\EmployeController@allNotRelated');
 Route::apiResources([
     'users' => 'Auth\UserController',
     'bikes' => 'API\BikeController',
+    'bdc' => 'API\BdcController',
     'builders' => 'API\BuilderController',
     'items' => 'API\ItemController',
     'actions'=>'API\ActionController',

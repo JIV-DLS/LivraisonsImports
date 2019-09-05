@@ -146,7 +146,7 @@ export class BdcfComponent implements OnInit {
                 if (list[i].id == attr.id) { list.splice(i, 1); }
               }
               // console.log("nb:"+nb+"--Cl:"+cl);
-              document.getElementsByClassName(cl)[nb].value = '';
+              // document.getElementsByClassName(cl)[nb].value = '';
 
           }
       }
@@ -167,7 +167,7 @@ export class BdcfComponent implements OnInit {
     this.isLoading = true;
     this.marchandiseService.getMarchandises()
       .subscribe(
-        response => this.handleResponseM(response),
+        // response => this.handleResponseM(response),
         error => this.handleError(error));
   }
 

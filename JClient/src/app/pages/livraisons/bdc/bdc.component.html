@@ -1,5 +1,5 @@
 <main role="main">
-  <div class="single-pro-review-area mt-t-30 mg-b-15">
+  <div class="single-pro-review-area mt-t-30 mg-b-15" *ngIf="add">
           <div class="container-fluid">
                     
               <div class="row">
@@ -88,7 +88,7 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody >
-                                                                        <tr *ngFor="let marchandise of marchs;let i=index">
+                                                                        <tr *ngFor="let marchandise of bdcs.marchandises;let i=index">
                                                                             <td>{{i+1}}</td>
                                                                             <td>{{marchandise.libelle}}</td>
                                                                             <td>{{marchandise.quantite}}</td>
@@ -119,5 +119,66 @@
                   </div>
               </div>
           </div>
+      </div>
+      <div class="single-pro-review-area mt-t-30 mg-b-15" *ngIf="!add">
+        <div class="product-status mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      
+                        <div class="product-status-wrap drp-lst">
+                            <h4>List des bons de commande</h4>
+                            <div class="add-product">
+                                <a title="Ajouter une Livraison" (click)="add=true" >Ajouter un bon de commande</a>
+                            </div>
+                            <div class="asset-inner">
+                                <table>
+                                    <tbody><tr>
+                                        <th>No</th>
+                                        <th>Etat de la livraison</th>
+                                        <th>Nombre de marchandise</th>
+                                        <th>Quantité total</th>
+                                        <th>société chargée</th>
+                                        <th>Date de livraison prévue</th>
+                                        <th>Date de livraison effective</th>
+                                    </tr>
+                                    <tr *ngFor="let bdc of bdcs" >
+                                        <td>{{ bdc?.livraison[0]?.id}}</td>
+                                        <td *ngIf="bdc?.livraison[0]?.etats_livraison_id==1"><button class="pd-setting">Livré</button></td>
+                                        <td *ngIf="bdc?.livraison[0]?.etats_livraison_id!=1"><button class="ds-setting">En Attente</button></td>
+                                        <td>{{ bdc?.nbrM}}</td>
+                                        <td>{{ bdc?.qteTotal}}</td>
+                                        <td>
+                                            {{ bdc?.transit?.societe?.libelle}}
+                                        </td>
+                                        <td>
+                                            {{ bdc?.livraison[0]?.dateLivrDemandeeParBB}}
+                                        </td>
+                                        <td>
+                                            {{ bdc?.livraison[0]?.dateLivrEffectiveBB? bdc?.livraison[0]?.dateLivrEffectiveBB:'?'}}
+                                        </td>
+                                        <td>
+                                            <button [routerLink]="['/bdcs/'+bdc?.id]" routerLinkActive="active" (click)="setTitle('Livraisons')" data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <!-- <div class="custom-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
       </main>

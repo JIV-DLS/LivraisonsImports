@@ -23,6 +23,24 @@ class transitMarchandiseTest extends TestCase
     {
         $this->assertTrue(true);
     }
+        /**
+     * A test to check if we can take a transitMarchandise whith the show method
+     *
+     * @return void
+     */
+    public function testshowTransitMarchandisebyIdWithShow()
+    {
+        $route = 'http://localhost:8000/api/transitMarchandises';
+        $response=$this->withHeaders([
+            'X-Header'=> 'Value'
+        ])->json('Get',$route.'/503');
+            // dd($response);
+        $response
+        ->assertStatus(200);
+        // ->assertJson([
+        //     'created'=>true,
+        // ]);
+    }
     /**
      * A test to check if we can delete a transitMarchandise whith the delete method
      *
@@ -93,8 +111,13 @@ class transitMarchandiseTest extends TestCase
         ];
         $response=$this->withHeaders([
             'X-Header'=> 'Value'
-        ])->json('Get',$route.'/2');
-        dump($response->assertStatus(200));
+        ])->json('Get',$route.'/transit_id/?id='.$TransitMarchandise['transit_id']);
+        // dump(collect($response->original));
+        if(collect($response->original)->count()==0)
+        {
+            dump('desolé cet transitMarchandise n\'existait pas au préalable');
+            return;
+        }
         $response=$this->withHeaders([
             'X-Header'=> 'Value'
         ])->json('POST',$route,$TransitMarchandise);
@@ -105,24 +128,7 @@ class transitMarchandiseTest extends TestCase
         //     'created'=>true,
         // ]);
     }
-    /**
-     * A test to check if we can take a transitMarchandise whith the show method
-     *
-     * @return void
-     */
-    public function testshowTransitMarchandisebyIdWithShow()
-    {
-        $route = 'http://localhost:8000/api/transitMarchandises';
-        $response=$this->withHeaders([
-            'X-Header'=> 'Value'
-        ])->json('Get',$route.'/2');
-            // dd($response);
-        $response
-        ->assertStatus(200);
-        // ->assertJson([
-        //     'created'=>true,
-        // ]);
-    }
+
     /**
      * A test to check if we can get a transitMarchandise whith the index method
      *

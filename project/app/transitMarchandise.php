@@ -57,11 +57,14 @@ class transitMarchandise extends Model
      */
     
     public function transit() {
-      // dd($this->belongsTo('App\Transit'));
         return $this->belongsTo('App\Transit');
       }
     
     public function marchandise() {
         return $this->belongsTo('App\Marchandise');
+      }
+    
+    public function livraison() {
+        return $this->belongsTo('App\Livraison');
       }
 }

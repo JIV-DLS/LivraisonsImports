@@ -9,6 +9,7 @@ import { environment } from '../../../../environments/environment';
 import { Livraison } from '../livraison';
 import { HttpErrorHandler, HandleError } from '../../../shared/_services/http-handle-error.service';
 import { DatePipe } from '@angular/common';
+import { Bdc } from '../bdc/bdc.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ import { DatePipe } from '@angular/common';
 export class LivraisonsService {
   private readonly apiUrl = environment.apiUrl;
   private livraisonsUrl = this.apiUrl + '/livraisons';
+  private bdcsUrl = this.apiUrl + '/bdc';
   private handleError: HandleError;
 
   constructor(
@@ -56,12 +58,12 @@ export class LivraisonsService {
         catchError(this.handleError('rechLieux_livraison_id'))
       );
   }
-  
+
   rechlieux_livraison_id(dateDebut: Date, dateFin: Date): Observable<Livraison[]> {
     // tslint:disable-next-line: prefer-const
     return this.rechDate('lieux_livraison_id', dateDebut, dateFin);
       }
-  
+
   rechetats_livraison_id(id: Number): Observable<Livraison[]> {
     // tslint:disable-next-line: prefer-const
     return this.http.get<Livraison[]>(this.livraisonsUrl + '/' + 'etats_livraison_id' , {
@@ -136,6 +138,44 @@ export class LivraisonsService {
     return this.http.delete<Livraison[]>(this.livraisonsUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('deleteLivraison'))
+      );
+  }
+  /** GET bdcs from bdcs endpoint */
+  getBdc(): Observable<Bdc[]> {
+    return this.http.get<Bdc[]>(this.bdcsUrl)
+      .pipe(
+        catchError(this.handleError('getBdc', []))
+      );
+  }
+  /** GET bdc detail from bdc-detail endpoint */
+  getBdcDetail(id: number): Observable<Bdc[]> {
+    return this.http.get<Bdc[]>(this.bdcsUrl + `/${id}`)
+      .pipe(
+        catchError(this.handleError('getBdcDetail', []))
+      );
+  }
+
+  /** POST bdc to bdcs endpoint */
+  addBdc(bdc: Bdc): Observable<Bdc> {
+    return this.http.post<Bdc>(this.bdcsUrl, bdc)
+      .pipe(
+        catchError(this.handleError('addBdc', bdc))
+      );
+  }
+
+  /** PUT bdc to bdcs endpoint */
+  updateBdc(bdc: Bdc, id: number): Observable<Bdc> {
+    return this.http.put<Bdc>(this.bdcsUrl + `/${id}`, bdc)
+      .pipe(
+        catchError(this.handleError('updateBdc', bdc))
+      );
+  }
+
+  /** DELETE bdc bdc endpoint */
+  deleteBdc(id: number): Observable<any> {
+    return this.http.delete<Bdc[]>(this.bdcsUrl + `/${id}`)
+      .pipe(
+        catchError(this.handleError('deleteBdc'))
       );
   }
 }

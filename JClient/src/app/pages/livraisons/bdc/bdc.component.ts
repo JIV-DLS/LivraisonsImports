@@ -35,6 +35,7 @@ export class BdcComponent implements OnInit {
   societes: Societe[];
   marchandiseCmd: MarchandiseCmd[];
   marchandises: MarchandiseCmd[];
+  add:boolean=false;
   marchAdder: Boolean = false;
   public marchs: MarchandiseCmd[];
   public bdcs: Bdc[];
@@ -59,7 +60,8 @@ export class BdcComponent implements OnInit {
       this.marchs = [];
       this.bdcs = [];
       this.getLivraison();
-
+      this.getMarchandiseCmd();
+      this.getBdc();
       // this.livraisons.forEach(element => {
       //   // tslint:disable-next-line: no-use-before-declare
       //   this.bdcs.push(new Bdc(element));
@@ -214,6 +216,22 @@ export class BdcComponent implements OnInit {
         error => this.handleError(error));
   }
 
+  getMarchandiseCmd(): void {
+    this.isLoading = true;
+    this.transitservice.getTransitMDetail()
+      .subscribe(
+        response => this.handleResponseBdc(response),
+        error => this.handleError(error));
+  }
+
+  getBdc(): void {
+    this.isLoading = true;
+    this.livraisonservice.getBdc()
+      .subscribe(
+        response => this.handleResponseBdc(response),
+        error => this.handleError(error));
+  }
+
   // onSubmit(livraison) {
   //   this.isLoading = true;
   //   console.log('================');
@@ -237,10 +255,13 @@ export class BdcComponent implements OnInit {
     this.etatsLivraisons = response;
   }
 
-  protected handleResponseM(response: MarchandiseCmd[]) {
-
+  protected handleResponseM(response: Marchandise[]) {
+    let i = 0;
+    response.forEach(element => {
+      //this.marchandises.push(new MarchandiseCmd(element));
+      i++;
+    });
     this.isLoading = false;
-    this.marchandises = response;
     // this.marchandises = null;
     // response.forEach(element => {
     //   this.marchandises.push(new MarchandiseCmd(element));
@@ -249,14 +270,6 @@ export class BdcComponent implements OnInit {
   }
 
   protected handleResponseL(response: Livraison[]) {
-    // console.log('waiting...');
-    // console.log(response);
-    response.forEach(element => {
-        // tslint:disable-next-line: no-use-before-declare
-        this.bdcs.push(new Bdc(this.transitservice,this.livraisonsService,element));
-      });
-    // console.log(this.bdcs);
-    // console.log('finished');
     this.isLoading = false,
     this.livraisons = response;
   }
@@ -269,6 +282,11 @@ export class BdcComponent implements OnInit {
   protected handleResponseS(response: Societe[]) {
     this.isLoading = false,
     this.societes = response;
+  }
+  protected handleResponseBdc(response: Bdc[]) {
+    console.log(response);
+    this.isLoading = false,
+    this.bdcs = response;
   }
 
 
@@ -296,30 +314,32 @@ class MarchandiseCmd extends Marchandise {
   }
 }
 
-class Bdc {
+export class Bdc {
 
-  marchandiseCmd: MarchandiseCmd[];
+  marchandises: MarchandiseCmd[];
+  qteTotal: number;
+  nbrM: number;
   livraison: Livraison;
   transit: Transit;
-  constructor(transitService?:TransitsService,livraisonService?:LivraisonsService,livraison?: Livraison) {
-    // let transitService;//= new TransitsService(new HttpClient(new HttpHandler<Transit>()),new HttpErrorHandler);
-    // let livraisonService;//: LivraisonsService;
-    if (livraison) {
-        this.livraison = livraison;
-        // console.log(livraison);
-        transitService.getTransitDetail(livraison.transit_id).subscribe
-        (response => {
-          this.transit = response['data'];
-        });
-      } else {
-        transitService.addTransit(new Transit(true)).subscribe
-        (response => {
-          this.transit = response['data'];
-        });
-        livraisonService.addLivraison(new Livraison(this.transit.id)).subscribe
-        (response => {
-          this.livraison = response['data'];
-        });
-      }
-  }
+  // constructor(transitService?: TransitsService, livraisonService?: LivraisonsService, livraison?: Livraison) {
+  //   // let transitService;//= new TransitsService(new HttpClient(new HttpHandler<Transit>()),new HttpErrorHandler);
+  //   // let livraisonService;//: LivraisonsService;
+  //   if (livraison) {
+  //       this.livraison = livraison;
+  //       // console.log(livraison);
+  //       transitService.getTransitDetail(livraison.transit_id).subscribe
+  //       (response => {
+  //         this.transit = response['data'];
+  //       });
+  //     } else {
+  //       transitService.addTransit(new Transit(true)).subscribe
+  //       (response => {
+  //         this.transit = response['data'];
+  //       });
+  //       livraisonService.addLivraison(new Livraison(this.transit.id)).subscribe
+  //       (response => {
+  //         this.livraison = response['data'];
+  //       });
+  //     }
+  // }
 }

@@ -60,45 +60,32 @@ class TransitMarchandiseController extends Controller
      */
     public function index()
     {
-        $listTransit = TransitMarchandise::whereState('1')->get();
-        return $listTransit;
+        $listTransit = TransitMarchandise::leftJoin('marchandises','marchandise_id','marchandises.id')->whereState('1')->get();
+        return self::grouper($listTransit);
     }
 
      /**
      * Jean-Claude
      */
-    public function count($v)
+    public function transit_id(Request $r,$toCollection=false)
     {
-        $i=0;
-        foreach ($v as $key => $value) {
-            $i++;
-        }
-        return $i;
+        return self::grouper($this->selectCollectionJson(DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
+        join marchandises ma on(tr.marchandise_id = ma.id)
+        WHERE state=1 and tr.transit_id = ".$r->id),true));
     }
-    public function transit_id(Request $r,$t=null)
+
+    public function marchandise_id(Request $r,$toCollection=false)
     {
         return $this->selectCollectionJson(DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
         join marchandises ma on(tr.marchandise_id = ma.id)
-        WHERE state=1 and tr.transit_id = ".$r->id),$t);
+        WHERE state=1 and tr.marchandise_id = ".$r->id),$toCollection);
     }
 
-    public function marchandise_id(Request $r)
+    public function quantite(Request $r,$toCollection=false)
     {
-        $l = DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
-        
+        return $this->selectCollectionJson(DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
         join marchandises ma on(tr.marchandise_id = ma.id)
-    WHERE state=1 and tr.marchandise_id = ".$r->id);
-        return response()->json($l, 200);
-    }
-
-    public function quantite(Request $r)
-    {
-        // $l = DB::select("SELECT * from transit_marchandises tr join transits na on(tr.transit_id = na.id)
-        
-        // join marchandises ma on(tr.marchandise_id = ma.id)"
-        // + " WHERE tr.quantite = ?", 
-        // [$r->data]);
-        // return response()->json($l, 200);
+        WHERE state=1 and quantite >= ".$r->qi."and quantite <= ".$r->qs),$toCollection);
     }
 
 
@@ -142,23 +129,8 @@ class TransitMarchandiseController extends Controller
 	 *      )
      * ),
      */
-    function creator($request)
-    {
+    
 
-        foreach ($request['marchandises'] as $key => $value) {
-            
-            $createTransit[$key] = TransitMarchandise::create([
-                'transit_id'=>$request['transit_id'],
-                'marchandise_id'=>$value['marchandise_id'],
-                'quantite'=> $value['quantite']
-            ] 
-        );
-        }
-
-        // $createTransit = TransitMarchandise::create($request->all());
-        
-        return  $createTransit;
-    }
     public function store(Request $request)
     {
         $request['id']=2;
@@ -215,8 +187,7 @@ class TransitMarchandiseController extends Controller
     {
         // $showTransitById = TransitMarchandise::with('Transit')->findOrFail($id);
         // return $showTransitById;
-
-        return new TransitMarchandisesResource(TransitMarchandise::with('Transit')->with('Marchandise')->findOrFail(1));
+        return new TransitMarchandisesResource(TransitMarchandise::whereState(1)->with('Transit')->with('Marchandise')->findOrFail($id));
     }
 
     /**
